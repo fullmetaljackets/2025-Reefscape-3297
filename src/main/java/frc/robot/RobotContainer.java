@@ -14,9 +14,18 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
-
+import frc.robot.commands.ArmExtendToSetpoint;
+import frc.robot.commands.ArmRotToSetpoint;
+import frc.robot.commands.IntakeToggle;
+import frc.robot.commands.WristRotToSetpoint;
+import frc.robot.commands.intake;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
+import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.IntakeJaws;
+import frc.robot.subsystems.WristRot;
+import frc.robot.subsystems.ArmExtend;
+import frc.robot.subsystems.ArmRot;
 
 public class RobotContainer {
     private double MaxSpeed = TunerConstants.kSpeedAt12Volts.in(MetersPerSecond); // kSpeedAt12Volts desired top speed
@@ -34,6 +43,11 @@ public class RobotContainer {
     private final CommandXboxController joystick = new CommandXboxController(0);
 
     public final CommandSwerveDrivetrain drivetrain = TunerConstants.createDrivetrain();
+    private final Intake s_Intake = new Intake();
+    private final IntakeJaws s_IntakeJaws = new IntakeJaws();
+    private final ArmRot s_ArmRot = new ArmRot();
+    private final ArmExtend s_ArmExtend = new ArmExtend();
+    private final WristRot s_WristRot = new WristRot();
 
     public RobotContainer() {
         configureBindings();
@@ -86,6 +100,21 @@ public class RobotContainer {
 
         // reset the field-centric heading on left bumper press
         joystick.leftBumper().onTrue(drivetrain.runOnce(() -> drivetrain.seedFieldCentric()));
+
+        //Intake controlls 
+        joystick.rightTrigger().whileTrue(new intake(1, s_Intake));
+        joystick.leftTrigger().whileTrue(new intake(-1, s_Intake));
+
+        //IntakeJaws toggle
+        joystick.y().toggleOnTrue(new IntakeToggle(s_IntakeJaws));
+
+        //ArmRot/ArmExtend setpoint controlls
+        joystick.a().onTrue(new ArmRotToSetpoint(0, s_ArmRot));
+        joystick.b().onTrue(new ArmExtendToSetpoint(0, s_ArmExtend));
+
+        //WristRot setpoint controlls
+        joystick.x().onTrue(new WristRotToSetpoint(0, s_WristRot));
+
 
         drivetrain.registerTelemetry(logger::telemeterize);
     }
