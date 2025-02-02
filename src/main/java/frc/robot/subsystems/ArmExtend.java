@@ -61,7 +61,7 @@ public class ArmExtend {
         slot0.kP = 0; // A position error of 0.2 rotations results in 12 V output
         slot0.kI = 0; // No output for integrated error
         slot0.kD = 0; // A velocity error of 1 rps results in 0.5 V output
-        slot0.GravityType = GravityTypeValue.Arm_Cosine;
+        slot0.GravityType = GravityTypeValue.Elevator_Static;
         slot0.StaticFeedforwardSign = StaticFeedforwardSignValue.UseVelocitySign;
         // slot0.kS = 0.25; // Add 0.25 V output to overcome static friction
         // slot0.kV = 0.12; // A velocity target of 1 rps results in 0.12 V output

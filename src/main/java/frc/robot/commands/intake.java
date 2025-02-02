@@ -11,11 +11,11 @@ import frc.robot.subsystems.Intake;
 public class intake extends Command {
 
     private final Intake s_Intake;
-    private double m_ShooterVelocity;
+    private double m_IntakeSpeed;
  
 
-    public intake(double ShooterVelocity, Intake subsystem) {
-        m_ShooterVelocity = ShooterVelocity;
+    public intake(double IntakeSpeed, Intake subsystem) {
+        m_IntakeSpeed = IntakeSpeed;
 
         s_Intake = subsystem;
 
@@ -29,7 +29,7 @@ public class intake extends Command {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        s_Intake.IntakeRun(m_ShooterVelocity);
+        s_Intake.IntakeRun(m_IntakeSpeed);
     }
 
     // Called once the command ends or is interrupted.

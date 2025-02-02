@@ -12,15 +12,18 @@ import com.ctre.phoenix6.swerve.SwerveRequest;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
+import edu.wpi.first.wpilibj2.command.Command.InterruptionBehavior;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
 import frc.robot.commands.ArmExtendToSetpoint;
 import frc.robot.commands.ArmRotToSetpoint;
+import frc.robot.commands.AutoAlignReef;
 import frc.robot.commands.IntakeToggle;
 import frc.robot.commands.WristRotToSetpoint;
 import frc.robot.commands.intake;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
+import frc.robot.subsystems.Limelight;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.IntakeJaws;
 import frc.robot.subsystems.WristRot;
@@ -43,6 +46,7 @@ public class RobotContainer {
     private final CommandXboxController joystick = new CommandXboxController(0);
 
     public final CommandSwerveDrivetrain drivetrain = TunerConstants.createDrivetrain();
+    private final Limelight s_Limelight = new Limelight();
     private final Intake s_Intake = new Intake();
     private final IntakeJaws s_IntakeJaws = new IntakeJaws();
     private final ArmRot s_ArmRot = new ArmRot();
@@ -100,6 +104,14 @@ public class RobotContainer {
 
         // reset the field-centric heading on left bumper press
         joystick.leftBumper().onTrue(drivetrain.runOnce(() -> drivetrain.seedFieldCentric()));
+
+        //Limelight AutoAlignReef
+        joystick.rightBumper().onTrue(new AutoAlignReef(s_Limelight, drivetrain));
+        // joystick.start().onTrue(new AutoAlignReef(s_Limelight, drivetrain));
+        // joystick.start().onTrue(drivetrain.applyRequest(() -> drive.withVelocityX(AutoAlignReef.LLRange)
+        // .withVelocityY(AutoAlignReef.LLStrafe)
+        // .withRotationalRate(0)).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
+
 
         //Intake controlls 
         joystick.rightTrigger().whileTrue(new intake(1, s_Intake));
