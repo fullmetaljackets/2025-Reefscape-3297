@@ -69,7 +69,7 @@ public class RobotContainer {
             )
         );
 
-        joystick.a().whileTrue(drivetrain.applyRequest(() -> brake));
+        // joystick.a().whileTrue(drivetrain.applyRequest(() -> brake));
         joystick.b().whileTrue(drivetrain.applyRequest(() ->
             point.withModuleDirection(new Rotation2d(-joystick.getLeftY(), -joystick.getLeftX()))
         ));
@@ -114,18 +114,24 @@ public class RobotContainer {
 
 
         //Intake controlls 
-        joystick.rightTrigger().whileTrue(new intake(1, s_Intake));
-        joystick.leftTrigger().whileTrue(new intake(-1, s_Intake));
+        // joystick.rightTrigger().whileTrue(new intake(1, s_Intake));
+        // joystick.leftTrigger().whileTrue(new intake(-1, s_Intake));
 
         //IntakeJaws toggle
         joystick.y().toggleOnTrue(new IntakeToggle(s_IntakeJaws));
 
-        //ArmRot/ArmExtend setpoint controlls
-        joystick.a().onTrue(new ArmRotToSetpoint(0, s_ArmRot));
-        joystick.b().onTrue(new ArmExtendToSetpoint(0, s_ArmExtend));
+        //ArmRot setpoint controlls
+        // joystick.rightBumper().onTrue(new ArmRotToSetpoint(0, s_ArmRot));
+        // joystick.leftBumper().onTrue(new ArmRotToSetpoint(0, s_ArmRot));
+
+        //ArmExtend setpoint controlls
+        joystick.b().onTrue(new ArmExtendToSetpoint(5, s_ArmExtend));
+        joystick.a().onTrue(new ArmExtendToSetpoint(0, s_ArmExtend));
 
         //WristRot setpoint controlls
-        joystick.x().onTrue(new WristRotToSetpoint(0, s_WristRot));
+        joystick.x().onTrue(new WristRotToSetpoint(0.2, s_WristRot));
+        joystick.y().onTrue(new WristRotToSetpoint(0.5, s_WristRot));
+
 
 
         drivetrain.registerTelemetry(logger::telemeterize);

@@ -5,6 +5,7 @@ import com.ctre.phoenix6.configs.FeedbackConfigs;
 import com.ctre.phoenix6.configs.MotionMagicConfigs;
 import com.ctre.phoenix6.configs.MotorOutputConfigs;
 import com.ctre.phoenix6.configs.Slot0Configs;
+import com.ctre.phoenix6.configs.SoftwareLimitSwitchConfigs;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.GravityTypeValue;
@@ -15,6 +16,7 @@ import com.ctre.phoenix6.signals.StaticFeedforwardSignValue;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import com.ctre.phoenix6.controls.MotionMagicExpoVoltage;
 import com.ctre.phoenix6.controls.MotionMagicVoltage;
 
 public class WristRot {
@@ -22,38 +24,46 @@ public class WristRot {
     private TalonFX ArmRotMotor;
     private TalonFXConfiguration TalonFXConfig;
     private MotorOutputConfigs MotorOutputConfig;
-    final MotionMagicVoltage m_mmReq = new MotionMagicVoltage(0);
+    final MotionMagicExpoVoltage m_mmReq = new MotionMagicExpoVoltage(0);
     private int m_printCount = 0;
 
 
     public WristRot() {
         TalonFXConfig = new TalonFXConfiguration();
         MotorOutputConfig = new MotorOutputConfigs();
-        MotorOutputConfig.Inverted = InvertedValue.Clockwise_Positive;
+        MotorOutputConfig.Inverted = InvertedValue.CounterClockwise_Positive;
         MotorOutputConfig.NeutralMode = NeutralModeValue.Brake;
         TalonFXConfig.withMotorOutput(MotorOutputConfig);
-        ArmRotMotor = new TalonFX(0);
+        ArmRotMotor = new TalonFX(3, "rio");
         ArmRotMotor.getConfigurator().apply(TalonFXConfig);
 
 
             /* Configure gear ratio */
         FeedbackConfigs fdb = TalonFXConfig.Feedback;
-        fdb.SensorToMechanismRatio = 1; // 12.8 rotor rotations per mechanism rotation
+        fdb.SensorToMechanismRatio = 125; // 125 rotor rotations per mechanism rotation
         
         /* Configure Motion Magic */
         MotionMagicConfigs mm = TalonFXConfig.MotionMagic;
         mm.MotionMagicCruiseVelocity = 0; // 5 (mechanism) rotations per second cruise
         mm.MotionMagicAcceleration = 0; // Take approximately 0.5 seconds to reach max vel
-        mm.MotionMagicExpo_kV = 0;
-        mm.MotionMagicExpo_kA = 0;
+        mm.MotionMagicExpo_kV = 0.11999999731779099;
+        mm.MotionMagicExpo_kA = 0.10000000149011612;
         // Take approximately 0.1 seconds to reach max accel 
         // mm.MotionMagicJerk = 1000;
+
+        SoftwareLimitSwitchConfigs softLimit =TalonFXConfig.SoftwareLimitSwitch;
+        softLimit.ForwardSoftLimitEnable = true;
+        softLimit.ForwardSoftLimitThreshold = 0.6;
+        softLimit.ReverseSoftLimitEnable = true;
+        softLimit.ReverseSoftLimitThreshold = 0;
+
         
         Slot0Configs slot0 = TalonFXConfig.Slot0;
         slot0.kS = 0; // Add 0.25 V output to overcome static friction
         slot0.kV = 0; // A velocity target of 1 rps results in 0.12 V output
         slot0.kA = 0; // An acceleration of 1 rps/s requires 0.01 V output
-        slot0.kP = 0; // A position error of 0.2 rotations results in 12 V output
+        slot0.kG = 0.18; // voltage output to overcome gravity 
+        slot0.kP = 60; // A position error of 0.2 rotations results in 12 V output
         slot0.kI = 0; // No output for integrated error
         slot0.kD = 0; // A velocity error of 1 rps results in 0.5 V output
         slot0.GravityType = GravityTypeValue.Arm_Cosine;

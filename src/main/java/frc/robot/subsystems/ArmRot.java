@@ -6,6 +6,7 @@ import com.ctre.phoenix6.configs.FeedbackConfigs;
 import com.ctre.phoenix6.configs.MotionMagicConfigs;
 import com.ctre.phoenix6.configs.MotorOutputConfigs;
 import com.ctre.phoenix6.configs.Slot0Configs;
+import com.ctre.phoenix6.configs.SoftwareLimitSwitchConfigs;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.GravityTypeValue;
@@ -16,6 +17,7 @@ import com.ctre.phoenix6.signals.StaticFeedforwardSignValue;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import com.ctre.phoenix6.controls.MotionMagicExpoVoltage;
 import com.ctre.phoenix6.controls.MotionMagicVoltage;
 
 
@@ -24,7 +26,7 @@ public class ArmRot {
     private TalonFX ArmRotMotor;
     private TalonFXConfiguration TalonFXConfig;
     private MotorOutputConfigs MotorOutputConfig;
-    final MotionMagicVoltage m_mmReq = new MotionMagicVoltage(0);
+    final MotionMagicExpoVoltage m_mmReq = new MotionMagicExpoVoltage(0);
     private int m_printCount = 0;
 
 
@@ -53,6 +55,13 @@ public class ArmRot {
         mm.MotionMagicExpo_kA = 0;
         // Take approximately 0.1 seconds to reach max accel 
         // mm.MotionMagicJerk = 1000;
+         
+        // SoftwareLimitSwitchConfigs softLimit =TalonFXConfig.SoftwareLimitSwitch;
+        // softLimit.ForwardSoftLimitEnable = true;
+        // softLimit.ForwardSoftLimitThreshold = 5.8;
+        // softLimit.ReverseSoftLimitEnable = true;
+        // softLimit.ReverseSoftLimitThreshold = 0;
+
         
         Slot0Configs slot0 = TalonFXConfig.Slot0;
         slot0.kS = 0; // Add 0.25 V output to overcome static friction
