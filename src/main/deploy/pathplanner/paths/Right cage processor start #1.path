@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.165580985915494,
-        "y": 4.974559859154929
+        "x": 8.098844178082215,
+        "y": 5.039233732882808
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.82544014084507,
-        "y": 4.747799295774647
+        "x": 7.758703333011792,
+        "y": 4.8124731695025265
       },
       "isLocked": false,
       "linkedName": null
@@ -52,24 +52,24 @@
         "y": 7.086267605634742
       },
       "prevControl": {
-        "x": 2.4965669014084497,
-        "y": 7.709859154929577
+        "x": 2.5994434931507095,
+        "y": 7.758882705485547
       },
       "nextControl": {
-        "x": 0.3449206772250464,
-        "y": 6.376444593458586
+        "x": 1.2765530893926673,
+        "y": 6.9566333791737165
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 3.7579225352112666,
-        "y": 4.974559859154929
+        "x": 3.6061643835616684,
+        "y": 5.215492957746478
       },
       "prevControl": {
-        "x": 1.3060739436619704,
-        "y": 4.280105633802816
+        "x": 3.1538925332819088,
+        "y": 6.76770963968744
       },
       "nextControl": null,
       "isLocked": false,
@@ -83,11 +83,11 @@
     },
     {
       "waypointRelativePos": 2.0,
-      "rotationDegrees": 90.0
+      "rotationDegrees": -92.7729381360598
     },
     {
       "waypointRelativePos": 3.0,
-      "rotationDegrees": 130.2363583092737
+      "rotationDegrees": -52.99737009574512
     }
   ],
   "constraintZones": [],
@@ -119,7 +119,7 @@
     },
     {
       "name": "place coral",
-      "waypointRelativePos": 3.5,
+      "waypointRelativePos": 4.0,
       "endWaypointRelativePos": null,
       "command": null
     }

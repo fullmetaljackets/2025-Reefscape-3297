@@ -16,16 +16,16 @@
     },
     {
       "anchor": {
-        "x": 5.246038732397953,
-        "y": 5.258010563373218
+        "x": 5.334118150684932,
+        "y": 5.144413527397259
       },
       "prevControl": {
-        "x": 5.574693742029953,
-        "y": 4.644478383512552
+        "x": 5.662773160316932,
+        "y": 4.530881347536593
       },
       "nextControl": {
-        "x": 4.4734174855454345,
-        "y": 6.700337574663473
+        "x": 4.561496903832413,
+        "y": 6.586740538687514
       },
       "isLocked": false,
       "linkedName": null
@@ -48,28 +48,28 @@
     },
     {
       "anchor": {
-        "x": 1.490316901413905,
-        "y": 7.086267605634742
+        "x": 1.5326198630136987,
+        "y": 7.142829623287671
       },
       "prevControl": {
-        "x": 1.0576357136659142,
-        "y": 5.532807774772771
+        "x": 0.9588697424217112,
+        "y": 6.207696435461148
       },
       "nextControl": {
-        "x": 1.7156438445570759,
-        "y": 7.8952613056051435
+        "x": 1.9717969641346738,
+        "y": 7.858627438141157
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 3.630369718309858,
-        "y": 5.09933647260274
+        "x": 3.591138698630137,
+        "y": 5.264619006849315
       },
       "prevControl": {
-        "x": 3.6138994222566874,
-        "y": 5.752943341385005
+        "x": 3.574668402576966,
+        "y": 5.918225875631579
       },
       "nextControl": null,
       "isLocked": false,
@@ -79,51 +79,20 @@
   "rotationTargets": [
     {
       "waypointRelativePos": 1.0,
-      "rotationDegrees": 60.25511870305778
+      "rotationDegrees": 56.864390451281196
     },
     {
       "waypointRelativePos": 2.0,
-      "rotationDegrees": 90.0
+      "rotationDegrees": 0.0
     },
     {
       "waypointRelativePos": 3.0,
-      "rotationDegrees": 130.2363583092737
+      "rotationDegrees": 0.0
     }
   ],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [
-    {
-      "name": "Drop coral",
-      "waypointRelativePos": 1.0,
-      "endWaypointRelativePos": null,
-      "command": null
-    },
-    {
-      "name": "grab algae",
-      "waypointRelativePos": 1.0,
-      "endWaypointRelativePos": null,
-      "command": null
-    },
-    {
-      "name": "place algae",
-      "waypointRelativePos": 2.0,
-      "endWaypointRelativePos": null,
-      "command": null
-    },
-    {
-      "name": "grab coral",
-      "waypointRelativePos": 3.0,
-      "endWaypointRelativePos": null,
-      "command": null
-    },
-    {
-      "name": "place coral",
-      "waypointRelativePos": 4.0,
-      "endWaypointRelativePos": null,
-      "command": null
-    }
-  ],
+  "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,
@@ -134,7 +103,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -58.87039694197954
+    "rotation": -59.73495640773731
   },
   "reversed": false,
   "folder": "Processor ",

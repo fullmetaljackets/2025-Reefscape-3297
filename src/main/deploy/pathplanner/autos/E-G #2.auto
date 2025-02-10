@@ -7,13 +7,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "I-G"
+            "pathName": "E-G #2"
           }
         }
       ]
     }
   },
   "resetOdom": true,
-  "folder": "Feed Only Starting position #1",
+  "folder": "Feed Only Starting posistion #2",
   "choreoAuto": false
 }

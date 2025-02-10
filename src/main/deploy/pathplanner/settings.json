@@ -11,7 +11,12 @@
     "floor & feed"
   ],
   "autoFolders": [
-    "New Folder"
+    "Algae Only",
+    "Feed Only Starting posistion #2",
+    "Feed Only Starting position #1",
+    "Floor Only",
+    "Floor & Feed",
+    "Processor"
   ],
   "defaultMaxVel": 3.0,
   "defaultMaxAccel": 3.0,

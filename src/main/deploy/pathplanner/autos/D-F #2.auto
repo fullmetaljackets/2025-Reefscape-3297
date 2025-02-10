@@ -5,15 +5,21 @@
     "data": {
       "commands": [
         {
+          "type": "named",
+          "data": {
+            "name": "place coral"
+          }
+        },
+        {
           "type": "path",
           "data": {
-            "pathName": "I-G"
+            "pathName": "D-F #2"
           }
         }
       ]
     }
   },
   "resetOdom": true,
-  "folder": "Feed Only Starting position #1",
+  "folder": "Feed Only Starting posistion #2",
   "choreoAuto": false
 }
