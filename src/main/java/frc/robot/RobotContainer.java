@@ -4,15 +4,21 @@
 
 package frc.robot;
 
-import static edu.wpi.first.units.Units.*;
+import static edu.wpi.first.units.Units.MetersPerSecond;
+import static edu.wpi.first.units.Units.RadiansPerSecond;
+import static edu.wpi.first.units.Units.RotationsPerSecond;
 
 import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
 import com.ctre.phoenix6.swerve.SwerveRequest;
+import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.auto.NamedCommands;
 
 import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.Command.InterruptionBehavior;
+import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
 import frc.robot.commands.ArmExtendToSetpoint;
@@ -22,13 +28,15 @@ import frc.robot.commands.IntakeToggle;
 import frc.robot.commands.WristRotToSetpoint;
 import frc.robot.commands.intake;
 import frc.robot.generated.TunerConstants;
-import frc.robot.subsystems.CommandSwerveDrivetrain;
-import frc.robot.subsystems.Limelight;
-import frc.robot.subsystems.Intake;
-import frc.robot.subsystems.IntakeJaws;
-import frc.robot.subsystems.WristRot;
 import frc.robot.subsystems.ArmExtend;
 import frc.robot.subsystems.ArmRot;
+import frc.robot.subsystems.CommandSwerveDrivetrain;
+import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.IntakeJaws;
+import frc.robot.subsystems.Limelight;
+import frc.robot.subsystems.WristRot;
+
+
 
 public class RobotContainer {
     private double MaxSpeed = TunerConstants.kSpeedAt12Volts.in(MetersPerSecond); // kSpeedAt12Volts desired top speed
@@ -52,9 +60,14 @@ public class RobotContainer {
     private final ArmRot s_ArmRot = new ArmRot();
     private final ArmExtend s_ArmExtend = new ArmExtend();
     private final WristRot s_WristRot = new WristRot();
+    private final SendableChooser<Command> autoChooser;
 
     public RobotContainer() {
         configureBindings();
+
+        autoChooser = AutoBuilder.buildAutoChooser();
+        SmartDashboard.putData("Auto Chooser", autoChooser);
+
     }
 
     private void configureBindings() {
@@ -132,6 +145,10 @@ public class RobotContainer {
     }
 
     public Command getAutonomousCommand() {
-        return Commands.print("No autonomous command configured");
+        // return Commands.print("No autonomous command configured");
+
+        return autoChooser.getSelected();
+
     }
+
 }
