@@ -127,11 +127,11 @@ public class RobotContainer {
 
 
         //Intake controlls 
-        // joystick.rightTrigger().whileTrue(new intake(1, s_Intake));
-        // joystick.leftTrigger().whileTrue(new intake(-1, s_Intake));
+        joystick.rightTrigger().whileTrue(new intake(.5, s_Intake));
+        joystick.leftTrigger().whileTrue(new intake(-.5, s_Intake));
 
-        //IntakeJaws toggle
-        joystick.y().toggleOnTrue(new IntakeToggle(s_IntakeJaws));
+        //IntakeJaws toggles
+        // joystick.y().toggleOnTrue(new IntakeToggle(s_IntakeJaws));
 
         //ArmRot setpoint controlls
         // joystick.rightBumper().onTrue(new ArmRotToSetpoint(0, s_ArmRot));
