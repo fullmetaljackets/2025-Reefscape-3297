@@ -39,37 +39,38 @@ public class ArmRot {
         MotorOutputConfig.Inverted = InvertedValue.Clockwise_Positive;
         MotorOutputConfig.NeutralMode = NeutralModeValue.Brake;
         TalonFXConfig.withMotorOutput(MotorOutputConfig);
-        ArmRotMotor = new TalonFX(0);
+        ArmRotMotor = new TalonFX(1);
         ArmRotMotor.getConfigurator().apply(TalonFXConfig);
 
 
             /* Configure gear ratio */
         FeedbackConfigs fdb = TalonFXConfig.Feedback;
-        fdb.SensorToMechanismRatio = 1; // 12.8 rotor rotations per mechanism rotation
+        fdb.SensorToMechanismRatio = 466.66; // 12.8 rotor rotations per mechanism rotation
         
         /* Configure Motion Magic */
         MotionMagicConfigs mm = TalonFXConfig.MotionMagic;
         mm.MotionMagicCruiseVelocity = 0; // 5 (mechanism) rotations per second cruise
         mm.MotionMagicAcceleration = 0; // Take approximately 0.5 seconds to reach max vel
-        mm.MotionMagicExpo_kV = 0;
-        mm.MotionMagicExpo_kA = 0;
+        mm.MotionMagicExpo_kV = 0.0010000000474974513;
+        mm.MotionMagicExpo_kA = 9.999999747378752E-06;
         // Take approximately 0.1 seconds to reach max accel 
         // mm.MotionMagicJerk = 1000;
          
-        // SoftwareLimitSwitchConfigs softLimit =TalonFXConfig.SoftwareLimitSwitch;
-        // softLimit.ForwardSoftLimitEnable = true;
-        // softLimit.ForwardSoftLimitThreshold = 5.8;
-        // softLimit.ReverseSoftLimitEnable = true;
-        // softLimit.ReverseSoftLimitThreshold = 0;
+        SoftwareLimitSwitchConfigs softLimit =TalonFXConfig.SoftwareLimitSwitch;
+        softLimit.ForwardSoftLimitEnable = true;
+        softLimit.ForwardSoftLimitThreshold = .5;
+        softLimit.ReverseSoftLimitEnable = true;
+        softLimit.ReverseSoftLimitThreshold = -.5;
 
         
         Slot0Configs slot0 = TalonFXConfig.Slot0;
         slot0.kS = 0; // Add 0.25 V output to overcome static friction
         slot0.kV = 0; // A velocity target of 1 rps results in 0.12 V output
         slot0.kA = 0; // An acceleration of 1 rps/s requires 0.01 V output
-        slot0.kP = 0; // A position error of 0.2 rotations results in 12 V output
+        slot0.kP = 320; // A position error of 0.2 rotations results in 12 V output
         slot0.kI = 0; // No output for integrated error
         slot0.kD = 0; // A velocity error of 1 rps results in 0.5 V output
+        slot0.kG = 0.27;
         slot0.GravityType = GravityTypeValue.Arm_Cosine;
         slot0.StaticFeedforwardSign = StaticFeedforwardSignValue.UseVelocitySign;
         // slot0.kS = 0.25; // Add 0.25 V output to overcome static friction
