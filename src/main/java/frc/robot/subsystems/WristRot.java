@@ -21,7 +21,7 @@ import com.ctre.phoenix6.controls.MotionMagicVoltage;
 
 public class WristRot {
 
-    private TalonFX ArmRotMotor;
+    private TalonFX WristRotMotor;
     private TalonFXConfiguration TalonFXConfig;
     private MotorOutputConfigs MotorOutputConfig;
     final MotionMagicExpoVoltage m_mmReq = new MotionMagicExpoVoltage(0);
@@ -34,8 +34,8 @@ public class WristRot {
         MotorOutputConfig.Inverted = InvertedValue.CounterClockwise_Positive;
         MotorOutputConfig.NeutralMode = NeutralModeValue.Brake;
         TalonFXConfig.withMotorOutput(MotorOutputConfig);
-        ArmRotMotor = new TalonFX(3, "rio");
-        ArmRotMotor.getConfigurator().apply(TalonFXConfig);
+        WristRotMotor = new TalonFX(3, "rio");
+        WristRotMotor.getConfigurator().apply(TalonFXConfig);
 
 
             /* Configure gear ratio */
@@ -77,7 +77,7 @@ public class WristRot {
 
         StatusCode status = StatusCode.StatusCodeNotInitialized;
         for (int i = 0; i < 5; ++i) {
-            status = ArmRotMotor.getConfigurator().apply(TalonFXConfig);
+            status = WristRotMotor.getConfigurator().apply(TalonFXConfig);
             if (status.isOK()) break;
         }
         if (!status.isOK()) {
@@ -91,12 +91,20 @@ public class WristRot {
         // System.out.println("Pos: " + TriggerMotor.getPosition());
         // System.out.println("Vel: " + TriggerMotor.getVelocity());
         // System.out.println();
-        SmartDashboard.putNumber("position", ArmRotMotor.getPosition().getValueAsDouble());
-        SmartDashboard.putNumber("Velocity", ArmRotMotor.getVelocity().getValueAsDouble());
+        SmartDashboard.putNumber("position", WristRotMotor.getPosition().getValueAsDouble());
+        SmartDashboard.putNumber("Velocity", WristRotMotor.getVelocity().getValueAsDouble());
         }
     }
 
+    public double getWristPosition(){
+        return WristRotMotor.getPosition().getValueAsDouble();
+    }
+    
+    public boolean atTargetPosition(double setpoint, double tolerance){
+        return Math.abs(getWristPosition() - setpoint) <= tolerance;
+    }
+
     public void setMy_WristRot(double setpoint){
-    ArmRotMotor.setControl(m_mmReq.withPosition(setpoint).withSlot(0));
+    WristRotMotor.setControl(m_mmReq.withPosition(setpoint).withSlot(0));
     }
 }

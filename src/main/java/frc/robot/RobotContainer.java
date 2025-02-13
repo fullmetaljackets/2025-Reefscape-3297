@@ -21,6 +21,8 @@ import edu.wpi.first.wpilibj2.command.Command.InterruptionBehavior;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
+import frc.robot.commands.grouped.BackFloorIntake;
+import frc.robot.commands.grouped.ReefLV3;
 import frc.robot.commands.ArmExtendToSetpoint;
 import frc.robot.commands.ArmRotToSetpoint;
 import frc.robot.commands.AutoAlignReef;
@@ -139,12 +141,17 @@ public class RobotContainer {
         // joystick.leftBumper().onTrue(new ArmRotToSetpoint(0, s_ArmRot));
 
         //ArmExtend setpoint controlls
-        joystick.b().onTrue(new ArmExtendToSetpoint(5, s_ArmExtend));
+        // joystick.b().onTrue(new ArmExtendToSetpoint(5, s_ArmExtend));
         joystick.a().onTrue(new ArmExtendToSetpoint(0, s_ArmExtend));
 
         //WristRot setpoint controlls
-        joystick.x().onTrue(new WristRotToSetpoint(0.2, s_WristRot));
-        joystick.y().onTrue(new WristRotToSetpoint(0.5, s_WristRot));
+        // joystick.x().onTrue(new WristRotToSetpoint(0.2, s_WristRot));
+        // joystick.y().onTrue(new WristRotToSetpoint(0.5, s_WristRot));
+
+        //ReefLV3 Test
+        joystick.x().onTrue(new ReefLV3(s_ArmRot, s_ArmExtend, s_WristRot));
+        joystick.a().onTrue(new BackFloorIntake(s_ArmRot, s_ArmExtend, s_WristRot));
+        joystick.y().onTrue(new WristRotToSetpoint(-0.1, s_WristRot));
 
 
 

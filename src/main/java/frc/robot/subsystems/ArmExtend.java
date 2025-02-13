@@ -101,7 +101,16 @@ public class ArmExtend {
 
     }
 
-
+    public double getArmExtendPosition(){
+        SmartDashboard.putNumber("ArmExtendPosition", ArmExtendMotor.getPosition().getValueAsDouble());
+        return ArmExtendMotor.getPosition().getValueAsDouble();
+    }
+    
+    public boolean atTargetDistance(double setpoint, double tolerance){
+        SmartDashboard.putNumber("ArmExtendPosition-setPoint", Math.abs(getArmExtendPosition() - setpoint));
+        SmartDashboard.putNumber("tolerance", tolerance);
+        return Math.abs(getArmExtendPosition() - setpoint) <= tolerance;
+    }
 
     public void setMy_ArmExtend(double setpoint){
         ArmExtendMotor.setControl(m_mmReq.withPosition(setpoint).withSlot(0));

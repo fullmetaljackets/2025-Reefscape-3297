@@ -102,7 +102,16 @@ public class ArmRot {
         }
 
     }
+    public double getArmRotPosition(){
+        SmartDashboard.putNumber("ArmRot Position", ArmRotMotor.getPosition().getValueAsDouble());
+        return ArmRotMotor.getPosition().getValueAsDouble();
+    }
 
+    public boolean atTargetPosition(double setpoint, double tolerance){
+        SmartDashboard.putNumber("ArmRot Pos-setPoint", Math.abs(getArmRotPosition() - setpoint));
+        SmartDashboard.putNumber("ArmRot tolerance", tolerance);
+        return Math.abs(getArmRotPosition() - setpoint) <= tolerance;
+    }
 
 
     public void setMy_ArmRot(double setpoint){
