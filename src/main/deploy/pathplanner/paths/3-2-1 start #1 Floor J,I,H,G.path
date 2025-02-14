@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.083818493150686,
-        "y": 5.084310787671233
+        "x": 8.165580985915494,
+        "y": 5.059595070422534
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.355864726027397,
-        "y": 3.251177226027397
+        "x": 6.437627218792205,
+        "y": 3.2264615087786988
       },
       "isLocked": false,
       "linkedName": null
@@ -32,16 +32,16 @@
     },
     {
       "anchor": {
-        "x": 1.9232876712328766,
-        "y": 2.1843535958904114
+        "x": 2.0288732394366185,
+        "y": 2.1117077464788725
       },
       "prevControl": {
-        "x": 1.3523116438356162,
-        "y": 2.725278253424658
+        "x": 2.0706702705903623,
+        "y": 2.897115995211741
       },
       "nextControl": {
-        "x": 2.1047758422093343,
-        "y": 2.0124174339127148
+        "x": 2.006905990738952,
+        "y": 1.6989210519969105
       },
       "isLocked": false,
       "linkedName": null
@@ -64,16 +64,16 @@
     },
     {
       "anchor": {
-        "x": 1.8181078767123287,
-        "y": 4.002461472602739
+        "x": 2.0288732394366185,
+        "y": 4.067517605633801
       },
       "prevControl": {
-        "x": 1.7730308219178081,
-        "y": 3.4465111301369866
+        "x": 1.983796184642098,
+        "y": 3.5115672631680486
       },
       "nextControl": {
-        "x": 1.8450846236637632,
-        "y": 4.335174685003765
+        "x": 2.0558499863880533,
+        "y": 4.400230818034827
       },
       "isLocked": false,
       "linkedName": null
@@ -84,28 +84,28 @@
         "y": 3.8221532534246574
       },
       "prevControl": {
-        "x": 2.9518251446064396,
-        "y": 3.2769826385455674
+        "x": 3.120158450704224,
+        "y": 3.3163732394366185
       },
       "nextControl": {
-        "x": 3.2455479452054794,
-        "y": 4.393129280821918
+        "x": 3.06629753414934,
+        "y": 4.41185666871578
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.9232876712328766,
-        "y": 5.820569349315068
+        "x": 2.0288732394366185,
+        "y": 5.824911971830985
       },
       "prevControl": {
-        "x": 2.389083904109589,
-        "y": 6.571853595890412
+        "x": 2.4946694723133307,
+        "y": 6.576196218406328
       },
       "nextControl": {
-        "x": 1.6778770745240499,
-        "y": 5.424745806236315
+        "x": 1.7834626427277918,
+        "y": 5.429088428752231
       },
       "isLocked": false,
       "linkedName": null
@@ -135,7 +135,7 @@
     },
     {
       "waypointRelativePos": 3.0,
-      "rotationDegrees": 126.92541679466238
+      "rotationDegrees": 55.03492004247822
     },
     {
       "waypointRelativePos": 4.0,
@@ -152,7 +152,50 @@
   ],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "place coral",
+      "waypointRelativePos": 1.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "grab coral floor",
+      "waypointRelativePos": 2.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "place coral",
+      "waypointRelativePos": 3.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "grab coral floor",
+      "waypointRelativePos": 4.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "place coral",
+      "waypointRelativePos": 5.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "grab coral floor",
+      "waypointRelativePos": 6.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "place coral",
+      "waypointRelativePos": 7.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,
@@ -169,7 +212,7 @@
   "folder": "Floor Only",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 177.79740183823415
+    "rotation": -178.8237316450215
   },
   "useDefaultConstraints": true
 }
