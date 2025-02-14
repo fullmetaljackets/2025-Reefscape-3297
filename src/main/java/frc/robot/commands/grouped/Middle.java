@@ -16,7 +16,7 @@ public class Middle extends SequentialCommandGroup{
             // new WristRotToSetpoint(-0.1, s_WristRot),
             // new ArmExtendToSetpoint(0, s_ArmExtend),
             new ArmExtendToSetpoint(0, s_ArmExtend),
-            new WristRotToSetpoint(-0.1, s_WristRot),
+            new WristRotToSetpoint(0, s_WristRot),
             new ArmRotToSetpoint(0,s_ArmRot)
         );
     }

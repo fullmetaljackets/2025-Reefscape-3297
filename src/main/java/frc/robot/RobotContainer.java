@@ -45,16 +45,19 @@ public class RobotContainer {
     private double MaxSpeed = TunerConstants.kSpeedAt12Volts.in(MetersPerSecond); // kSpeedAt12Volts desired top speed
     private double MaxAngularRate = RotationsPerSecond.of(0.25).in(RadiansPerSecond); // 1/4 of a rotation per second max angular velocity
 
-    /* Setting up bindings for necessary control of the swerve drive platform */
-    private final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
-            .withDeadband(MaxSpeed * 0.1).withRotationalDeadband(MaxAngularRate * 0.1) // Add a 10% deadband
-            .withDriveRequestType(DriveRequestType.OpenLoopVoltage); // Use open-loop control for drive motors
+    private final CommandXboxController DriveStick = new CommandXboxController(0);
+    private final CommandXboxController CopilotStick = new CommandXboxController(0);
+
+    //  Setting up bindings for necessary control of the swerve drive platform 
+     private final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
+           .withDeadband(MaxSpeed * 0.1).withRotationalDeadband(MaxAngularRate * 0.1) // Add a 10% deadband
+             .withDriveRequestType(DriveRequestType.OpenLoopVoltage); // Use open-loop control for drive motors
+
     private final SwerveRequest.SwerveDriveBrake brake = new SwerveRequest.SwerveDriveBrake();
     private final SwerveRequest.PointWheelsAt point = new SwerveRequest.PointWheelsAt();
 
     private final Telemetry logger = new Telemetry(MaxSpeed);
 
-    private final CommandXboxController joystick = new CommandXboxController(0);
 
     public final CommandSwerveDrivetrain drivetrain = TunerConstants.createDrivetrain();
     private final Limelight s_Limelight = new Limelight();
@@ -74,38 +77,38 @@ public class RobotContainer {
     }
 
     private void configureBindings() {
-        // Note that X is defined as forward according to WPILib convention,
+    // Note that X is defined as forward according to WPILib convention,
         // and Y is defined as to the left according to WPILib convention.
         drivetrain.setDefaultCommand(
             // Drivetrain will execute this command periodically
             drivetrain.applyRequest(() ->
-                drive.withVelocityX(-joystick.getLeftY() * MaxSpeed) // Drive forward with negative Y (forward)
-                    .withVelocityY(-joystick.getLeftX() * MaxSpeed) // Drive left with negative X (left)
-                    .withRotationalRate(-joystick.getRightX() * MaxAngularRate) // Drive counterclockwise with negative X (left)
+                drive.withVelocityX(-DriveStick.getLeftY() * MaxSpeed) // Drive forward with negative Y (forward)
+                    .withVelocityY(-DriveStick.getLeftX() * MaxSpeed) // Drive left with negative X (left)
+                    .withRotationalRate(-DriveStick.getRightX() * MaxAngularRate) // Drive counterclockwise with negative X (left)
             )
         );
 
-        // joystick.a().whileTrue(drivetrain.applyRequest(() -> brake));
-        joystick.b().whileTrue(drivetrain.applyRequest(() ->
-            point.withModuleDirection(new Rotation2d(-joystick.getLeftY(), -joystick.getLeftX()))
+        // DriveStick.a().whileTrue(drivetrain.applyRequest(() -> brake));
+        DriveStick.b().whileTrue(drivetrain.applyRequest(() ->
+            point.withModuleDirection(new Rotation2d(-DriveStick.getLeftY(), -DriveStick.getLeftX()))
         ));
         
-        joystick.povUp().whileTrue(drivetrain.applyRequest(() -> 
+        DriveStick.povUp().whileTrue(drivetrain.applyRequest(() -> 
         drive.withVelocityX(0.25 * MaxSpeed) // Drive forward 25% of MaxSpeed (forward)
         .withVelocityY(0 * MaxSpeed ) // Drive left with negative X (left)
         .withRotationalRate(0 * MaxAngularRate) // Drive counterclockwise with negative X (left)
         ));
-        joystick.povDown().whileTrue(drivetrain.applyRequest(() -> 
+        DriveStick.povDown().whileTrue(drivetrain.applyRequest(() -> 
         drive.withVelocityX(-0.25 * MaxSpeed) // Drive forward 25% of MaxSpeed (forward)
         .withVelocityY(0 * MaxSpeed) // Drive left with negative X (left)
         .withRotationalRate(0 * MaxAngularRate) // Drive counterclockwise with negative X (left)
         ));
-        joystick.povLeft().whileTrue(drivetrain.applyRequest(() -> 
+        DriveStick.povLeft().whileTrue(drivetrain.applyRequest(() -> 
         drive.withVelocityX(0 * MaxSpeed) // Drive forward 25% of MaxSpeed (forward)
         .withVelocityY(0.25 * MaxSpeed) // Drive left with negative X (left)
         .withRotationalRate(0 * MaxAngularRate) // Drive counterclockwise with negative X (left)
         ));
-        joystick.povRight().whileTrue(drivetrain.applyRequest(() -> 
+        DriveStick.povRight().whileTrue(drivetrain.applyRequest(() -> 
         drive.withVelocityX(0 * MaxSpeed) // Drive forward 25% of MaxSpeed (forward)
         .withVelocityY(-0.25 * MaxSpeed) // Drive left with negative X (left)
         .withRotationalRate(0 * MaxAngularRate) // Drive counterclockwise with negative X (left)
@@ -113,51 +116,59 @@ public class RobotContainer {
 
         // Run SysId routines when holding back/start and X/Y.
         // Note that each routine should be run exactly once in a single log.
-        joystick.back().and(joystick.y()).whileTrue(drivetrain.sysIdDynamic(Direction.kForward));
-        joystick.back().and(joystick.x()).whileTrue(drivetrain.sysIdDynamic(Direction.kReverse));
-        joystick.start().and(joystick.y()).whileTrue(drivetrain.sysIdQuasistatic(Direction.kForward));
-        joystick.start().and(joystick.x()).whileTrue(drivetrain.sysIdQuasistatic(Direction.kReverse));
+        DriveStick.back().and(DriveStick.y()).whileTrue(drivetrain.sysIdDynamic(Direction.kForward));
+        DriveStick.back().and(DriveStick.x()).whileTrue(drivetrain.sysIdDynamic(Direction.kReverse));
+        DriveStick.start().and(DriveStick.y()).whileTrue(drivetrain.sysIdQuasistatic(Direction.kForward));
+        DriveStick.start().and(DriveStick.x()).whileTrue(drivetrain.sysIdQuasistatic(Direction.kReverse));
 
         // reset the field-centric heading on left bumper press
-        joystick.leftBumper().onTrue(drivetrain.runOnce(() -> drivetrain.seedFieldCentric()));
+        DriveStick.leftBumper().onTrue(drivetrain.runOnce(() -> drivetrain.seedFieldCentric()));
 
 
         //Limelight AutoAlignReef
-        // joystick.rightBumper().onTrue(new AutoAlignReef(s_Limelight, drivetrain).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
-        // joystick.start().onTrue(new AutoAlignReef(s_Limelight, drivetrain));
-        // joystick.start().onTrue(drivetrain.applyRequest(() -> drive.withVelocityX(AutoAlignReef.LLRange)
+        // DriveStick.rightBumper().onTrue(new AutoAlignReef(s_Limelight, drivetrain).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
+        // DriveStick.start().onTrue(new AutoAlignReef(s_Limelight, drivetrain));
+        // DriveStick.start().onTrue(drivetrain.applyRequest(() -> drive.withVelocityX(AutoAlignReef.LLRange)
         // .withVelocityY(AutoAlignReef.LLStrafe)
         // .withRotationalRate(0)).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
 
 
         //Intake controlls 
-        joystick.rightTrigger().whileTrue(new intake(.5, s_Intake));
-        joystick.leftTrigger().whileTrue(new intake(-.5, s_Intake));
+        DriveStick.rightTrigger().whileTrue(new intake(.5, s_Intake));
+        DriveStick.leftTrigger().whileTrue(new intake(-.5, s_Intake));
 
         //IntakeJaws toggle
-        joystick.rightBumper().toggleOnTrue(new IntakeToggle(s_IntakeJaws));
+        DriveStick.rightBumper().toggleOnTrue(new IntakeToggle(s_IntakeJaws));
 
         //ArmRot setpoint controlls
-        // joystick.rightBumper().onTrue(new ArmRotToSetpoint(0, s_ArmRot));
-        // joystick.leftBumper().onTrue(new ArmRotToSetpoint(0, s_ArmRot));
+        // DriveStick.rightBumper().onTrue(new ArmRotToSetpoint(0, s_ArmRot));
+        // DriveStick.leftBumper().onTrue(new ArmRotToSetpoint(0, s_ArmRot));
 
         //ArmExtend setpoint controlls
-        // joystick.b().onTrue(new ArmExtendToSetpoint(5, s_ArmExtend));
-        joystick.a().onTrue(new ArmExtendToSetpoint(0, s_ArmExtend));
+        // DriveStick.b().onTrue(new ArmExtendToSetpoint(5, s_ArmExtend));
+        // DriveStick.a().onTrue(new ArmExtendToSetpoint(0, s_ArmExtend));
 
         //WristRot setpoint controlls
-        // joystick.x().onTrue(new WristRotToSetpoint(0.2, s_WristRot));
-        // joystick.y().onTrue(new WristRotToSetpoint(0.5, s_WristRot));
+        // DriveStick.x().onTrue(new WristRotToSetpoint(0.2, s_WristRot));
+        // DriveStick.y().onTrue(new WristRotToSetpoint(0.5, s_WristRot));
 
         //ReefLV3 Test
-        joystick.y().onTrue(new ReefLV3(s_ArmRot, s_ArmExtend, s_WristRot));
-        joystick.x().onTrue(new Middle(s_ArmRot, s_ArmExtend, s_WristRot));
-        joystick.a().onTrue(new BackFloorIntake(s_ArmRot, s_ArmExtend, s_WristRot));
-        joystick.b().onTrue(new WristRotToSetpoint(-0.1, s_WristRot));
+        DriveStick.y().onTrue(new ReefLV3(s_ArmRot, s_ArmExtend, s_WristRot));
+        DriveStick.x().onTrue(new Middle(s_ArmRot, s_ArmExtend, s_WristRot));
+        DriveStick.a().onTrue(new BackFloorIntake(s_ArmRot, s_ArmExtend, s_WristRot));
+        // DriveStick.b().onTrue(new WristRotToSetpoint(-0.1, s_WristRot));
 
 
 
         drivetrain.registerTelemetry(logger::telemeterize);
+    }
+
+    private double applyDeadband(double value, double deadband) {
+        if (Math.abs(value) < deadband) {
+            return 0.0;
+        } else {
+            return value;
+        }
     }
 
     public Command getAutonomousCommand() {

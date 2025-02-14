@@ -14,10 +14,10 @@ public class BackFloorIntake extends SequentialCommandGroup{
 
         addCommands(
             //shooter motor 1&2 out
-            new WristRotToSetpoint(-.1, s_WristRot)
+            // new WristRotToSetpoint(-.1, s_WristRot)
                 // .andThen(new ArmExtendToSetpoint(0,s_ArmExtend))
                 //start swing
-                .andThen(new ArmRotToSetpoint(-0.085,s_ArmRot))
+                new ArmRotToSetpoint(-0.1,s_ArmRot)
                 .andThen(new ArmExtendToSetpoint(2.42, s_ArmExtend))
                 .andThen(new WristRotToSetpoint(0.18, s_WristRot))
             // new ArmExtendToSetpoint(0, s_ArmExtend),

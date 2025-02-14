@@ -26,7 +26,7 @@ public class Intake {
     }
 
     public void IntakeRun(double setpoint){
-        Intake1Motor.set(setpoint);
+        Intake1Motor.set(-setpoint);
         Intake2Motor.set(setpoint);
     }
 }

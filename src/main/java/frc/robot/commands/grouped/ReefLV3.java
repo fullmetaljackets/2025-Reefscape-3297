@@ -17,7 +17,7 @@ public class ReefLV3 extends SequentialCommandGroup{
             // new ArmExtendToSetpoint(0, s_ArmExtend),
             new ArmRotToSetpoint(0.41,s_ArmRot),
             new ArmExtendToSetpoint(0, s_ArmExtend),
-            new WristRotToSetpoint(0.04, s_WristRot)
+            new WristRotToSetpoint(0.08, s_WristRot)
         );
     }
 }
