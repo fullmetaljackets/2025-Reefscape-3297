@@ -8,8 +8,11 @@ import static edu.wpi.first.units.Units.MetersPerSecond;
 import static edu.wpi.first.units.Units.RadiansPerSecond;
 import static edu.wpi.first.units.Units.RotationsPerSecond;
 
+import java.util.jar.Attributes.Name;
+
 import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
 import com.ctre.phoenix6.swerve.SwerveModule.SteerRequestType;
+import com.ctre.phoenix6.swerve.jni.SwerveJNI.DriveState;
 import com.ctre.phoenix6.swerve.SwerveRequest;
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
@@ -73,13 +76,16 @@ public class RobotContainer {
     private final ArmRot s_ArmRot = new ArmRot();
     private final ArmExtend s_ArmExtend = new ArmExtend();
     private final WristRot s_WristRot = new WristRot();
-    // private final SendableChooser<Command> autoChooser;
+    private final SendableChooser<Command> autoChooser;
 
     public RobotContainer() {
         configureBindings();
 
-        // autoChooser = AutoBuilder.buildAutoChooser();
-        // SmartDashboard.putData("Auto Chooser", autoChooser);
+        NamedCommands.registerCommand("AutoL4", new ReefLV4(s_ArmRot, s_ArmExtend, s_WristRot));
+        NamedCommands.registerCommand("place coral", new intake(.18, s_Intake) );
+
+        autoChooser = AutoBuilder.buildAutoChooser();
+        SmartDashboard.putData("Auto Chooser", autoChooser);
 
     }
 
@@ -129,7 +135,7 @@ public class RobotContainer {
         DriveStick.start().and(DriveStick.x()).whileTrue(drivetrain.sysIdQuasistatic(Direction.kReverse));
 
         // reset the field-centric heading on left bumper press
-        DriveStick.leftBumper().onTrue(drivetrain.runOnce(() -> drivetrain.seedFieldCentric()));
+        // DriveStick.leftBumper().onTrue(drivetrain.runOnce(() -> drivetrain.seedFieldCentric()));
 
 
         //Limelight AutoAlignReef
@@ -141,15 +147,15 @@ public class RobotContainer {
 
 
         //Intake controlls 
-        DriveStick.rightTrigger().whileTrue(new intake(.18, s_Intake));
-        DriveStick.leftTrigger().whileTrue(new intake(-.2, s_Intake).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
-        CopilotStick.rightTrigger().whileTrue(new intake(1, s_Intake));
+        // DriveStick.rightTrigger().whileTrue(new intake(.18, s_Intake));
+        // DriveStick.leftTrigger().whileTrue(new intake(-.2, s_Intake).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
+        // CopilotStick.rightTrigger().whileTrue(new intake(1, s_Intake));
 
-        //IntakeJaws toggle
-        DriveStick.rightBumper().toggleOnTrue(new IntakeToggle(s_IntakeJaws));
+        // //IntakeJaws toggle
+        // DriveStick.rightBumper().toggleOnTrue(new IntakeToggle(s_IntakeJaws));
 
-        //ArmRot setpoint controlls
-        // DriveStick.rightBumper().onTrue(new ArmRotToSetpoint(0, s_ArmRot));
+        // //ArmRot setpoint controlls
+        // // DriveStick.rightBumper().onTrue(new ArmRotToSetpoint(0, s_ArmRot));
         // DriveStick.leftBumper().onTrue(new ArmRotToSetpoint(0, s_ArmRot));
 
         //ArmExtend setpoint controlls
@@ -160,17 +166,40 @@ public class RobotContainer {
         // DriveStick.x().onTrue(new WristRotToSetpoint(0.2, s_WristRot));
         // DriveStick.y().onTrue(new WristRotToSetpoint(0.5, s_WristRot));
 
-        //ReefLV3 Test
-        DriveStick.b().onTrue(new ReefLV4(s_ArmRot, s_ArmExtend, s_WristRot));
-        DriveStick.y().onTrue(new ReefLV3(s_ArmRot, s_ArmExtend, s_WristRot));
-        DriveStick.x().onTrue(new Middle(s_ArmRot, s_ArmExtend, s_WristRot));
-        DriveStick.a().onTrue(new BackFloorIntake(s_ArmRot, s_ArmExtend, s_WristRot));
+        // //ReefLV3 Test
+        // DriveStick.b().onTrue(new ReefLV4(s_ArmRot, s_ArmExtend, s_WristRot));
+        // DriveStick.y().onTrue(new ReefLV3(s_ArmRot, s_ArmExtend, s_WristRot));
+        // DriveStick.x().onTrue(new Middle(s_ArmRot, s_ArmExtend, s_WristRot));
+        // DriveStick.a().onTrue(new BackFloorIntake(s_ArmRot, s_ArmExtend, s_WristRot));
 
-        CopilotStick.a().onTrue(new ReefLV2(s_ArmRot, s_ArmExtend, s_WristRot));
-        CopilotStick.b().onTrue(new ReefLV1(s_ArmRot, s_ArmExtend, s_WristRot));
-        CopilotStick.y().onTrue(new Barge(s_ArmRot, s_ArmExtend, s_WristRot));
-        CopilotStick.x().onTrue(new ReefLV4(s_ArmRot, s_ArmExtend, s_WristRot));
-        // DriveStick.b().onTrue(new WristRotToSetpoint(-0.1, s_WristRot));
+        // CopilotStick.a().onTrue(new ReefLV2(s_ArmRot, s_ArmExtend, s_WristRot));
+        // CopilotStick.b().onTrue(new ReefLV1(s_ArmRot, s_ArmExtend, s_WristRot));
+        // CopilotStick.y().onTrue(new Barge(s_ArmRot, s_ArmExtend, s_WristRot));
+        // CopilotStick.x().onTrue(new ReefLV4(s_ArmRot, s_ArmExtend, s_WristRot));
+        // // DriveStick.b().onTrue(new WristRotToSetpoint(-0.1, s_WristRot));
+
+        //DriveStick controls
+        DriveStick.rightTrigger().whileTrue(new intake(0.18, s_Intake));
+        DriveStick.leftTrigger().whileTrue(new intake(-0.2, s_Intake));
+        DriveStick.rightBumper().whileTrue(new intake(1, s_Intake));
+        DriveStick.leftBumper().onFalse(new IntakeToggle(s_IntakeJaws));
+        
+        DriveStick.a().whileTrue(drivetrain.applyRequest(() -> brake));
+        DriveStick.b().onTrue(drivetrain.runOnce(() -> drivetrain.seedFieldCentric()));
+
+        //CopilotStick controls
+        CopilotStick.a().onTrue(new ReefLV1(s_ArmRot, s_ArmExtend, s_WristRot));
+        CopilotStick.b().onTrue(new ReefLV2(s_ArmRot, s_ArmExtend, s_WristRot));
+        CopilotStick.x().onTrue(new ReefLV3(s_ArmRot, s_ArmExtend, s_WristRot));
+        CopilotStick.y().onTrue(new ReefLV4(s_ArmRot, s_ArmExtend, s_WristRot));
+        
+        CopilotStick.rightTrigger().onTrue(new BackFloorIntake(s_ArmRot, s_ArmExtend, s_WristRot));
+        CopilotStick.rightBumper().onTrue(new Middle(s_ArmRot, s_ArmExtend, s_WristRot));
+
+        CopilotStick.povUp().onTrue(new Barge(s_ArmRot, s_ArmExtend, s_WristRot));
+
+
+
 
 
 
@@ -186,9 +215,9 @@ public class RobotContainer {
     }
 
     public Command getAutonomousCommand() {
-        return Commands.print("No autonomous command configured");
+        // return Commands.print("No autonomous command configured");
 
-        // return autoChooser.getSelected();
+        return autoChooser.getSelected();
 
     }
 
