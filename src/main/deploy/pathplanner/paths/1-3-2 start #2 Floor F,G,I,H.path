@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 7.641197183098592,
-        "y": 4.988732394366196
+        "x": 8.151408450704226,
+        "y": 6.1508802816901404
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.861707746478873,
-        "y": 6.335123239436619
+        "x": 6.60376290275902,
+        "y": 6.406316925525757
       },
       "isLocked": false,
       "linkedName": null
@@ -20,12 +20,12 @@
         "y": 5.187147887323943
       },
       "prevControl": {
-        "x": 4.467814204536881,
-        "y": 5.533463709983765
+        "x": 4.748116438356164,
+        "y": 5.820569349315068
       },
       "nextControl": {
-        "x": 2.9642605633802805,
-        "y": 4.932042253521126
+        "x": 3.0008396178890075,
+        "y": 4.854885232800492
       },
       "isLocked": false,
       "linkedName": null
@@ -48,16 +48,16 @@
     },
     {
       "anchor": {
-        "x": 3.105985915492957,
-        "y": 4.223415492957745
+        "x": 3.0201626712328764,
+        "y": 4.242872431506849
       },
       "prevControl": {
-        "x": 2.4663905262232486,
-        "y": 4.441150093560198
+        "x": 2.803482675139993,
+        "y": 4.882825865412605
       },
       "nextControl": {
-        "x": 3.7720950704225347,
-        "y": 3.996654929577464
+        "x": 3.2618838028169006,
+        "y": 3.5289612676056326
       },
       "isLocked": false,
       "linkedName": null
@@ -112,12 +112,12 @@
     },
     {
       "anchor": {
-        "x": 3.460299295774647,
-        "y": 3.826584507042252
+        "x": 3.0201626712328764,
+        "y": 3.854929577464788
       },
       "prevControl": {
-        "x": 2.90757042253521,
-        "y": 4.350968309859154
+        "x": 2.4674337979934395,
+        "y": 4.37931338028169
       },
       "nextControl": null,
       "isLocked": false,
@@ -152,7 +152,50 @@
   ],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "place coral",
+      "waypointRelativePos": 1.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "grab coral floor",
+      "waypointRelativePos": 2.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "place coral",
+      "waypointRelativePos": 3.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "grab coral floor",
+      "waypointRelativePos": 4.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "place coral",
+      "waypointRelativePos": 5.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "grab coral floor",
+      "waypointRelativePos": 6.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "place coral",
+      "waypointRelativePos": 7.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,
@@ -169,7 +212,7 @@
   "folder": "Floor Only",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": -179.98634332105044
   },
   "useDefaultConstraints": true
 }

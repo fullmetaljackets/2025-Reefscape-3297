@@ -64,16 +64,16 @@
     },
     {
       "anchor": {
-        "x": 1.9154929577464777,
-        "y": 4.039172535211267
+        "x": 2.0288732394366185,
+        "y": 4.010827464788732
       },
       "prevControl": {
-        "x": 1.9154929577464777,
-        "y": 3.500616197183098
+        "x": 2.0288732394366185,
+        "y": 3.4722711267605626
       },
       "nextControl": {
-        "x": 1.9154929577464777,
-        "y": 4.339586054309133
+        "x": 2.0288732394366185,
+        "y": 4.311240983886597
       },
       "isLocked": false,
       "linkedName": null
@@ -152,7 +152,50 @@
   ],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "place coral",
+      "waypointRelativePos": 1.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "grab coral floor",
+      "waypointRelativePos": 2.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "place coral",
+      "waypointRelativePos": 3.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "grab coral floor",
+      "waypointRelativePos": 4.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "place coral",
+      "waypointRelativePos": 5.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "grab coral floor",
+      "waypointRelativePos": 6.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "place coral",
+      "waypointRelativePos": 7.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,
@@ -169,7 +212,7 @@
   "folder": "Floor Only",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 0.9093804491990776
+    "rotation": 179.583542556852
   },
   "useDefaultConstraints": true
 }

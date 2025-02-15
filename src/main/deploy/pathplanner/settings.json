@@ -5,8 +5,9 @@
   "pathFolders": [
     "Algae only",
     "Feed only starting position #1",
-    "Floor Only",
     "Feed only starting position #2",
+    "Floor Only",
+    "Feed only starting position #3",
     "Processor ",
     "floor & feed"
   ],

@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.098844178078764,
-        "y": 7.248009417800754
+        "x": 8.179753521126761,
+        "y": 7.242165492957746
       },
       "prevControl": null,
       "nextControl": {
-        "x": 4.312371575339037,
-        "y": 7.2179580479377385
+        "x": 4.393280918387034,
+        "y": 7.2121141230947305
       },
       "isLocked": false,
       "linkedName": null
@@ -52,12 +52,12 @@
         "y": 4.242872431506849
       },
       "prevControl": {
-        "x": 2.380567281963168,
-        "y": 4.460607032109302
+        "x": 2.707733294687201,
+        "y": 4.841937121624586
       },
       "nextControl": {
-        "x": 3.686271826162454,
-        "y": 4.016111868126568
+        "x": 3.3185739436619706,
+        "y": 3.6706866197183086
       },
       "isLocked": false,
       "linkedName": null
@@ -152,7 +152,50 @@
   ],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "grab coral floor",
+      "waypointRelativePos": 0.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "place coral",
+      "waypointRelativePos": 1.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "grab coral floor",
+      "waypointRelativePos": 2.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "place coral",
+      "waypointRelativePos": 3.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "grab coral floor",
+      "waypointRelativePos": 4.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "place coral",
+      "waypointRelativePos": 5.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "place coral",
+      "waypointRelativePos": 7.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,
@@ -169,7 +212,7 @@
   "folder": "Floor Only",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": -178.32478200122108
   },
   "useDefaultConstraints": true
 }
