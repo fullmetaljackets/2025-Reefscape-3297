@@ -58,9 +58,9 @@ public class ArmExtend {
 
         SoftwareLimitSwitchConfigs softLimit =TalonFXConfig.SoftwareLimitSwitch;
         softLimit.ForwardSoftLimitEnable = true;
-        softLimit.ForwardSoftLimitThreshold = 5.8;
+        softLimit.ForwardSoftLimitThreshold = 4.87;
         softLimit.ReverseSoftLimitEnable = true;
-        softLimit.ReverseSoftLimitThreshold = 0;
+        softLimit.ReverseSoftLimitThreshold = -0.93;
         
         Slot0Configs slot0 = TalonFXConfig.Slot0;
         slot0.kS = 0; // Add 0.25 V output to overcome static friction

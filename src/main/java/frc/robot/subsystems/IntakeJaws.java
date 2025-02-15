@@ -11,7 +11,7 @@ public class IntakeJaws extends SubsystemBase{
 
 
     public IntakeJaws() {
-        WristSolenoid = new DoubleSolenoid(3,PneumaticsModuleType.REVPH, 8, 9);
+        WristSolenoid = new DoubleSolenoid(10,PneumaticsModuleType.REVPH, 8, 9);
         WristSolenoid.set(Value.kForward);
     }
 

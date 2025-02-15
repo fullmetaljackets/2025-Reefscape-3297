@@ -9,10 +9,12 @@ import static edu.wpi.first.units.Units.RadiansPerSecond;
 import static edu.wpi.first.units.Units.RotationsPerSecond;
 
 import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
+import com.ctre.phoenix6.swerve.SwerveModule.SteerRequestType;
 import com.ctre.phoenix6.swerve.SwerveRequest;
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
 
+import edu.wpi.first.math.filter.SlewRateLimiter;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -22,8 +24,12 @@ import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
 import frc.robot.commands.grouped.BackFloorIntake;
-import frc.robot.commands.grouped.ReefLV3;
+import frc.robot.commands.grouped.Barge;
+import frc.robot.commands.grouped.ReefLV4;
 import frc.robot.commands.grouped.Middle;
+import frc.robot.commands.grouped.ReefLV3;
+import frc.robot.commands.grouped.ReefLV2;
+import frc.robot.commands.grouped.ReefLV1;
 import frc.robot.commands.ArmExtendToSetpoint;
 import frc.robot.commands.ArmRotToSetpoint;
 import frc.robot.commands.AutoAlignReef;
@@ -43,20 +49,21 @@ import frc.robot.subsystems.WristRot;
 
 public class RobotContainer {
     private double MaxSpeed = TunerConstants.kSpeedAt12Volts.in(MetersPerSecond); // kSpeedAt12Volts desired top speed
-    private double MaxAngularRate = RotationsPerSecond.of(0.25).in(RadiansPerSecond); // 1/4 of a rotation per second max angular velocity
+    private double MaxAngularRate = RotationsPerSecond.of(0.75).in(RadiansPerSecond); // 1/4 of a rotation per second max angular velocity
 
     private final CommandXboxController DriveStick = new CommandXboxController(0);
-    private final CommandXboxController CopilotStick = new CommandXboxController(0);
+    private final CommandXboxController CopilotStick = new CommandXboxController(1);
 
     //  Setting up bindings for necessary control of the swerve drive platform 
      private final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
            .withDeadband(MaxSpeed * 0.1).withRotationalDeadband(MaxAngularRate * 0.1) // Add a 10% deadband
-             .withDriveRequestType(DriveRequestType.OpenLoopVoltage); // Use open-loop control for drive motors
-
+             .withDriveRequestType(DriveRequestType.OpenLoopVoltage) // Use open-loop control for drive motors
+             .withSteerRequestType(SteerRequestType.MotionMagicExpo);
     private final SwerveRequest.SwerveDriveBrake brake = new SwerveRequest.SwerveDriveBrake();
     private final SwerveRequest.PointWheelsAt point = new SwerveRequest.PointWheelsAt();
 
     private final Telemetry logger = new Telemetry(MaxSpeed);
+    // SlewRateLimiter speedLimiter = new SlewRateLimiter(2); // 2 m/s/s
 
 
     public final CommandSwerveDrivetrain drivetrain = TunerConstants.createDrivetrain();
@@ -89,9 +96,9 @@ public class RobotContainer {
         );
 
         // DriveStick.a().whileTrue(drivetrain.applyRequest(() -> brake));
-        DriveStick.b().whileTrue(drivetrain.applyRequest(() ->
-            point.withModuleDirection(new Rotation2d(-DriveStick.getLeftY(), -DriveStick.getLeftX()))
-        ));
+        // DriveStick.b().whileTrue(drivetrain.applyRequest(() ->
+        //     point.withModuleDirection(new Rotation2d(-DriveStick.getLeftY(), -DriveStick.getLeftX()))
+        // ));
         
         DriveStick.povUp().whileTrue(drivetrain.applyRequest(() -> 
         drive.withVelocityX(0.25 * MaxSpeed) // Drive forward 25% of MaxSpeed (forward)
@@ -134,8 +141,9 @@ public class RobotContainer {
 
 
         //Intake controlls 
-        DriveStick.rightTrigger().whileTrue(new intake(.5, s_Intake));
-        DriveStick.leftTrigger().whileTrue(new intake(-.5, s_Intake));
+        DriveStick.rightTrigger().whileTrue(new intake(.18, s_Intake));
+        DriveStick.leftTrigger().whileTrue(new intake(-.2, s_Intake).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
+        CopilotStick.rightTrigger().whileTrue(new intake(1, s_Intake));
 
         //IntakeJaws toggle
         DriveStick.rightBumper().toggleOnTrue(new IntakeToggle(s_IntakeJaws));
@@ -153,9 +161,15 @@ public class RobotContainer {
         // DriveStick.y().onTrue(new WristRotToSetpoint(0.5, s_WristRot));
 
         //ReefLV3 Test
+        DriveStick.b().onTrue(new ReefLV4(s_ArmRot, s_ArmExtend, s_WristRot));
         DriveStick.y().onTrue(new ReefLV3(s_ArmRot, s_ArmExtend, s_WristRot));
         DriveStick.x().onTrue(new Middle(s_ArmRot, s_ArmExtend, s_WristRot));
         DriveStick.a().onTrue(new BackFloorIntake(s_ArmRot, s_ArmExtend, s_WristRot));
+
+        CopilotStick.a().onTrue(new ReefLV2(s_ArmRot, s_ArmExtend, s_WristRot));
+        CopilotStick.b().onTrue(new ReefLV1(s_ArmRot, s_ArmExtend, s_WristRot));
+        CopilotStick.y().onTrue(new Barge(s_ArmRot, s_ArmExtend, s_WristRot));
+        CopilotStick.x().onTrue(new ReefLV4(s_ArmRot, s_ArmExtend, s_WristRot));
         // DriveStick.b().onTrue(new WristRotToSetpoint(-0.1, s_WristRot));
 
 

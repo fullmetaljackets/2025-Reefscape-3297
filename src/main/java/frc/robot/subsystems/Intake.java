@@ -18,7 +18,7 @@ public class Intake {
 
     public Intake() {
         config.inverted(false);
-        config.idleMode(IdleMode.kCoast);
+        config.idleMode(IdleMode.kBrake);
         Intake1Motor.configure(config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
         Intake2Motor.configure(config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
