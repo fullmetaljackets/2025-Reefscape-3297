@@ -9,8 +9,9 @@ import com.revrobotics.spark.config.SparkMaxConfig;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class Intake {
+public class Intake extends SubsystemBase{
     public SparkMax Intake1Motor = new SparkMax(1, MotorType.kBrushless);
     public SparkMax Intake2Motor = new SparkMax(2, MotorType.kBrushless);
     SparkMaxConfig config = new SparkMaxConfig();

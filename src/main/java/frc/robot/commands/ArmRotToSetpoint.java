@@ -15,6 +15,7 @@ public class ArmRotToSetpoint extends Command {
     // Use addRequirements() here to declare subsystem dependencies.
     m_ArmRot = subsystem;
     m_setpoint = setpoint;
+    addRequirements(m_ArmRot);
   }
 
   // Called when the command is initially scheduled.

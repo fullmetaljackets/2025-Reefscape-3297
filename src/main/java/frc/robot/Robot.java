@@ -16,14 +16,13 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
-  public PneumaticHub ph = new PneumaticHub();
   Compressor compressor = new Compressor(10, PneumaticsModuleType.REVPH);
 
   private final RobotContainer m_robotContainer;
 
   public Robot() {
     m_robotContainer = new RobotContainer();
-    ph.enableCompressorAnalog(115, 120);
+    compressor.enableAnalog(115,120);
     RobotController.setBrownoutVoltage(6.3);
   }
 

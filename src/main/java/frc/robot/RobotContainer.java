@@ -24,16 +24,20 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Command.InterruptionBehavior;
 import edu.wpi.first.wpilibj2.command.Commands;
+import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
 import frc.robot.commands.grouped.BackFloorIntake;
+import frc.robot.commands.grouped.BallIntake;
 import frc.robot.commands.grouped.Barge;
+import frc.robot.commands.grouped.LV3Algee;
 import frc.robot.commands.grouped.ReefLV4;
 import frc.robot.commands.grouped.Middle;
 import frc.robot.commands.grouped.ReefLV3;
 import frc.robot.commands.grouped.ReefLV2;
 import frc.robot.commands.grouped.ReefLV1;
 import frc.robot.commands.ArmExtendToSetpoint;
+import frc.robot.commands.ArmRotRun;
 import frc.robot.commands.ArmRotToSetpoint;
 import frc.robot.commands.AutoAlignReef;
 import frc.robot.commands.IntakeToggle;
@@ -59,7 +63,7 @@ public class RobotContainer {
 
     //  Setting up bindings for necessary control of the swerve drive platform 
      private final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
-           .withDeadband(MaxSpeed * 0.1).withRotationalDeadband(MaxAngularRate * 0.1) // Add a 10% deadband
+           .withDeadband(MaxSpeed * 0.05).withRotationalDeadband(MaxAngularRate * 0.05) // Add a 10% deadband
              .withDriveRequestType(DriveRequestType.OpenLoopVoltage) // Use open-loop control for drive motors
              .withSteerRequestType(SteerRequestType.MotionMagicExpo);
     private final SwerveRequest.SwerveDriveBrake brake = new SwerveRequest.SwerveDriveBrake();
@@ -76,27 +80,35 @@ public class RobotContainer {
     private final ArmRot s_ArmRot = new ArmRot();
     private final ArmExtend s_ArmExtend = new ArmExtend();
     private final WristRot s_WristRot = new WristRot();
-    private final SendableChooser<Command> autoChooser;
+    // private final SendableChooser<Command> autoChooser;
 
     public RobotContainer() {
+
+        SmartDashboard.putData(s_ArmExtend);
+        SmartDashboard.putData(s_ArmRot);
+        SmartDashboard.putData(s_Intake);
+        SmartDashboard.putData(s_WristRot);
+
+
         configureBindings();
 
-        NamedCommands.registerCommand("AutoL4", new ReefLV4(s_ArmRot, s_ArmExtend, s_WristRot));
+        NamedCommands.registerCommand("AutoL4", new ReefLV4(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
         NamedCommands.registerCommand("place coral", new intake(.18, s_Intake) );
 
-        autoChooser = AutoBuilder.buildAutoChooser();
-        SmartDashboard.putData("Auto Chooser", autoChooser);
+        // autoChooser = AutoBuilder.buildAutoChooser();
+        // SmartDashboard.putData("Auto Chooser", autoChooser);
 
     }
 
     private void configureBindings() {
+
     // Note that X is defined as forward according to WPILib convention,
         // and Y is defined as to the left according to WPILib convention.
         drivetrain.setDefaultCommand(
             // Drivetrain will execute this command periodically
             drivetrain.applyRequest(() ->
-                drive.withVelocityX(-DriveStick.getLeftY() * MaxSpeed) // Drive forward with negative Y (forward)
-                    .withVelocityY(-DriveStick.getLeftX() * MaxSpeed) // Drive left with negative X (left)
+                drive.withVelocityX(-DriveStick.getLeftY() * 2) // Drive forward with negative Y (forward)
+                    .withVelocityY(-DriveStick.getLeftX() * 2) // Drive left with negative X (left)
                     .withRotationalRate(-DriveStick.getRightX() * MaxAngularRate) // Drive counterclockwise with negative X (left)
             )
         );
@@ -129,10 +141,10 @@ public class RobotContainer {
 
         // Run SysId routines when holding back/start and X/Y.
         // Note that each routine should be run exactly once in a single log.
-        DriveStick.back().and(DriveStick.y()).whileTrue(drivetrain.sysIdDynamic(Direction.kForward));
-        DriveStick.back().and(DriveStick.x()).whileTrue(drivetrain.sysIdDynamic(Direction.kReverse));
-        DriveStick.start().and(DriveStick.y()).whileTrue(drivetrain.sysIdQuasistatic(Direction.kForward));
-        DriveStick.start().and(DriveStick.x()).whileTrue(drivetrain.sysIdQuasistatic(Direction.kReverse));
+        DriveStick.back().and(DriveStick.y()).onTrue(drivetrain.sysIdDynamic(Direction.kForward));
+        DriveStick.back().and(DriveStick.x()).onTrue(drivetrain.sysIdDynamic(Direction.kReverse));
+        DriveStick.start().and(DriveStick.y()).onTrue(drivetrain.sysIdQuasistatic(Direction.kForward));
+        DriveStick.start().and(DriveStick.x()).onTrue(drivetrain.sysIdQuasistatic(Direction.kReverse));
 
         // reset the field-centric heading on left bumper press
         // DriveStick.leftBumper().onTrue(drivetrain.runOnce(() -> drivetrain.seedFieldCentric()));
@@ -145,58 +157,34 @@ public class RobotContainer {
         // .withVelocityY(AutoAlignReef.LLStrafe)
         // .withRotationalRate(0)).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
 
-
-        //Intake controlls 
-        // DriveStick.rightTrigger().whileTrue(new intake(.18, s_Intake));
-        // DriveStick.leftTrigger().whileTrue(new intake(-.2, s_Intake).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
-        // CopilotStick.rightTrigger().whileTrue(new intake(1, s_Intake));
-
-        // //IntakeJaws toggle
-        // DriveStick.rightBumper().toggleOnTrue(new IntakeToggle(s_IntakeJaws));
-
-        // //ArmRot setpoint controlls
-        // // DriveStick.rightBumper().onTrue(new ArmRotToSetpoint(0, s_ArmRot));
-        // DriveStick.leftBumper().onTrue(new ArmRotToSetpoint(0, s_ArmRot));
-
-        //ArmExtend setpoint controlls
-        // DriveStick.b().onTrue(new ArmExtendToSetpoint(5, s_ArmExtend));
-        // DriveStick.a().onTrue(new ArmExtendToSetpoint(0, s_ArmExtend));
-
-        //WristRot setpoint controlls
-        // DriveStick.x().onTrue(new WristRotToSetpoint(0.2, s_WristRot));
-        // DriveStick.y().onTrue(new WristRotToSetpoint(0.5, s_WristRot));
-
-        // //ReefLV3 Test
-        // DriveStick.b().onTrue(new ReefLV4(s_ArmRot, s_ArmExtend, s_WristRot));
-        // DriveStick.y().onTrue(new ReefLV3(s_ArmRot, s_ArmExtend, s_WristRot));
-        // DriveStick.x().onTrue(new Middle(s_ArmRot, s_ArmExtend, s_WristRot));
-        // DriveStick.a().onTrue(new BackFloorIntake(s_ArmRot, s_ArmExtend, s_WristRot));
-
-        // CopilotStick.a().onTrue(new ReefLV2(s_ArmRot, s_ArmExtend, s_WristRot));
-        // CopilotStick.b().onTrue(new ReefLV1(s_ArmRot, s_ArmExtend, s_WristRot));
-        // CopilotStick.y().onTrue(new Barge(s_ArmRot, s_ArmExtend, s_WristRot));
-        // CopilotStick.x().onTrue(new ReefLV4(s_ArmRot, s_ArmExtend, s_WristRot));
-        // // DriveStick.b().onTrue(new WristRotToSetpoint(-0.1, s_WristRot));
-
         //DriveStick controls
         DriveStick.rightTrigger().whileTrue(new intake(0.18, s_Intake));
         DriveStick.leftTrigger().whileTrue(new intake(-0.2, s_Intake));
-        DriveStick.rightBumper().whileTrue(new intake(1, s_Intake));
-        DriveStick.leftBumper().onFalse(new IntakeToggle(s_IntakeJaws));
+        // DriveStick.rightBumper().whileTrue(new intake(1, s_Intake));
+        DriveStick.rightBumper().onFalse(new IntakeToggle(s_IntakeJaws));
         
         DriveStick.a().whileTrue(drivetrain.applyRequest(() -> brake));
         DriveStick.b().onTrue(drivetrain.runOnce(() -> drivetrain.seedFieldCentric()));
+        DriveStick.x().onTrue(new LV3Algee(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
+
+        DriveStick.povUp().whileTrue(new ArmRotRun(0.4, s_ArmRot));
+        DriveStick.povDown().whileTrue(new ArmRotRun(-0.4, s_ArmRot));
+
 
         //CopilotStick controls
-        CopilotStick.a().onTrue(new ReefLV1(s_ArmRot, s_ArmExtend, s_WristRot));
-        CopilotStick.b().onTrue(new ReefLV2(s_ArmRot, s_ArmExtend, s_WristRot));
-        CopilotStick.x().onTrue(new ReefLV3(s_ArmRot, s_ArmExtend, s_WristRot));
-        CopilotStick.y().onTrue(new ReefLV4(s_ArmRot, s_ArmExtend, s_WristRot));
+        CopilotStick.a().onTrue(new ReefLV1(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws).alongWith(new PrintCommand("Hello World 1")));
+        CopilotStick.b().onTrue(new ReefLV2(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws).alongWith(new PrintCommand("Hello World 2")));
+        CopilotStick.x().onTrue(new ReefLV3(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws).alongWith(new PrintCommand("Hello World 3")));
+        CopilotStick.y().onTrue(new ReefLV4(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws).alongWith(new PrintCommand("Hello World 4")));
+        //CopilotStick.y().onTrue(new PrintCommand("Y Pressed"));
         
-        CopilotStick.rightTrigger().onTrue(new BackFloorIntake(s_ArmRot, s_ArmExtend, s_WristRot));
-        CopilotStick.rightBumper().onTrue(new Middle(s_ArmRot, s_ArmExtend, s_WristRot));
+        CopilotStick.rightTrigger().onTrue(new BackFloorIntake(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
+        CopilotStick.leftTrigger().onTrue(new BallIntake(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
 
-        CopilotStick.povUp().onTrue(new Barge(s_ArmRot, s_ArmExtend, s_WristRot));
+        CopilotStick.rightBumper().onTrue(new Middle(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
+
+        CopilotStick.povUp().onTrue(new Barge(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
+    
 
 
 
@@ -215,9 +203,9 @@ public class RobotContainer {
     }
 
     public Command getAutonomousCommand() {
-        // return Commands.print("No autonomous command configured");
+        return Commands.print("No autonomous command configured");
 
-        return autoChooser.getSelected();
+        // return autoChooser.getSelected();
 
     }
 

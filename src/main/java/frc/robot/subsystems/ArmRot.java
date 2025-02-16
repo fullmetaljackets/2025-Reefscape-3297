@@ -16,12 +16,13 @@ import com.ctre.phoenix6.signals.StaticFeedforwardSignValue;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import com.ctre.phoenix6.controls.MotionMagicExpoVoltage;
 import com.ctre.phoenix6.controls.MotionMagicVoltage;
 
 
-public class ArmRot {
+public class ArmRot extends SubsystemBase{
     
     private TalonFX ArmRotMotor;
     private TalonFXConfiguration TalonFXConfig;
@@ -117,4 +118,7 @@ public class ArmRot {
     public void setMy_ArmRot(double setpoint){
         ArmRotMotor.setControl(m_mmReq.withPosition(setpoint).withSlot(0));
       }
+    public void runMy_ArmRot(double setpoint){
+        ArmRotMotor.set(setpoint);
+    }
 }

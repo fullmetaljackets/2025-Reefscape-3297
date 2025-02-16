@@ -27,6 +27,10 @@ public class IntakeJaws extends SubsystemBase{
 
     }
 
+    public void my_JawsClose(){
+        WristSolenoid.set(Value.kForward);
+    }
+
     public void my_JawsToggle(){
         WristSolenoid.toggle();
     }

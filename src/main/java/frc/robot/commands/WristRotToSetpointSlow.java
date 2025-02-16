@@ -15,6 +15,7 @@ public class WristRotToSetpointSlow extends Command {
     // Use addRequirements() here to declare subsystem dependencies.
     m_Wrist = subsystem;
     m_setpoint = setpoint;
+    addRequirements(m_Wrist);
   }
 
   // Called when the command is initially scheduled.

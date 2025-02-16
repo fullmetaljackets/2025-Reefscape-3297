@@ -15,6 +15,7 @@ public class ArmExtendToSetpoint extends Command {
     // Use addRequirements() here to declare subsystem dependencies.
     m_ArmExtend = subsystem;
     m_setpoint = setpoint;
+    addRequirements(m_ArmExtend);
   }
 
   // Called when the command is initially scheduled.
