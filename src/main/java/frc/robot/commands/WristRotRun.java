@@ -3,21 +3,22 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.Command;
 
 import frc.robot.subsystems.ArmRot;
+import frc.robot.subsystems.WristRot;
 
 
 /**
  *
  */
-public class ArmRotRun extends Command {
+public class WristRotRun extends Command {
 
-    private final ArmRot s_ArmRot ;
+    private final WristRot s_WristRot ;
     private double Speed;
  
 
-    public ArmRotRun(double ArmRotSpeed, ArmRot subsystem) {
+    public WristRotRun(double ArmRotSpeed, WristRot subsystem) {
         Speed = ArmRotSpeed;
 
-        s_ArmRot = subsystem;
+        s_WristRot = subsystem;
         addRequirements(subsystem);
 
     }
@@ -30,13 +31,13 @@ public class ArmRotRun extends Command {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        s_ArmRot.runMy_ArmRot(Speed);
+        s_WristRot.runMy_WristRot(Speed);
     }
 
     // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
-        s_ArmRot.runMy_ArmRot(0);
+        s_WristRot.runMy_WristRot(0);
     }
 
     // Returns true when the command should end.

@@ -36,11 +36,13 @@ import frc.robot.commands.grouped.Middle;
 import frc.robot.commands.grouped.ReefLV3;
 import frc.robot.commands.grouped.ReefLV2;
 import frc.robot.commands.grouped.ReefLV1;
+import frc.robot.commands.ArmExtendRun;
 import frc.robot.commands.ArmExtendToSetpoint;
 import frc.robot.commands.ArmRotRun;
 import frc.robot.commands.ArmRotToSetpoint;
 import frc.robot.commands.AutoAlignReef;
 import frc.robot.commands.IntakeToggle;
+import frc.robot.commands.WristRotRun;
 import frc.robot.commands.WristRotToSetpoint;
 import frc.robot.commands.intake;
 import frc.robot.generated.TunerConstants;
@@ -56,6 +58,7 @@ import frc.robot.subsystems.WristRot;
 
 public class RobotContainer {
     private double MaxSpeed = TunerConstants.kSpeedAt12Volts.in(MetersPerSecond); // kSpeedAt12Volts desired top speed
+    private double MaxspeedTest = TunerConstants.kMaxSpeed;
     private double MaxAngularRate = RotationsPerSecond.of(0.75).in(RadiansPerSecond); // 1/4 of a rotation per second max angular velocity
 
     private final CommandXboxController DriveStick = new CommandXboxController(0);
@@ -107,8 +110,8 @@ public class RobotContainer {
         drivetrain.setDefaultCommand(
             // Drivetrain will execute this command periodically
             drivetrain.applyRequest(() ->
-                drive.withVelocityX(-DriveStick.getLeftY() * 2) // Drive forward with negative Y (forward)
-                    .withVelocityY(-DriveStick.getLeftX() * 2) // Drive left with negative X (left)
+                drive.withVelocityX(-DriveStick.getLeftY() * MaxspeedTest) // Drive forward with negative Y (forward)
+                    .withVelocityY(-DriveStick.getLeftX() * MaxspeedTest) // Drive left with negative X (left)
                     .withRotationalRate(-DriveStick.getRightX() * MaxAngularRate) // Drive counterclockwise with negative X (left)
             )
         );
@@ -118,26 +121,26 @@ public class RobotContainer {
         //     point.withModuleDirection(new Rotation2d(-DriveStick.getLeftY(), -DriveStick.getLeftX()))
         // ));
         
-        DriveStick.povUp().whileTrue(drivetrain.applyRequest(() -> 
-        drive.withVelocityX(0.25 * MaxSpeed) // Drive forward 25% of MaxSpeed (forward)
-        .withVelocityY(0 * MaxSpeed ) // Drive left with negative X (left)
-        .withRotationalRate(0 * MaxAngularRate) // Drive counterclockwise with negative X (left)
-        ));
-        DriveStick.povDown().whileTrue(drivetrain.applyRequest(() -> 
-        drive.withVelocityX(-0.25 * MaxSpeed) // Drive forward 25% of MaxSpeed (forward)
-        .withVelocityY(0 * MaxSpeed) // Drive left with negative X (left)
-        .withRotationalRate(0 * MaxAngularRate) // Drive counterclockwise with negative X (left)
-        ));
-        DriveStick.povLeft().whileTrue(drivetrain.applyRequest(() -> 
-        drive.withVelocityX(0 * MaxSpeed) // Drive forward 25% of MaxSpeed (forward)
-        .withVelocityY(0.25 * MaxSpeed) // Drive left with negative X (left)
-        .withRotationalRate(0 * MaxAngularRate) // Drive counterclockwise with negative X (left)
-        ));
-        DriveStick.povRight().whileTrue(drivetrain.applyRequest(() -> 
-        drive.withVelocityX(0 * MaxSpeed) // Drive forward 25% of MaxSpeed (forward)
-        .withVelocityY(-0.25 * MaxSpeed) // Drive left with negative X (left)
-        .withRotationalRate(0 * MaxAngularRate) // Drive counterclockwise with negative X (left)
-        ));
+        // DriveStick.povUp().whileTrue(drivetrain.applyRequest(() -> 
+        // drive.withVelocityX(0.25 * MaxSpeed) // Drive forward 25% of MaxSpeed (forward)
+        // .withVelocityY(0 * MaxSpeed ) // Drive left with negative X (left)
+        // .withRotationalRate(0 * MaxAngularRate) // Drive counterclockwise with negative X (left)
+        // ));
+        // DriveStick.povDown().whileTrue(drivetrain.applyRequest(() -> 
+        // drive.withVelocityX(-0.25 * MaxSpeed) // Drive forward 25% of MaxSpeed (forward)
+        // .withVelocityY(0 * MaxSpeed) // Drive left with negative X (left)
+        // .withRotationalRate(0 * MaxAngularRate) // Drive counterclockwise with negative X (left)
+        // ));
+        // DriveStick.povLeft().whileTrue(drivetrain.applyRequest(() -> 
+        // drive.withVelocityX(0 * MaxSpeed) // Drive forward 25% of MaxSpeed (forward)
+        // .withVelocityY(0.25 * MaxSpeed) // Drive left with negative X (left)
+        // .withRotationalRate(0 * MaxAngularRate) // Drive counterclockwise with negative X (left)
+        // ));
+        // DriveStick.povRight().whileTrue(drivetrain.applyRequest(() -> 
+        // drive.withVelocityX(0 * MaxSpeed) // Drive forward 25% of MaxSpeed (forward)
+        // .withVelocityY(-0.25 * MaxSpeed) // Drive left with negative X (left)
+        // .withRotationalRate(0 * MaxAngularRate) // Drive counterclockwise with negative X (left)
+        // ));
 
         // Run SysId routines when holding back/start and X/Y.
         // Note that each routine should be run exactly once in a single log.
@@ -160,15 +163,23 @@ public class RobotContainer {
         //DriveStick controls
         DriveStick.rightTrigger().whileTrue(new intake(0.18, s_Intake));
         DriveStick.leftTrigger().whileTrue(new intake(-0.2, s_Intake));
-        // DriveStick.rightBumper().whileTrue(new intake(1, s_Intake));
         DriveStick.rightBumper().onFalse(new IntakeToggle(s_IntakeJaws));
         
         DriveStick.a().whileTrue(drivetrain.applyRequest(() -> brake));
         DriveStick.b().onTrue(drivetrain.runOnce(() -> drivetrain.seedFieldCentric()));
-        DriveStick.x().onTrue(new LV3Algee(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
+        // DriveStick.x().onTrue(new LV3Algee(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
 
+        //manualy adjust arm extend
+        DriveStick.x().whileTrue(new ArmExtendRun(-0.1, s_ArmExtend));
+        DriveStick.y().whileTrue(new ArmExtendRun(0.1, s_ArmExtend));
+
+        //manualy adjust arm rot
         DriveStick.povUp().whileTrue(new ArmRotRun(0.4, s_ArmRot));
         DriveStick.povDown().whileTrue(new ArmRotRun(-0.4, s_ArmRot));
+
+        //manualy adjust wrist rot
+        DriveStick.povLeft().whileTrue(new WristRotRun(-0.1, s_WristRot));
+        DriveStick.povRight().whileTrue(new WristRotRun(0.1, s_WristRot));
 
 
         //CopilotStick controls

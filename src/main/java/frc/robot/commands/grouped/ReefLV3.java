@@ -16,11 +16,11 @@ public class ReefLV3 extends SequentialCommandGroup{
 
         addCommands(
             new IntakeClose(s_IntakeJaws),
-            new ArmExtendToSetpoint(-0.93, s_ArmExtend),
-            new WristRotToSetpoint(0, s_WristRot),
-            new ArmRotToSetpoint(0.41,s_ArmRot),
-            new ArmExtendToSetpoint(-0.93, s_ArmExtend),
-            new WristRotToSetpoint(0.08, s_WristRot)
+            new ArmExtendToSetpoint(-0.93,0.1, s_ArmExtend),
+            new WristRotToSetpoint(0,0.01, s_WristRot),
+            new ArmRotToSetpoint(0.41,0.01,s_ArmRot),
+            new ArmExtendToSetpoint(-0.93,0.1, s_ArmExtend),
+            new WristRotToSetpoint(0.08,0.01, s_WristRot)
         );
     }
 }

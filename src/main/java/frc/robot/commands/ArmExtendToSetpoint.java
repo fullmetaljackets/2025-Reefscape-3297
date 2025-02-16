@@ -10,11 +10,13 @@ import frc.robot.subsystems.ArmExtend;
 public class ArmExtendToSetpoint extends Command {
   private final ArmExtend m_ArmExtend;
   private double m_setpoint;
+  private double m_tolernace;
   /** Creates a new Arm. */
-  public ArmExtendToSetpoint(double setpoint, ArmExtend subsystem) {
+  public ArmExtendToSetpoint(double setpoint,double tolerance, ArmExtend subsystem) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_ArmExtend = subsystem;
     m_setpoint = setpoint;
+    m_tolernace = tolerance;
     addRequirements(m_ArmExtend);
   }
 
@@ -35,6 +37,6 @@ public class ArmExtendToSetpoint extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return m_ArmExtend.atTargetDistance(m_setpoint, 0.1);
+    return m_ArmExtend.atTargetDistance(m_setpoint, m_tolernace);
   }
 }

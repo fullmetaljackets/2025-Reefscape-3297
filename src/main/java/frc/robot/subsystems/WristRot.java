@@ -118,9 +118,14 @@ public class WristRot extends SubsystemBase {
         return Math.abs(getWristPosition() - setpoint) <= tolerance;
     }
 
+    public void runMy_WristRot(double setpoint){
+        WristRotMotor.set(setpoint);
+    }
+
     public void setMy_WristRot(double setpoint){
     WristRotMotor.setControl(m_mmReq.withPosition(setpoint).withSlot(0));
     }
+    
     public void setMy_WristRotSlow(double setpoint){
     WristRotMotor.setControl(m_mmReq.withPosition(setpoint).withSlot(1));
     }

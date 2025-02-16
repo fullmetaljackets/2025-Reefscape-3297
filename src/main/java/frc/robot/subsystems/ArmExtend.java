@@ -112,6 +112,9 @@ public class ArmExtend extends SubsystemBase{
         SmartDashboard.putNumber("tolerance", tolerance);
         return Math.abs(getArmExtendPosition() - setpoint) <= tolerance;
     }
+    public void RunMy_ArmExtend(double setpoint){
+        ArmExtendMotor.set(setpoint);
+    }
 
     public void setMy_ArmExtend(double setpoint){
         ArmExtendMotor.setControl(m_mmReq.withPosition(setpoint).withSlot(0));

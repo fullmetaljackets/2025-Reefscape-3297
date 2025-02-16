@@ -10,11 +10,13 @@ import frc.robot.subsystems.WristRot;
 public class WristRotToSetpoint extends Command {
   private final WristRot m_Wrist;
   private double m_setpoint;
+  double m_tolernace;
   /** Creates a new Arm. */
-  public WristRotToSetpoint(double setpoint, WristRot subsystem) {
+  public WristRotToSetpoint(double setpoint,double tolerance, WristRot subsystem) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_Wrist = subsystem;
     m_setpoint = setpoint;
+    m_tolernace = tolerance;
     addRequirements(m_Wrist);
   }
 
