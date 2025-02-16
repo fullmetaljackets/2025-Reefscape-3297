@@ -21,9 +21,10 @@ public class AutoAlignReef extends Command{
     public static double LLRange;
     public static double LLStrafe;
 
-    public AutoAlignReef(Limelight limelight, CommandSwerveDrivetrain drivetrain){
+    public AutoAlignReef(Limelight limelight){
         s_Limelight = limelight;
-        drivetrain = drivetrain;
+        addRequirements(limelight);
+
     }
 
     public void initialize(){
