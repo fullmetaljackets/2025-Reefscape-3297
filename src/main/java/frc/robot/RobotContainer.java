@@ -80,7 +80,7 @@ public class RobotContainer {
     private final ArmRot s_ArmRot = new ArmRot();
     private final ArmExtend s_ArmExtend = new ArmExtend();
     private final WristRot s_WristRot = new WristRot();
-    // private final SendableChooser<Command> autoChooser;
+    private final SendableChooser<Command> autoChooser;
 
     public RobotContainer() {
 
@@ -95,8 +95,8 @@ public class RobotContainer {
         NamedCommands.registerCommand("AutoL4", new ReefLV4(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
         NamedCommands.registerCommand("place coral", new intake(.18, s_Intake) );
 
-        // autoChooser = AutoBuilder.buildAutoChooser();
-        // SmartDashboard.putData("Auto Chooser", autoChooser);
+        autoChooser = AutoBuilder.buildAutoChooser();
+        SmartDashboard.putData("Auto Chooser", autoChooser);
 
     }
 
@@ -203,9 +203,9 @@ public class RobotContainer {
     }
 
     public Command getAutonomousCommand() {
-        return Commands.print("No autonomous command configured");
+        // return Commands.print("No autonomous command configured");
 
-        // return autoChooser.getSelected();
+        return autoChooser.getSelected();
 
     }
 
