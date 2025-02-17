@@ -25,12 +25,12 @@ public class Limelight extends SubsystemBase{
     || LimelightHelpers.getFiducialID("limelight") == 20
     || LimelightHelpers.getFiducialID("limelight") == 21
     || LimelightHelpers.getFiducialID("limelight") == 22){
-    Rotation2d angleToGoal = Rotation2d.fromDegrees(TunerConstants.LLMountAngle)
-    .plus(Rotation2d.fromDegrees(LimelightHelpers.getTY("limelight")));
+      Rotation2d angleToGoal = Rotation2d.fromDegrees(TunerConstants.LLMountAngle)
+      .plus(Rotation2d.fromDegrees(LimelightHelpers.getTY("limelight")));
 
-    double distance = (TunerConstants.GoalHeight - TunerConstants.LimelightHight) / angleToGoal.getTan();
+      double distance = (TunerConstants.GoalHeight - TunerConstants.LimelightHight) / angleToGoal.getTan();
 
-    return distance;
+      return distance;
     } else {
       return 0;
     }

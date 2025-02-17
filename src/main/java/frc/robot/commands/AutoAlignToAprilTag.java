@@ -6,6 +6,7 @@ import edu.wpi.first.math.util.Units;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.Limelight;
@@ -16,9 +17,6 @@ public class AutoAlignToAprilTag extends Command {
     private final Limelight limelight;
     private final double kP = 0.1; // Proportional control constant
     private final SwerveRequest.RobotCentric drive = new SwerveRequest.RobotCentric();
-    NetworkTable limelightTable = NetworkTableInstance.getDefault().getTable("limelight");
-     NetworkTableEntry pipelineEntry = limelightTable.getEntry("pipeline");
-
 
     public AutoAlignToAprilTag(CommandSwerveDrivetrain drivetrain, Limelight limelight) {
         this.drivetrain = drivetrain;
@@ -33,14 +31,20 @@ public class AutoAlignToAprilTag extends Command {
 
     @Override
     public void execute() {
-        pipelineEntry.setDouble(0);
+        LimelightHelpers.setPipelineIndex("limelight", 0);
+        
         double distance = limelight.getDistanceToReef();
         double angleError = -Units.degreesToRadians(LimelightHelpers.getTX("limelight")); // Assume you have a method to get the angle error
         double strafeError = distance * Math.tan(angleError);
+        
         // Proportional control for distance and angle
         double forwardSpeed = kP * distance;
         double turnSpeed = kP * angleError;
         double strafeSpeed = kP * strafeError;
+
+        SmartDashboard.putNumber("forward speed", forwardSpeed);
+        SmartDashboard.putNumber("turn speed", turnSpeed);
+        SmartDashboard.putNumber("strafe speed", strafeSpeed);
 
         // Drive the robot
         // drivetrain.arcadeDrive(forwardSpeed, turnSpeed);
