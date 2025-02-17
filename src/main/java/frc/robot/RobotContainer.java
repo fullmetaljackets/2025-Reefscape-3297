@@ -41,6 +41,7 @@ import frc.robot.commands.ArmExtendToSetpoint;
 import frc.robot.commands.ArmRotRun;
 import frc.robot.commands.ArmRotToSetpoint;
 import frc.robot.commands.AutoAlignReef;
+import frc.robot.commands.AutoAlignToAprilTag;
 import frc.robot.commands.IntakeToggle;
 import frc.robot.commands.WristRotRun;
 import frc.robot.commands.WristRotToSetpoint;
@@ -158,6 +159,8 @@ public class RobotContainer {
         // DriveStick.start().onTrue(drivetrain.applyRequest(() -> drive.withVelocityX(AutoAlignReef.LLRange)
         // .withVelocityY(AutoAlignReef.LLStrafe)
         // .withRotationalRate(0)).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
+
+        DriveStick.rightBumper().whileTrue(new AutoAlignToAprilTag(drivetrain, s_Limelight));
 
         //DriveStick controls
         DriveStick.rightTrigger().whileTrue(new intake(0.18, s_Intake));
