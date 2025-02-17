@@ -58,7 +58,6 @@ import frc.robot.subsystems.WristRot;
 
 public class RobotContainer {
     private double MaxSpeed = TunerConstants.kSpeedAt12Volts.in(MetersPerSecond); // kSpeedAt12Volts desired top speed
-    private double MaxspeedTest = TunerConstants.kMaxSpeed;
     private double MaxAngularRate = RotationsPerSecond.of(0.75).in(RadiansPerSecond); // 1/4 of a rotation per second max angular velocity
 
     private final CommandXboxController DriveStick = new CommandXboxController(0);
@@ -110,8 +109,8 @@ public class RobotContainer {
         drivetrain.setDefaultCommand(
             // Drivetrain will execute this command periodically
             drivetrain.applyRequest(() ->
-                drive.withVelocityX(-DriveStick.getLeftY() * MaxspeedTest) // Drive forward with negative Y (forward)
-                    .withVelocityY(-DriveStick.getLeftX() * MaxspeedTest) // Drive left with negative X (left)
+                drive.withVelocityX(-DriveStick.getLeftY() * 2) // Drive forward with negative Y (forward)
+                    .withVelocityY(-DriveStick.getLeftX() * 2) // Drive left with negative X (left)
                     .withRotationalRate(-DriveStick.getRightX() * MaxAngularRate) // Drive counterclockwise with negative X (left)
             )
         );
