@@ -49,11 +49,11 @@ public class AutoAlignToAprilTag extends Command {
         // Drive the robot
         // drivetrain.arcadeDrive(forwardSpeed, turnSpeed);
 
-        drivetrain.applyRequest(() ->
-        drive.withVelocityX(forwardSpeed) // Drive forward with negative Y (forward)
-            .withVelocityY(strafeSpeed) // Drive left with negative X (left)
-            .withRotationalRate(turnSpeed) // Drive counterclockwise with negative X (left)
-        );
+        // drivetrain.applyRequest(() ->
+        // drive.withVelocityX(forwardSpeed) // Drive forward with negative Y (forward)
+        //     .withVelocityY(strafeSpeed) // Drive left with negative X (left)
+        //     .withRotationalRate(turnSpeed) // Drive counterclockwise with negative X (left)
+        // );
     }
 
     @Override

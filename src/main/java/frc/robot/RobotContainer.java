@@ -160,7 +160,7 @@ public class RobotContainer {
         // .withVelocityY(AutoAlignReef.LLStrafe)
         // .withRotationalRate(0)).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
 
-        DriveStick.rightBumper().whileTrue(new AutoAlignToAprilTag(drivetrain, s_Limelight));
+        DriveStick.rightBumper().onTrue(new AutoAlignToAprilTag(drivetrain, s_Limelight));
 
         //DriveStick controls
         DriveStick.rightTrigger().whileTrue(new intake(0.18, s_Intake));

@@ -46,12 +46,12 @@ public class ArmRot extends SubsystemBase{
 
             /* Configure gear ratio */
         FeedbackConfigs fdb = TalonFXConfig.Feedback;
-        fdb.SensorToMechanismRatio = 466.66; // 12.8 rotor rotations per mechanism rotation
+        fdb.SensorToMechanismRatio = 116.6667; // 116.6667 (5x5x4.66667) rotor rotations per mechanism rotation
         
         /* Configure Motion Magic */
         MotionMagicConfigs mm = TalonFXConfig.MotionMagic;
-        mm.MotionMagicCruiseVelocity = 0; // 5 (mechanism) rotations per second cruise
-        mm.MotionMagicAcceleration = 0; // Take approximately 0.5 seconds to reach max vel
+        mm.MotionMagicCruiseVelocity = 0.25; // 5 (mechanism) rotations per second cruise
+        mm.MotionMagicAcceleration = 0.5; // Take approximately 0.5 seconds to reach max vel
         mm.MotionMagicExpo_kV = 0.0010000000474974513;
         mm.MotionMagicExpo_kA = 9.999999747378752E-06;
         // Take approximately 0.1 seconds to reach max accel 
