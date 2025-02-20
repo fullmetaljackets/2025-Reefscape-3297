@@ -42,6 +42,7 @@ import frc.robot.commands.ArmRotRun;
 import frc.robot.commands.ArmRotToSetpoint;
 import frc.robot.commands.AutoAlignReef;
 import frc.robot.commands.AutoAlignToAprilTag;
+// import frc.robot.commands.ClimberRun;
 import frc.robot.commands.IntakeToggle;
 import frc.robot.commands.WristRotRun;
 import frc.robot.commands.WristRotToSetpoint;
@@ -54,12 +55,14 @@ import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.IntakeJaws;
 import frc.robot.subsystems.Limelight;
 import frc.robot.subsystems.WristRot;
+import frc.robot.subsystems.Climber;
+
 
 
 
 public class RobotContainer {
     private double MaxSpeed = TunerConstants.kSpeedAt12Volts.in(MetersPerSecond); // kSpeedAt12Volts desired top speed
-    private double MaxAngularRate = RotationsPerSecond.of(0.75).in(RadiansPerSecond); // 1/4 of a rotation per second max angular velocity
+    public double MaxAngularRate = RotationsPerSecond.of(0.75).in(RadiansPerSecond); // 1/4 of a rotation per second max angular velocity
 
     private final CommandXboxController DriveStick = new CommandXboxController(0);
     private final CommandXboxController CopilotStick = new CommandXboxController(1);
@@ -83,6 +86,7 @@ public class RobotContainer {
     private final ArmRot s_ArmRot = new ArmRot();
     private final ArmExtend s_ArmExtend = new ArmExtend();
     private final WristRot s_WristRot = new WristRot();
+    private final Climber s_Climber = new Climber();
     private final SendableChooser<Command> autoChooser;
 
     public RobotContainer() {
@@ -155,13 +159,7 @@ public class RobotContainer {
 
 
         //Limelight AutoAlignReef
-        // DriveStick.rightBumper().onTrue(new AutoAlignReef(s_Limelight, drivetrain).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
-        // DriveStick.start().onTrue(new AutoAlignReef(s_Limelight, drivetrain));
-        // DriveStick.start().onTrue(drivetrain.applyRequest(() -> drive.withVelocityX(AutoAlignReef.LLRange)
-        // .withVelocityY(AutoAlignReef.LLStrafe)
-        // .withRotationalRate(0)).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
-
-        DriveStick.rightBumper().onTrue(new AutoAlignToAprilTag(drivetrain, s_Limelight));
+        DriveStick.leftBumper().whileTrue(new AutoAlignToAprilTag(drivetrain, s_Limelight).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
 
         //DriveStick controls
         DriveStick.rightTrigger().whileTrue(new intake(0.18, s_Intake));
@@ -198,6 +196,11 @@ public class RobotContainer {
         CopilotStick.rightBumper().onTrue(new Middle(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
 
         CopilotStick.povUp().onTrue(new Barge(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
+
+        // Joystick controls for arm motor
+        // CopilotStick.leftStick().whileTrue(new ClimberRun(CopilotStick.getLeftY(), s_Climber));
+
+
     
 
 

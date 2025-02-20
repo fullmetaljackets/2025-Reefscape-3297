@@ -50,8 +50,8 @@ public class ArmRot extends SubsystemBase{
         
         /* Configure Motion Magic */
         MotionMagicConfigs mm = TalonFXConfig.MotionMagic;
-        mm.MotionMagicCruiseVelocity = 0.25; // 5 (mechanism) rotations per second cruise
-        mm.MotionMagicAcceleration = 0.5; // Take approximately 0.5 seconds to reach max vel
+        mm.MotionMagicCruiseVelocity = 0.3; // 5 (mechanism) rotations per second cruise
+        mm.MotionMagicAcceleration = 0.6; // Take approximately 0.5 seconds to reach max vel
         mm.MotionMagicExpo_kV = 0.0010000000474974513;
         mm.MotionMagicExpo_kA = 9.999999747378752E-06;
         // Take approximately 0.1 seconds to reach max accel 
