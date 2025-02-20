@@ -14,6 +14,7 @@ import frc.robot.LimelightHelpers;
 
 public class AutoAlignToAprilTag extends Command {
     private final CommandSwerveDrivetrain drivetrain;
+    private final SwerveRequest.RobotCentric m_alignRequest;
     private final Limelight limelight;
     private final double kP = 0.1; // Proportional control constant
     private final SwerveRequest.RobotCentric drive = new SwerveRequest.RobotCentric();
@@ -21,6 +22,7 @@ public class AutoAlignToAprilTag extends Command {
     public AutoAlignToAprilTag(CommandSwerveDrivetrain drivetrain, Limelight limelight) {
         this.drivetrain = drivetrain;
         this.limelight = limelight;
+        m_alignRequest = new SwerveRequest.RobotCentric();
         addRequirements( limelight);
     }
 
@@ -54,6 +56,18 @@ public class AutoAlignToAprilTag extends Command {
         //     .withVelocityY(strafeSpeed) // Drive left with negative X (left)
         //     .withRotationalRate(turnSpeed) // Drive counterclockwise with negative X (left)
         // );
+
+        drivetrain.setControl(
+        drive.withVelocityX(forwardSpeed) // Drive forward with negative Y (forward)
+            .withVelocityY(strafeSpeed) // Drive left with negative X (left)
+            .withRotationalRate(turnSpeed) // Drive counterclockwise with negative X (left)
+        );
+ 
+        // drivetrain.setControl(
+        //     m_alignRequest
+        //         .withVelocityX(forwardSpeed)
+        //         .withVelocityY(strafeSpeed)
+        //         .withRotationalRate(turnSpeed));
     }
 
     @Override
