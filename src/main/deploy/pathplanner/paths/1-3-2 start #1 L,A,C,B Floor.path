@@ -3,45 +3,45 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.151408450704226,
-        "y": 5.059595070422534
+        "x": 8.12306338028169,
+        "y": 5.045422535211267
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.81919014084507,
-        "y": 6.476848591549295
+        "x": 7.343573943661972,
+        "y": 6.39181338028169
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 3.573679577464788,
-        "y": 5.172975352112676
+        "x": 3.602024647887323,
+        "y": 5.187147887323943
       },
       "prevControl": {
-        "x": 3.978840758979838,
-        "y": 5.560520830083594
+        "x": 4.792517605628014,
+        "y": 6.094190140839123
       },
       "nextControl": {
-        "x": 3.2477112676056326,
-        "y": 4.861179577464788
+        "x": 3.055648214644804,
+        "y": 4.770861081044633
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.9154929577464777,
-        "y": 5.541461267605634
+        "x": 2.0997359154929565,
+        "y": 5.711531690140845
       },
       "prevControl": {
-        "x": 2.411531690140844,
-        "y": 5.881602112676055
+        "x": 2.5674295774647873,
+        "y": 6.108362676056338
       },
       "nextControl": {
-        "x": 1.6829581975807515,
-        "y": 5.38200886063485
+        "x": 1.8127806533970008,
+        "y": 5.468054498059428
       },
       "isLocked": false,
       "linkedName": null
@@ -49,75 +49,75 @@
     {
       "anchor": {
         "x": 2.9359154929577453,
-        "y": 4.152552816901408
+        "y": 4.1667253521126755
       },
       "prevControl": {
-        "x": 2.924689530065283,
-        "y": 4.668947109954662
+        "x": 2.5327587021744735,
+        "y": 4.708901725924662
       },
       "nextControl": {
-        "x": 2.950088028169013,
-        "y": 3.5006161971830974
+        "x": 3.3469190140845058,
+        "y": 3.613996478873239
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.0288732394366185,
-        "y": 3.9683098591549286
+        "x": 2.0997359154929565,
+        "y": 2.4235035211267597
       },
       "prevControl": {
-        "x": 2.0288732394366185,
-        "y": 3.4297535211267594
+        "x": 1.730097437790906,
+        "y": 2.711000114895022
       },
       "nextControl": {
-        "x": 2.0288732394366185,
-        "y": 4.268723378252794
+        "x": 2.482394366197182,
+        "y": 2.125880281690139
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.9359154929577453,
-        "y": 3.769894366197182
-      },
-      "prevControl": {
-        "x": 2.8679794219563903,
-        "y": 4.187215945205503
-      },
-      "nextControl": {
-        "x": 3.035123239436619,
-        "y": 3.160475352112675
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
-        "x": 1.9154929577464777,
-        "y": 2.466021126760562
-      },
-      "prevControl": {
-        "x": 1.9441816447491937,
-        "y": 2.9106957753026617
-      },
-      "nextControl": {
-        "x": 1.8871478873239425,
-        "y": 2.026672535211267
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
-        "x": 3.573679577464788,
+        "x": 3.602024647887323,
         "y": 2.8486795774647873
       },
       "prevControl": {
-        "x": 3.020950704225351,
-        "y": 2.2250880281690124
+        "x": 3.3524730871059214,
+        "y": 2.8337123295024425
+      },
+      "nextControl": {
+        "x": 3.8515762086687246,
+        "y": 2.863646825427132
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 1.9580105633802805,
+        "y": 3.9824823943661967
+      },
+      "prevControl": {
+        "x": 2.0855633802758993,
+        "y": 3.2313380281630653
+      },
+      "nextControl": {
+        "x": 1.8888353359676602,
+        "y": 4.389847622484455
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.9359154929577453,
+        "y": 3.6565140845070414
+      },
+      "prevControl": {
+        "x": 2.3831866197183085,
+        "y": 4.180897887323944
       },
       "nextControl": null,
       "isLocked": false,
@@ -127,11 +127,11 @@
   "rotationTargets": [
     {
       "waypointRelativePos": 1.0,
-      "rotationDegrees": -58.57043438516149
+      "rotationDegrees": -57.52880770915151
     },
     {
       "waypointRelativePos": 2.0,
-      "rotationDegrees": -32.828541791412505
+      "rotationDegrees": -6.340191745910034
     },
     {
       "waypointRelativePos": 3.0,
@@ -139,20 +139,26 @@
     },
     {
       "waypointRelativePos": 4.0,
-      "rotationDegrees": 0.0
+      "rotationDegrees": 18.434948822921932
     },
     {
       "waypointRelativePos": 5.0,
-      "rotationDegrees": 0.0
+      "rotationDegrees": 55.98065001017357
     },
     {
       "waypointRelativePos": 6.0,
-      "rotationDegrees": 21.80140948635175
+      "rotationDegrees": 0.0
     }
   ],
   "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [
+    {
+      "name": "place coral",
+      "waypointRelativePos": 0,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
     {
       "name": "place coral",
       "waypointRelativePos": 1.0,
@@ -186,12 +192,6 @@
     {
       "name": "grab coral floor",
       "waypointRelativePos": 6.0,
-      "endWaypointRelativePos": null,
-      "command": null
-    },
-    {
-      "name": "place coral",
-      "waypointRelativePos": 7.0,
       "endWaypointRelativePos": null,
       "command": null
     }
@@ -206,13 +206,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 56.30993247402025
+    "rotation": 0.0
   },
   "reversed": false,
   "folder": "Floor Only",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": -178.54978370906656
   },
   "useDefaultConstraints": true
 }
