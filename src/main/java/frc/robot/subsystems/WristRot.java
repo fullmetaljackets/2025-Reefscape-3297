@@ -5,6 +5,7 @@ import com.ctre.phoenix6.configs.FeedbackConfigs;
 import com.ctre.phoenix6.configs.MotionMagicConfigs;
 import com.ctre.phoenix6.configs.MotorOutputConfigs;
 import com.ctre.phoenix6.configs.Slot0Configs;
+import com.ctre.phoenix6.configs.Slot1Configs;
 import com.ctre.phoenix6.configs.SoftwareLimitSwitchConfigs;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.hardware.TalonFX;
@@ -15,11 +16,12 @@ import com.ctre.phoenix6.signals.StaticFeedforwardSignValue;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import com.ctre.phoenix6.controls.MotionMagicExpoVoltage;
 import com.ctre.phoenix6.controls.MotionMagicVoltage;
 
-public class WristRot {
+public class WristRot extends SubsystemBase {
 
     private TalonFX WristRotMotor;
     private TalonFXConfiguration TalonFXConfig;
@@ -68,6 +70,18 @@ public class WristRot {
         slot0.kD = 0; // A velocity error of 1 rps results in 0.5 V output
         slot0.GravityType = GravityTypeValue.Arm_Cosine;
         slot0.StaticFeedforwardSign = StaticFeedforwardSignValue.UseVelocitySign;
+
+        Slot1Configs slot1 = TalonFXConfig.Slot1;
+        slot1.kS = 0; // Add 0.25 V output to overcome static friction
+        slot1.kV = 0; // A velocity target of 1 rps results in 0.12 V output
+        slot1.kA = 0; // An acceleration of 1 rps/s requires 0.01 V output
+        slot1.kG = 0.18; // voltage output to overcome gravity 
+        slot1.kP = 20; // A position error of 0.2 rotations results in 12 V output
+        slot1.kI = 0; // No output for integrated error
+        slot1.kD = 0; // A velocity error of 1 rps results in 0.5 V output
+        slot1.GravityType = GravityTypeValue.Arm_Cosine;
+        slot1.StaticFeedforwardSign = StaticFeedforwardSignValue.UseVelocitySign;
+
         // slot0.kS = 0.25; // Add 0.25 V output to overcome static friction
         // slot0.kV = 0.12; // A velocity target of 1 rps results in 0.12 V output
         // slot0.kA = 0.01; // An acceleration of 1 rps/s requires 0.01 V output
@@ -104,7 +118,16 @@ public class WristRot {
         return Math.abs(getWristPosition() - setpoint) <= tolerance;
     }
 
+    public void runMy_WristRot(double setpoint){
+        WristRotMotor.set(setpoint);
+    }
+
     public void setMy_WristRot(double setpoint){
     WristRotMotor.setControl(m_mmReq.withPosition(setpoint).withSlot(0));
     }
+    
+    public void setMy_WristRotSlow(double setpoint){
+    WristRotMotor.setControl(m_mmReq.withPosition(setpoint).withSlot(1));
+    }
+
 }

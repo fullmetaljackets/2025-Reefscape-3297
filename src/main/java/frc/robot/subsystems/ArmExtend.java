@@ -16,11 +16,12 @@ import com.ctre.phoenix6.signals.StaticFeedforwardSignValue;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import com.ctre.phoenix6.controls.MotionMagicExpoVoltage;
 
 
-public class ArmExtend {
+public class ArmExtend extends SubsystemBase{
     
     private TalonFX ArmExtendMotor;
     private TalonFXConfiguration TalonFXConfig;
@@ -58,9 +59,9 @@ public class ArmExtend {
 
         SoftwareLimitSwitchConfigs softLimit =TalonFXConfig.SoftwareLimitSwitch;
         softLimit.ForwardSoftLimitEnable = true;
-        softLimit.ForwardSoftLimitThreshold = 5.8;
+        softLimit.ForwardSoftLimitThreshold = 4.87;
         softLimit.ReverseSoftLimitEnable = true;
-        softLimit.ReverseSoftLimitThreshold = 0;
+        softLimit.ReverseSoftLimitThreshold = -0.93;
         
         Slot0Configs slot0 = TalonFXConfig.Slot0;
         slot0.kS = 0; // Add 0.25 V output to overcome static friction
@@ -110,6 +111,9 @@ public class ArmExtend {
         SmartDashboard.putNumber("ArmExtendPosition-setPoint", Math.abs(getArmExtendPosition() - setpoint));
         SmartDashboard.putNumber("tolerance", tolerance);
         return Math.abs(getArmExtendPosition() - setpoint) <= tolerance;
+    }
+    public void RunMy_ArmExtend(double setpoint){
+        ArmExtendMotor.set(setpoint);
     }
 
     public void setMy_ArmExtend(double setpoint){

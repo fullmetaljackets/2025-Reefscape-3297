@@ -16,12 +16,13 @@ import com.ctre.phoenix6.signals.StaticFeedforwardSignValue;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import com.ctre.phoenix6.controls.MotionMagicExpoVoltage;
 import com.ctre.phoenix6.controls.MotionMagicVoltage;
 
 
-public class ArmRot {
+public class ArmRot extends SubsystemBase{
     
     private TalonFX ArmRotMotor;
     private TalonFXConfiguration TalonFXConfig;
@@ -45,12 +46,12 @@ public class ArmRot {
 
             /* Configure gear ratio */
         FeedbackConfigs fdb = TalonFXConfig.Feedback;
-        fdb.SensorToMechanismRatio = 466.66; // 12.8 rotor rotations per mechanism rotation
+        fdb.SensorToMechanismRatio = 116.6667; // 116.6667 (5x5x4.66667) rotor rotations per mechanism rotation
         
         /* Configure Motion Magic */
         MotionMagicConfigs mm = TalonFXConfig.MotionMagic;
-        mm.MotionMagicCruiseVelocity = 0; // 5 (mechanism) rotations per second cruise
-        mm.MotionMagicAcceleration = 0; // Take approximately 0.5 seconds to reach max vel
+        mm.MotionMagicCruiseVelocity = 0.3; // 5 (mechanism) rotations per second cruise
+        mm.MotionMagicAcceleration = 0.6; // Take approximately 0.5 seconds to reach max vel
         mm.MotionMagicExpo_kV = 0.0010000000474974513;
         mm.MotionMagicExpo_kA = 9.999999747378752E-06;
         // Take approximately 0.1 seconds to reach max accel 
@@ -117,4 +118,7 @@ public class ArmRot {
     public void setMy_ArmRot(double setpoint){
         ArmRotMotor.setControl(m_mmReq.withPosition(setpoint).withSlot(0));
       }
+    public void runMy_ArmRot(double setpoint){
+        ArmRotMotor.set(setpoint);
+    }
 }

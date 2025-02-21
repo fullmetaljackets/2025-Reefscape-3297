@@ -2,13 +2,41 @@ package frc.robot.subsystems;
 
 import static edu.wpi.first.units.Units.*;
 
+import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.LimelightHelpers;
 import frc.robot.generated.TunerConstants;
 
-public class Limelight {
+public class Limelight extends SubsystemBase{
 
+  public double getDistanceToReef(){
+    if (LimelightHelpers.getFiducialID("limelight") == 6
+    || LimelightHelpers.getFiducialID("limelight") == 7
+    || LimelightHelpers.getFiducialID("limelight") == 8
+    || LimelightHelpers.getFiducialID("limelight") == 9
+    || LimelightHelpers.getFiducialID("limelight") == 10
+    || LimelightHelpers.getFiducialID("limelight") == 11
+    || LimelightHelpers.getFiducialID("limelight") == 17
+    || LimelightHelpers.getFiducialID("limelight") == 18
+    || LimelightHelpers.getFiducialID("limelight") == 19
+    || LimelightHelpers.getFiducialID("limelight") == 20
+    || LimelightHelpers.getFiducialID("limelight") == 21
+    || LimelightHelpers.getFiducialID("limelight") == 22){
+      Rotation2d angleToGoal = Rotation2d.fromDegrees(TunerConstants.LLMountAngle)
+      .plus(Rotation2d.fromDegrees(LimelightHelpers.getTY("limelight")));
 
-     public double limelight_range_proportional(){    
+      double distance = (TunerConstants.GoalHeight - TunerConstants.LimelightHight) / angleToGoal.getTan();
+
+      return distance;
+    } else {
+      return 0;
+    }
+  }
+
+  public double limelight_range_proportional(){    
     // kP (constant of proportionality)
     // this is a hand-tuned number that determines the aggressiveness of our proportional control loop
     // if it is too high, the robot will oscillate.

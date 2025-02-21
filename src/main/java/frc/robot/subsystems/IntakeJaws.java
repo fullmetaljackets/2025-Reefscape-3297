@@ -11,8 +11,8 @@ public class IntakeJaws extends SubsystemBase{
 
 
     public IntakeJaws() {
-        WristSolenoid = new DoubleSolenoid(3,PneumaticsModuleType.REVPH, 8, 9);
-        WristSolenoid.set(Value.kForward);
+        WristSolenoid = new DoubleSolenoid(10,PneumaticsModuleType.REVPH, 8, 9);
+        WristSolenoid.set(Value.kReverse);
     }
 
     @Override
@@ -25,6 +25,10 @@ public class IntakeJaws extends SubsystemBase{
     public void simulationPeriodic() {
         // This method will be called once per scheduler run when in simulation
 
+    }
+
+    public void my_JawsClose(){
+        WristSolenoid.set(Value.kReverse);
     }
 
     public void my_JawsToggle(){

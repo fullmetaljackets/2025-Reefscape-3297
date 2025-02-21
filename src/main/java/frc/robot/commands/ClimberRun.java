@@ -2,23 +2,23 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
 
-import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Climber;
 
 
 /**
  *
  */
-public class intake extends Command {
+public class ClimberRun extends Command {
 
-    private final Intake s_Intake;
-    private double m_IntakeSpeed;
+    private final Climber s_Climber ;
+    private double Speed;
  
 
-    public intake(double IntakeSpeed, Intake subsystem) {
-        m_IntakeSpeed = IntakeSpeed;
+    public ClimberRun(double ClimberSpeed, Climber subsystem) {
+        Speed = ClimberSpeed;
 
-        s_Intake = subsystem;
-        addRequirements(subsystem);
+        s_Climber = subsystem;
+        addRequirements(s_Climber);
 
     }
 
@@ -30,13 +30,13 @@ public class intake extends Command {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        s_Intake.IntakeRun(m_IntakeSpeed);
+        s_Climber.runMy_ArmRot(Speed);
     }
 
     // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
-        s_Intake.IntakeRun(0);
+        s_Climber.runMy_ArmRot(0);
     }
 
     // Returns true when the command should end.

@@ -5,25 +5,23 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.ArmRot;
+import frc.robot.subsystems.WristRot;
 
-public class ArmRotToSetpoint extends Command {
-  private final ArmRot m_ArmRot;
+public class WristRotToSetpointSlow extends Command {
+  private final WristRot m_Wrist;
   private double m_setpoint;
-  private double m_tolernace;
   /** Creates a new Arm. */
-  public ArmRotToSetpoint(double setpoint,double tolerance, ArmRot subsystem) {
+  public WristRotToSetpointSlow(double setpoint, WristRot subsystem) {
     // Use addRequirements() here to declare subsystem dependencies.
-    m_ArmRot = subsystem;
+    m_Wrist = subsystem;
     m_setpoint = setpoint;
-    m_tolernace = tolerance;
-    addRequirements(m_ArmRot);
+    addRequirements(m_Wrist);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_ArmRot.setMy_ArmRot(m_setpoint);
+    m_Wrist.setMy_WristRotSlow(m_setpoint);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -37,6 +35,6 @@ public class ArmRotToSetpoint extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return m_ArmRot.atTargetPosition(m_setpoint, m_tolernace);
+    return m_Wrist.atTargetPosition(m_setpoint, 0.01);
   }
 }

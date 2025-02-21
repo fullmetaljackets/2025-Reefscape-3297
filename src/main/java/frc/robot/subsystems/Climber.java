@@ -15,11 +15,12 @@ import com.ctre.phoenix6.signals.StaticFeedforwardSignValue;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import com.ctre.phoenix6.controls.MotionMagicExpoVoltage;
 import com.ctre.phoenix6.controls.MotionMagicVoltage;
 
-public class Climber {
+public class Climber extends SubsystemBase{
 
     private TalonFX ClimberMotor;
     private TalonFXConfiguration TalonFXConfig;
@@ -34,7 +35,7 @@ public class Climber {
         MotorOutputConfig.Inverted = InvertedValue.CounterClockwise_Positive;
         MotorOutputConfig.NeutralMode = NeutralModeValue.Brake;
         TalonFXConfig.withMotorOutput(MotorOutputConfig);
-        ClimberMotor = new TalonFX(0, "rio");
+        ClimberMotor = new TalonFX(0, "");
         ClimberMotor.getConfigurator().apply(TalonFXConfig);
 
 
@@ -56,6 +57,11 @@ public class Climber {
         // softLimit.ForwardSoftLimitThreshold = 0.6;
         // softLimit.ReverseSoftLimitEnable = true;
         // softLimit.ReverseSoftLimitThreshold = 0;
+        SoftwareLimitSwitchConfigs softLimit =TalonFXConfig.SoftwareLimitSwitch;
+        softLimit.ForwardSoftLimitEnable = true;
+        softLimit.ForwardSoftLimitThreshold = 0;
+        softLimit.ReverseSoftLimitEnable = true;
+        softLimit.ReverseSoftLimitThreshold = -0.36;
 
         
         Slot0Configs slot0 = TalonFXConfig.Slot0;
@@ -96,7 +102,12 @@ public class Climber {
         }
     }
 
-    public void setMy_WristRot(double setpoint){
+    public void setMy_ClimberRot(double setpoint){
         ClimberMotor.setControl(m_mmReq.withPosition(setpoint).withSlot(0));
     }
+
+    public void runMy_ArmRot(double setpoint){
+        ClimberMotor.set(setpoint);
+    }
+
 }
