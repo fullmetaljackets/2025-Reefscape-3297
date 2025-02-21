@@ -1,6 +1,8 @@
 package frc.robot.commands;
 
+import com.ctre.phoenix6.mechanisms.swerve.LegacySwerveModule.SteerRequestType;
 import com.ctre.phoenix6.swerve.SwerveRequest;
+import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
 
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.networktables.NetworkTable;
@@ -13,16 +15,20 @@ import frc.robot.subsystems.Limelight;
 import frc.robot.LimelightHelpers;
 
 public class AutoAlignToAprilTag extends Command {
-    private final CommandSwerveDrivetrain drivetrain;
+    private final CommandSwerveDrivetrain m_drivetrain;
     private final SwerveRequest.RobotCentric m_alignRequest;
-    private final Limelight limelight;
-    private final double kP = 0.1; // Proportional control constant
+    private final Limelight m_limelight;
+    private final double kP_Distance = 0.1; // Proportional control constant
+    private final double kp_Strafe = 0.2;
+    private final double kp_Angle = 3;
+
     private final SwerveRequest.RobotCentric drive = new SwerveRequest.RobotCentric();
 
     public AutoAlignToAprilTag(CommandSwerveDrivetrain drivetrain, Limelight limelight) {
-        this.drivetrain = drivetrain;
-        this.limelight = limelight;
-        m_alignRequest = new SwerveRequest.RobotCentric();
+        m_drivetrain = drivetrain;
+        m_limelight = limelight;
+        m_alignRequest = new SwerveRequest.RobotCentric()
+            .withDriveRequestType(DriveRequestType.Velocity);
         addRequirements( limelight);
     }
 
@@ -35,14 +41,14 @@ public class AutoAlignToAprilTag extends Command {
     public void execute() {
         LimelightHelpers.setPipelineIndex("limelight", 0);
         
-        double distance = limelight.getDistanceToReef();
+        double distance = m_limelight.getDistanceToReef();
         double angleError = -Units.degreesToRadians(LimelightHelpers.getTX("limelight")); // Assume you have a method to get the angle error
         double strafeError = distance * Math.tan(angleError);
         
         // Proportional control for distance and angle
-        double forwardSpeed = kP * distance;
-        double turnSpeed = kP * angleError;
-        double strafeSpeed = kP * strafeError;
+        double forwardSpeed = kP_Distance * distance;
+        double turnSpeed = kp_Angle * angleError;
+        double strafeSpeed = kp_Strafe * strafeError;
 
         SmartDashboard.putNumber("forward speed", forwardSpeed);
         SmartDashboard.putNumber("turn speed", turnSpeed);
@@ -57,10 +63,10 @@ public class AutoAlignToAprilTag extends Command {
         //     .withRotationalRate(turnSpeed) // Drive counterclockwise with negative X (left)
         // );
 
-        drivetrain.setControl(
-        drive.withVelocityX(forwardSpeed) // Drive forward with negative Y (forward)
-            .withVelocityY(strafeSpeed) // Drive left with negative X (left)
-            .withRotationalRate(turnSpeed) // Drive counterclockwise with negative X (left)
+        m_drivetrain.setControl(
+        m_alignRequest.withVelocityX(0) // Drive forward with negative Y (forward)
+            .withVelocityY(-strafeSpeed) // Drive left with negative X (left)
+            .withRotationalRate(0) // Drive counterclockwise with negative X (left)
         );
  
         // drivetrain.setControl(
@@ -72,7 +78,7 @@ public class AutoAlignToAprilTag extends Command {
 
     @Override
     public boolean isFinished() {
-        double distance = limelight.getDistanceToReef();
+        double distance = m_limelight.getDistanceToReef();
         double angleError = -Units.degreesToRadians(LimelightHelpers.getTX("limelight"));
         double strafeError = distance * Math.tan(angleError);
 

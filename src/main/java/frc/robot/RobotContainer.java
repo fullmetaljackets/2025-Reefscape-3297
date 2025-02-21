@@ -42,7 +42,7 @@ import frc.robot.commands.ArmRotRun;
 import frc.robot.commands.ArmRotToSetpoint;
 import frc.robot.commands.AutoAlignReef;
 import frc.robot.commands.AutoAlignToAprilTag;
-// import frc.robot.commands.ClimberRun;
+import frc.robot.commands.ClimberRun;
 import frc.robot.commands.IntakeToggle;
 import frc.robot.commands.WristRotRun;
 import frc.robot.commands.WristRotToSetpoint;
@@ -163,7 +163,7 @@ public class RobotContainer {
 
         //DriveStick controls
         DriveStick.rightTrigger().whileTrue(new intake(0.18, s_Intake));
-        DriveStick.leftTrigger().whileTrue(new intake(-0.2, s_Intake));
+        DriveStick.leftTrigger().whileTrue(new intake(-0.6, s_Intake));
         DriveStick.rightBumper().onFalse(new IntakeToggle(s_IntakeJaws));
         
         DriveStick.a().whileTrue(drivetrain.applyRequest(() -> brake));
@@ -198,7 +198,7 @@ public class RobotContainer {
         CopilotStick.povUp().onTrue(new Barge(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
 
         // Joystick controls for arm motor
-        // CopilotStick.leftStick().whileTrue(new ClimberRun(CopilotStick.getLeftY(), s_Climber));
+        new WristRotRun(CopilotStick.getLeftY(), s_WristRot);
 
 
     
