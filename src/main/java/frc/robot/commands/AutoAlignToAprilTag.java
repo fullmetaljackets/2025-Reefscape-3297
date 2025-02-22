@@ -66,7 +66,7 @@ public class AutoAlignToAprilTag extends Command {
         m_drivetrain.setControl(
         m_alignRequest.withVelocityX(0) // Drive forward with negative Y (forward)
             .withVelocityY(-strafeSpeed) // Drive left with negative X (left)
-            .withRotationalRate(0) // Drive counterclockwise with negative X (left)
+            .withRotationalRate(turnSpeed) // Drive counterclockwise with negative X (left)
         );
  
         // drivetrain.setControl(

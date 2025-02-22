@@ -1,0 +1,43 @@
+{
+  "version": "2025.0",
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Left Start"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "place coral"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Reef To 1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Close Intake"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "1 To Reef"
+          }
+        }
+      ]
+    }
+  },
+  "resetOdom": true,
+  "folder": "Week 0.5",
+  "choreoAuto": false
+}

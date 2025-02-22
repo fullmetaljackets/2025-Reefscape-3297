@@ -20,7 +20,7 @@ public class Barge extends SequentialCommandGroup{
             new WristRotToSetpoint(0,0.01, s_WristRot),
             new ArmRotToSetpoint(-0.46,0.01, s_ArmRot),
             new ArmExtendToSetpoint(4.87,0.1, s_ArmExtend),
-            new WristRotToSetpointSlow(0.33, s_WristRot)
+            new WristRotToSetpointSlow(0.30, s_WristRot)
         );
     }
 

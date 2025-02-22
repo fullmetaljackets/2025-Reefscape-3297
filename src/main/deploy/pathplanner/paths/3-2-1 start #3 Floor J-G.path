@@ -1,0 +1,218 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 8.128895547945206,
+        "y": 7.187906678082191
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 7.182277397260274,
+        "y": 4.483283390410959
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 3.8287852112676046,
+        "y": 2.6502640845070413
+      },
+      "prevControl": {
+        "x": 5.466584868802533,
+        "y": 1.5083120297066526
+      },
+      "nextControl": {
+        "x": 3.1988904555891677,
+        "y": 3.089456758193163
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.0572183098591537,
+        "y": 2.210915492957745
+      },
+      "prevControl": {
+        "x": 1.8729753521126746,
+        "y": 2.7636443661971817
+      },
+      "nextControl": {
+        "x": 2.173571285071674,
+        "y": 1.8618565673201841
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 3.545334507042253,
+        "y": 2.7778169014084493
+      },
+      "prevControl": {
+        "x": 4.22149032896006,
+        "y": 2.1166867644221474
+      },
+      "nextControl": {
+        "x": 3.1656476276185552,
+        "y": 3.1490662946227315
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.0572183098591537,
+        "y": 4.024999999999999
+      },
+      "prevControl": {
+        "x": 2.012141255064633,
+        "y": 3.4690496575342458
+      },
+      "nextControl": {
+        "x": 2.0841950568105885,
+        "y": 4.357713212401024
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.978433098591548,
+        "y": 3.7982394366197174
+      },
+      "prevControl": {
+        "x": 2.834967147307577,
+        "y": 3.2530688217406274
+      },
+      "nextControl": {
+        "x": 3.128689947906617,
+        "y": 4.369215464016978
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.0572183098591537,
+        "y": 5.853257042253521
+      },
+      "prevControl": {
+        "x": 2.55325704225352,
+        "y": 6.604401408450704
+      },
+      "nextControl": {
+        "x": 1.800573483030325,
+        "y": 5.464623447341295
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.978433098591548,
+        "y": 4.223415492957745
+      },
+      "prevControl": {
+        "x": 1.7463269342079863,
+        "y": 4.12574854090295
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 1.0,
+      "rotationDegrees": 62.525568373722905
+    },
+    {
+      "waypointRelativePos": 2.0,
+      "rotationDegrees": -1.4688007143858086
+    },
+    {
+      "waypointRelativePos": 3.0,
+      "rotationDegrees": 60.05279004036234
+    },
+    {
+      "waypointRelativePos": 4.0,
+      "rotationDegrees": 0.0
+    },
+    {
+      "waypointRelativePos": 5.0,
+      "rotationDegrees": 0.0
+    },
+    {
+      "waypointRelativePos": 6.0,
+      "rotationDegrees": 0.0
+    }
+  ],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [
+    {
+      "name": "place coral",
+      "waypointRelativePos": 1.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "grab coral floor",
+      "waypointRelativePos": 2.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "place coral",
+      "waypointRelativePos": 3.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "grab coral floor",
+      "waypointRelativePos": 4.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "place coral",
+      "waypointRelativePos": 5.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "grab coral floor",
+      "waypointRelativePos": 6.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "place coral",
+      "waypointRelativePos": 7.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 1.0,
+    "maxAcceleration": 1.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 0.0
+  },
+  "reversed": false,
+  "folder": "Floor Only",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": 180.0
+  },
+  "useDefaultConstraints": true
+}

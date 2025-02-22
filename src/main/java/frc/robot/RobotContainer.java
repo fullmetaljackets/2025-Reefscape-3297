@@ -27,7 +27,9 @@ import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
+import frc.robot.commands.grouped.AutoBackFloorIntake;
 import frc.robot.commands.grouped.BackFloorIntake;
+import frc.robot.commands.grouped.AutoBackFloorIntake;
 import frc.robot.commands.grouped.BallIntake;
 import frc.robot.commands.grouped.Barge;
 import frc.robot.commands.grouped.LV3Algee;
@@ -43,6 +45,7 @@ import frc.robot.commands.ArmRotToSetpoint;
 import frc.robot.commands.AutoAlignReef;
 import frc.robot.commands.AutoAlignToAprilTag;
 import frc.robot.commands.ClimberRun;
+import frc.robot.commands.IntakeClose;
 import frc.robot.commands.IntakeToggle;
 import frc.robot.commands.WristRotRun;
 import frc.robot.commands.WristRotToSetpoint;
@@ -100,7 +103,10 @@ public class RobotContainer {
         configureBindings();
 
         NamedCommands.registerCommand("AutoL4", new ReefLV4(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
-        NamedCommands.registerCommand("place coral", new intake(.18, s_Intake) );
+        NamedCommands.registerCommand("AutoL2", new ReefLV2(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
+        NamedCommands.registerCommand("place coral", new intake(.18, s_Intake).withTimeout(0.5));
+        NamedCommands.registerCommand("floor intake", new AutoBackFloorIntake(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
+        NamedCommands.registerCommand("Close Intake", new IntakeClose(s_IntakeJaws));
 
         autoChooser = AutoBuilder.buildAutoChooser();
         SmartDashboard.putData("Auto Chooser", autoChooser);
@@ -163,7 +169,7 @@ public class RobotContainer {
 
         //DriveStick controls
         DriveStick.rightTrigger().whileTrue(new intake(0.18, s_Intake));
-        DriveStick.leftTrigger().whileTrue(new intake(-0.6, s_Intake));
+        DriveStick.leftTrigger().whileTrue(new intake(-0.2, s_Intake));
         DriveStick.rightBumper().onFalse(new IntakeToggle(s_IntakeJaws));
         
         DriveStick.a().whileTrue(drivetrain.applyRequest(() -> brake));
@@ -194,6 +200,7 @@ public class RobotContainer {
         CopilotStick.leftTrigger().onTrue(new BallIntake(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
 
         CopilotStick.rightBumper().onTrue(new Middle(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
+        CopilotStick.leftBumper().whileTrue(new intake(-0.4, s_Intake));
 
         CopilotStick.povUp().onTrue(new Barge(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
 

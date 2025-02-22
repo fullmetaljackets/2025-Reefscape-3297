@@ -21,7 +21,7 @@ public class ReefLV4 extends SequentialCommandGroup{
             new WristRotToSetpoint(0,0.01, s_WristRot),
             new ArmRotToSetpoint(0.48,0.01, s_ArmRot),
             new ArmExtendToSetpoint(4.8,0.1, s_ArmExtend),
-            new WristRotToSetpoint(0.03, 0.01, s_WristRot)
+            new WristRotToSetpoint(0.0, 0.01, s_WristRot)
         );
     }
 }
