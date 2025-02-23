@@ -4,6 +4,7 @@ import com.ctre.phoenix6.mechanisms.swerve.LegacySwerveModule.SteerRequestType;
 import com.ctre.phoenix6.swerve.SwerveRequest;
 import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
 
+import edu.wpi.first.math.geometry.Pose3d;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
@@ -21,6 +22,8 @@ public class AutoAlignToAprilTag extends Command {
     private final double kP_Distance = 0.1; // Proportional control constant
     private final double kp_Strafe = 0.2;
     private final double kp_Angle = 3;
+    private final Pose3d botPose = LimelightHelpers.getBotPose3d("limelight");
+    private final Pose3d targetPose = LimelightHelpers.getTargetPose3d_RobotSpace("limelight");
 
     private final SwerveRequest.RobotCentric drive = new SwerveRequest.RobotCentric();
 
@@ -39,6 +42,7 @@ public class AutoAlignToAprilTag extends Command {
 
     @Override
     public void execute() {
+        LimelightHelpers.getTargetPose3d_CameraSpace("limelight");
         LimelightHelpers.setPipelineIndex("limelight", 0);
         
         double distance = m_limelight.getDistanceToReef();
