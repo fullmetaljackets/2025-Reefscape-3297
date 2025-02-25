@@ -44,6 +44,7 @@ import frc.robot.commands.ArmRotRun;
 import frc.robot.commands.ArmRotToSetpoint;
 import frc.robot.commands.AutoAlignReef;
 import frc.robot.commands.AutoAlignToAprilTag;
+import frc.robot.commands.AutoAlignToAprilTag2;
 import frc.robot.commands.ClimberRun;
 import frc.robot.commands.IntakeClose;
 import frc.robot.commands.IntakeToggle;
@@ -56,6 +57,7 @@ import frc.robot.subsystems.ArmRot;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.IntakeJaws;
+import frc.robot.subsystems.LEDSubsystem;
 import frc.robot.subsystems.Limelight;
 import frc.robot.subsystems.WristRot;
 import frc.robot.subsystems.Climber;
@@ -90,6 +92,7 @@ public class RobotContainer {
     private final ArmExtend s_ArmExtend = new ArmExtend();
     private final WristRot s_WristRot = new WristRot();
     private final Climber s_Climber = new Climber();
+    private final LEDSubsystem s_LedSubsystem = new LEDSubsystem();
     private final SendableChooser<Command> autoChooser;
 
     public RobotContainer() {
@@ -164,8 +167,9 @@ public class RobotContainer {
         // DriveStick.leftBumper().onTrue(drivetrain.runOnce(() -> drivetrain.seedFieldCentric()));
 
 
+
         //Limelight AutoAlignReef
-        DriveStick.leftBumper().whileTrue(new AutoAlignToAprilTag(drivetrain, s_Limelight).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
+        DriveStick.leftBumper().onTrue(new AutoAlignToAprilTag2(drivetrain, s_Limelight, s_LedSubsystem).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
 
         //DriveStick controls
         DriveStick.rightTrigger().whileTrue(new intake(0.18, s_Intake));

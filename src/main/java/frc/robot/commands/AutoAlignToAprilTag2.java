@@ -11,18 +11,21 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.Limelight;
+import frc.robot.subsystems.LEDSubsystem;
 import frc.robot.LimelightHelpers;
 
 public class AutoAlignToAprilTag2 extends Command {
     private final CommandSwerveDrivetrain drivetrain;
     private final Limelight limelight;
+    private final LEDSubsystem s_LedSubsystem;
     private final SwerveRequest.RobotCentric m_alignRequest;
     private final double kP_Translation = 0.1; // Proportional control constant for translation
     private final double kP_Rotation = 0.1; // Proportional control constant for rotation
 
-    public AutoAlignToAprilTag2(CommandSwerveDrivetrain drivetrain, Limelight limelight) {
+    public AutoAlignToAprilTag2(CommandSwerveDrivetrain drivetrain, Limelight limelight, LEDSubsystem s_LedSubsystem) {
         this.drivetrain = drivetrain;
         this.limelight = limelight;
+        this.s_LedSubsystem = s_LedSubsystem;
                 m_alignRequest = new SwerveRequest.RobotCentric()
             .withDriveRequestType(DriveRequestType.Velocity);
 
@@ -73,13 +76,14 @@ public class AutoAlignToAprilTag2 extends Command {
         SmartDashboard.putNumber("turn speed", turnSpeed);
         SmartDashboard.putNumber("strafe speed", strafeSpeed);
 
+        // s_LedSubsystem.SetYellow();
         // Apply the swerve drive request to the drivetrain
 
-        drivetrain.setControl(
-            m_alignRequest.withVelocityX(forwardSpeed) // Drive forward with negative Y (forward)
-                .withVelocityY(strafeSpeed) // Drive left with negative X (left)
-                .withRotationalRate(turnSpeed) // Drive counterclockwise with negative X (left)
-            );
+        // drivetrain.setControl(
+        //     m_alignRequest.withVelocityX(forwardSpeed) // Drive forward with negative Y (forward)
+        //         .withVelocityY(strafeSpeed) // Drive left with negative X (left)
+        //         .withRotationalRate(turnSpeed) // Drive counterclockwise with negative X (left)
+        //     );
     
         // drivetrain.applyRequest(() ->
         //     new SwerveRequest.RobotCentric()
