@@ -97,7 +97,7 @@ public class TunerConstants {
     private static final Voltage kDriveFrictionVoltage = Volts.of(0.2);
 
     //Limelight Variables
-    public static final double LLMountAngle = 50;
+    public static final double LLMountAngle = -50;
     public static final double GoalHeight = 12;
     public static final double LimelightHight = 38.25;
 

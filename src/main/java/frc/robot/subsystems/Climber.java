@@ -57,11 +57,11 @@ public class Climber extends SubsystemBase{
         // softLimit.ForwardSoftLimitThreshold = 0.6;
         // softLimit.ReverseSoftLimitEnable = true;
         // softLimit.ReverseSoftLimitThreshold = 0;
-        SoftwareLimitSwitchConfigs softLimit =TalonFXConfig.SoftwareLimitSwitch;
-        softLimit.ForwardSoftLimitEnable = true;
-        softLimit.ForwardSoftLimitThreshold = 0;
-        softLimit.ReverseSoftLimitEnable = true;
-        softLimit.ReverseSoftLimitThreshold = -0.36;
+        // SoftwareLimitSwitchConfigs softLimit =TalonFXConfig.SoftwareLimitSwitch;
+        // softLimit.ForwardSoftLimitEnable = true;
+        // softLimit.ForwardSoftLimitThreshold = 0;
+        // softLimit.ReverseSoftLimitEnable = true;
+        // softLimit.ReverseSoftLimitThreshold = -0.36;
 
         
         Slot0Configs slot0 = TalonFXConfig.Slot0;
@@ -106,7 +106,7 @@ public class Climber extends SubsystemBase{
         ClimberMotor.setControl(m_mmReq.withPosition(setpoint).withSlot(0));
     }
 
-    public void runMy_ArmRot(double setpoint){
+    public void runMy_ClimberRot(double setpoint){
         ClimberMotor.set(setpoint);
     }
 

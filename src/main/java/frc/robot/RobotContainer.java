@@ -169,7 +169,7 @@ public class RobotContainer {
 
 
         //Limelight AutoAlignReef
-        DriveStick.leftBumper().onTrue(new AutoAlignToAprilTag2(drivetrain, s_Limelight, s_LedSubsystem).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
+        DriveStick.leftBumper().onTrue(new AutoAlignToAprilTag(drivetrain, s_Limelight));
 
         //DriveStick controls
         DriveStick.rightTrigger().whileTrue(new intake(0.18, s_Intake));
@@ -204,9 +204,12 @@ public class RobotContainer {
         CopilotStick.leftTrigger().onTrue(new BallIntake(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
 
         CopilotStick.rightBumper().onTrue(new Middle(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
-        CopilotStick.leftBumper().whileTrue(new intake(-0.4, s_Intake));
+        CopilotStick.leftBumper().whileTrue(new intake(-0.5, s_Intake));
 
         CopilotStick.povUp().onTrue(new Barge(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
+        CopilotStick.povLeft().whileTrue(new ClimberRun(1, s_Climber));
+        CopilotStick.povRight().whileTrue(new ClimberRun(-1, s_Climber));
+
 
         // Joystick controls for arm motor
         new WristRotRun(CopilotStick.getLeftY(), s_WristRot);

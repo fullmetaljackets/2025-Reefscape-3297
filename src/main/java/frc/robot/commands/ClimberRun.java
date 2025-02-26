@@ -30,13 +30,13 @@ public class ClimberRun extends Command {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        s_Climber.runMy_ArmRot(Speed);
+        s_Climber.runMy_ClimberRot(Speed);
     }
 
     // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
-        s_Climber.runMy_ArmRot(0);
+        s_Climber.runMy_ClimberRot(0);
     }
 
     // Returns true when the command should end.

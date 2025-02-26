@@ -35,6 +35,7 @@ public class AutoAlignToAprilTag2 extends Command {
     @Override
     public void initialize() {
         // Initialization code if needed
+        LimelightHelpers.setPipelineIndex("limelight", 0);
     }
 
     @Override
@@ -45,6 +46,8 @@ public class AutoAlignToAprilTag2 extends Command {
         // Retrieve the target pose relative to the robot
         Pose3d targetPose = LimelightHelpers.getTargetPose3d_RobotSpace("limelight");
 
+        Pose3d targetpose2 = LimelightHelpers.getBotPose3d_TargetSpace("limelight");
+
         // Calculate the translation error
         Translation3d translationError = targetPose.getTranslation().minus(robotPose.getTranslation());
 
@@ -52,9 +55,15 @@ public class AutoAlignToAprilTag2 extends Command {
         Rotation3d rotationError = targetPose.getRotation().minus(robotPose.getRotation());
 
         // Proportional control for translation and rotation
-        double forwardSpeed = kP_Translation * translationError.getX();
-        double strafeSpeed = kP_Translation * translationError.getY();
-        double turnSpeed = kP_Rotation * Units.radiansToDegrees(rotationError.getZ());
+        // double forwardSpeed = kP_Translation * translationError.getX();
+        // double strafeSpeed = kP_Translation * translationError.getY();
+        // double turnSpeed = kP_Rotation * Units.radiansToDegrees(rotationError.getZ());
+
+        // Proportional control for translation and rotation
+        double forwardSpeed = kP_Translation * targetpose2.getX();
+        double strafeSpeed = kP_Translation * targetpose2.getY();
+        double turnSpeed = kP_Rotation * Units.radiansToDegrees(targetpose2.getZ());
+        
 
         //put robot pose on smart dashboard
         SmartDashboard.putNumber("robotX", robotPose.getX());
@@ -96,23 +105,24 @@ public class AutoAlignToAprilTag2 extends Command {
     @Override
     public boolean isFinished() {
         // Define a condition to end the command, e.g., when the robot is close enough to the tag
-        Pose3d robotPose = LimelightHelpers.getBotPose3d("limelight");
-        Pose3d targetPose = LimelightHelpers.getTargetPose3d_RobotSpace("limelight");
+        // Pose3d robotPose = LimelightHelpers.getBotPose3d("limelight");
+        // Pose3d targetPose = LimelightHelpers.getTargetPose3d_RobotSpace("limelight");
 
-        Translation3d translationError = targetPose.getTranslation().minus(robotPose.getTranslation());
-        Rotation3d rotationError = targetPose.getRotation().minus(robotPose.getRotation());
+        // Translation3d translationError = targetPose.getTranslation().minus(robotPose.getTranslation());
+        // Rotation3d rotationError = targetPose.getRotation().minus(robotPose.getRotation());
 
-        return translationError.getNorm() < 0.1 && Math.abs(rotationError.getZ()) < Units.degreesToRadians(5);
+        // return translationError.getNorm() < 0.1 && Math.abs(rotationError.getZ()) < Units.degreesToRadians(5);
+        return false;
     }
 
     @Override
     public void end(boolean interrupted) {
         // Stop the drivetrain when the command ends
-        drivetrain.setControl(
-            m_alignRequest.withVelocityX(0) // Drive forward with negative Y (forward)
-                .withVelocityY(0) // Drive left with negative X (left)
-                .withRotationalRate(0) // Drive counterclockwise with negative X (left)
-            );
+        // drivetrain.setControl(
+        //     m_alignRequest.withVelocityX(0) // Drive forward with negative Y (forward)
+        //         .withVelocityY(0) // Drive left with negative X (left)
+        //         .withRotationalRate(0) // Drive counterclockwise with negative X (left)
+        //     );
 
         // drivetrain.applyRequest(() ->
         //     new SwerveRequest.RobotCentric()
