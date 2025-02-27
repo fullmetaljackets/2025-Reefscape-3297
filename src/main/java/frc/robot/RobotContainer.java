@@ -43,8 +43,8 @@ import frc.robot.commands.ArmExtendToSetpoint;
 import frc.robot.commands.ArmRotRun;
 import frc.robot.commands.ArmRotToSetpoint;
 import frc.robot.commands.AutoAlignReef;
-import frc.robot.commands.AutoAlignToAprilTag;
-import frc.robot.commands.AutoAlignToAprilTag2;
+import frc.robot.commands.AutoAlignToAprilTagLeft;
+import frc.robot.commands.AutoAlignToAprilTagRight;
 import frc.robot.commands.ClimberRun;
 import frc.robot.commands.IntakeClose;
 import frc.robot.commands.IntakeToggle;
@@ -169,9 +169,13 @@ public class RobotContainer {
 
 
         //Limelight AutoAlignReef
-        DriveStick.leftBumper().onTrue(new AutoAlignToAprilTag(drivetrain, s_Limelight));
+        DriveStick.leftBumper().and(DriveStick.povLeft()).whileTrue(new AutoAlignToAprilTagLeft(drivetrain, s_Limelight).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
+        DriveStick.leftBumper().and(DriveStick.povRight()).whileTrue(new AutoAlignToAprilTagRight(drivetrain, s_Limelight).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
+        
 
         //DriveStick controls
+        // DriveStick.x().whileTrue(new intake(0.18, s_Intake));
+        // DriveStick.y().whileTrue(new intake(-0.2, s_Intake));
         DriveStick.rightTrigger().whileTrue(new intake(0.18, s_Intake));
         DriveStick.leftTrigger().whileTrue(new intake(-0.2, s_Intake));
         DriveStick.rightBumper().onFalse(new IntakeToggle(s_IntakeJaws));
@@ -181,16 +185,22 @@ public class RobotContainer {
         // DriveStick.x().onTrue(new LV3Algee(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
 
         //manualy adjust arm extend
-        DriveStick.x().whileTrue(new ArmExtendRun(-0.1, s_ArmExtend));
-        DriveStick.y().whileTrue(new ArmExtendRun(0.1, s_ArmExtend));
+        DriveStick.y().and(DriveStick.povUp()).whileTrue(new ArmExtendRun(0.2, s_ArmExtend));
+        DriveStick.y().and(DriveStick.povDown()).whileTrue(new ArmExtendRun(-0.2, s_ArmExtend));
+        // DriveStick.x().whileTrue(new ArmExtendRun(-0.2, s_ArmExtend));
+        // DriveStick.y().whileTrue(new ArmExtendRun(0.2, s_ArmExtend));
 
-        //manualy adjust arm rot
-        DriveStick.povUp().whileTrue(new ArmRotRun(0.4, s_ArmRot));
-        DriveStick.povDown().whileTrue(new ArmRotRun(-0.4, s_ArmRot));
+        // //manualy adjust arm rot
+        DriveStick.x().and(DriveStick.povUp()).whileTrue(new ArmRotRun(0.4, s_ArmRot));
+        DriveStick.x().and(DriveStick.povDown()).whileTrue(new ArmRotRun(-0.4, s_ArmRot));
+        // DriveStick.povUp().whileTrue(new ArmRotRun(0.4, s_ArmRot));
+        // DriveStick.povDown().whileTrue(new ArmRotRun(-0.4, s_ArmRot));
 
-        //manualy adjust wrist rot
-        DriveStick.povLeft().whileTrue(new WristRotRun(-0.1, s_WristRot));
-        DriveStick.povRight().whileTrue(new WristRotRun(0.1, s_WristRot));
+        // //manualy adjust wrist rot
+        DriveStick.x().and(DriveStick.povRight()).whileTrue(new WristRotRun(0.4, s_WristRot));
+        DriveStick.x().and(DriveStick.povLeft()).whileTrue(new WristRotRun(-0.4, s_WristRot));
+        // DriveStick.povLeft().whileTrue(new WristRotRun(-0.1, s_WristRot));
+        // DriveStick.povRight().whileTrue(new WristRotRun(0.1, s_WristRot).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
 
 
         //CopilotStick controls
