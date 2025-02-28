@@ -107,10 +107,14 @@ public class RobotContainer {
         configureBindings();
 
         NamedCommands.registerCommand("AutoL4", new ReefLV4(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
-        NamedCommands.registerCommand("AutoL2", new ReefLV2(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
+        // NamedCommands.registerCommand("AutoL2", new ReefLV2(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
+
         NamedCommands.registerCommand("place coral", new intake(.18, s_Intake).withTimeout(0.5));
         NamedCommands.registerCommand("floor intake", new AutoBackFloorIntake(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
         NamedCommands.registerCommand("Close Intake", new IntakeClose(s_IntakeJaws));
+        //limelight auto alignment 
+        NamedCommands.registerCommand("align left", new AutoAlignToAprilTagLeft(drivetrain, s_Limelight));
+        NamedCommands.registerCommand("align right", new AutoAlignToAprilTagRight(drivetrain, s_Limelight));
 
         autoChooser = AutoBuilder.buildAutoChooser();
         SmartDashboard.putData("Auto Chooser", autoChooser);
@@ -192,8 +196,8 @@ public class RobotContainer {
         // DriveStick.y().whileTrue(new ArmExtendRun(0.2, s_ArmExtend));
 
         //Climber
-        DriveStick.y().and(DriveStick.povRight()).whileTrue(new ClimberRun(-1, s_Climber));
-        DriveStick.y().and(DriveStick.povLeft()).whileTrue(new ClimberRun(1, s_Climber));
+        DriveStick.y().and(DriveStick.povRight()).whileTrue(new ClimberRun(-0.8, s_Climber));
+        DriveStick.y().and(DriveStick.povLeft()).whileTrue(new ClimberRun(0.8, s_Climber));
 
         // //manualy adjust arm rot
         DriveStick.x().and(DriveStick.povUp()).whileTrue(new ArmRotRun(0.4, s_ArmRot));
