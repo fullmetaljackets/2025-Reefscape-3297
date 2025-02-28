@@ -20,12 +20,12 @@
         "y": 5.324721746575342
       },
       "prevControl": {
-        "x": 3.988527397260274,
-        "y": 5.324721746575342
+        "x": 4.1470890410958905,
+        "y": 5.970826198630136
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Reef Point J"
     }
   ],
   "rotationTargets": [],
@@ -48,7 +48,7 @@
   "folder": "Floor Coral 1 to Reef",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": 0.0
   },
   "useDefaultConstraints": true
 }

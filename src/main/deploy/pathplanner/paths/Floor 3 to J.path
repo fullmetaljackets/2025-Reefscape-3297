@@ -12,20 +12,20 @@
         "y": 6.106057363013699
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Floor 3 Coral"
     },
     {
       "anchor": {
-        "x": 5.093707191780822,
-        "y": 5.294670376712329
+        "x": 4.988527397260274,
+        "y": 5.324721746575342
       },
       "prevControl": {
-        "x": 3.906678082191781,
-        "y": 6.421596746575342
+        "x": 3.801498287671233,
+        "y": 6.4516481164383555
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Reef Point J"
     }
   ],
   "rotationTargets": [],
@@ -48,7 +48,7 @@
   "folder": "Floor Coral 3 to Reef",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": 0.0
   },
   "useDefaultConstraints": true
 }

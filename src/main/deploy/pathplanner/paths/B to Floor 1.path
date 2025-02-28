@@ -12,7 +12,7 @@
         "y": 4.768771404109589
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Reef Point B"
     },
     {
       "anchor": {
@@ -42,7 +42,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": 0.0
   },
   "reversed": false,
   "folder": "Move to Floor Coral 1",
