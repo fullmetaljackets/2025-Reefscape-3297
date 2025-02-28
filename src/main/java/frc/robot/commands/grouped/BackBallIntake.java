@@ -10,16 +10,16 @@ import frc.robot.subsystems.ArmRot;
 import frc.robot.subsystems.IntakeJaws;
 import frc.robot.subsystems.WristRot;
 
-public class BallIntake extends SequentialCommandGroup{
+public class BackBallIntake extends SequentialCommandGroup{
     
-    public BallIntake(ArmRot s_ArmRot, ArmExtend s_ArmExtend, WristRot s_WristRot, IntakeJaws s_IntakeJaws){
+    public BackBallIntake(ArmRot s_ArmRot, ArmExtend s_ArmExtend, WristRot s_WristRot, IntakeJaws s_IntakeJaws){
 
         addCommands(
             new IntakeClose(s_IntakeJaws),
+            new ArmExtendToSetpoint(-0.93,2, s_ArmExtend),
             new WristRotToSetpoint(0,0.01, s_WristRot),
-            new ArmExtendToSetpoint(-0.93,0.1, s_ArmExtend),
             new ArmRotToSetpoint(-0.09,0.01, s_ArmRot),
-            new ArmExtendToSetpoint(0,0.1, s_ArmExtend),
+            new ArmExtendToSetpoint(0,3, s_ArmExtend),
             new WristRotToSetpoint(0.12,0.01, s_WristRot)
         );
     }

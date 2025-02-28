@@ -30,10 +30,11 @@ import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
 import frc.robot.commands.grouped.AutoBackFloorIntake;
 import frc.robot.commands.grouped.BackFloorIntake;
 import frc.robot.commands.grouped.AutoBackFloorIntake;
-import frc.robot.commands.grouped.BallIntake;
+import frc.robot.commands.grouped.BackBallIntake;
 import frc.robot.commands.grouped.Barge;
 import frc.robot.commands.grouped.LV3Algee;
 import frc.robot.commands.grouped.ReefLV4;
+import frc.robot.commands.grouped.ReefLV4Over;
 import frc.robot.commands.grouped.Middle;
 import frc.robot.commands.grouped.ReefLV3;
 import frc.robot.commands.grouped.ReefLV2;
@@ -190,6 +191,10 @@ public class RobotContainer {
         // DriveStick.x().whileTrue(new ArmExtendRun(-0.2, s_ArmExtend));
         // DriveStick.y().whileTrue(new ArmExtendRun(0.2, s_ArmExtend));
 
+        //Climber
+        DriveStick.y().and(DriveStick.povRight()).whileTrue(new ClimberRun(-1, s_Climber));
+        DriveStick.y().and(DriveStick.povLeft()).whileTrue(new ClimberRun(1, s_Climber));
+
         // //manualy adjust arm rot
         DriveStick.x().and(DriveStick.povUp()).whileTrue(new ArmRotRun(0.4, s_ArmRot));
         DriveStick.x().and(DriveStick.povDown()).whileTrue(new ArmRotRun(-0.4, s_ArmRot));
@@ -204,21 +209,25 @@ public class RobotContainer {
 
 
         //CopilotStick controls
-        CopilotStick.a().onTrue(new ReefLV1(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws).alongWith(new PrintCommand("Hello World 1")));
-        CopilotStick.b().onTrue(new ReefLV2(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws).alongWith(new PrintCommand("Hello World 2")));
+        CopilotStick.b().onTrue(new ReefLV1(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws).alongWith(new PrintCommand("Hello World 1")));
+        CopilotStick.a().onTrue(new ReefLV2(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws).alongWith(new PrintCommand("Hello World 2")));
         CopilotStick.x().onTrue(new ReefLV3(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws).alongWith(new PrintCommand("Hello World 3")));
         CopilotStick.y().onTrue(new ReefLV4(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws).alongWith(new PrintCommand("Hello World 4")));
         //CopilotStick.y().onTrue(new PrintCommand("Y Pressed"));
         
         CopilotStick.rightTrigger().onTrue(new BackFloorIntake(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
-        CopilotStick.leftTrigger().onTrue(new BallIntake(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
+        CopilotStick.leftTrigger().onTrue(new Middle(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
 
-        CopilotStick.rightBumper().onTrue(new Middle(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
-        CopilotStick.leftBumper().whileTrue(new intake(-0.5, s_Intake));
+        CopilotStick.rightBumper().and(CopilotStick.y()).onTrue(new ReefLV4Over(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
+        // CopilotStick.leftBumper().whileTrue(new intake(-0.5, s_Intake));
 
-        CopilotStick.povUp().onTrue(new Barge(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
-        CopilotStick.povLeft().whileTrue(new ClimberRun(1, s_Climber));
-        CopilotStick.povRight().whileTrue(new ClimberRun(-1, s_Climber));
+        CopilotStick.povUp().onTrue(new BackBallIntake(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
+
+        CopilotStick.povRight().onTrue(new Barge(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
+        CopilotStick.povLeft().whileTrue(new intake(-0.5, s_Intake));
+
+        // CopilotStick.povLeft().whileTrue(new ClimberRun(1, s_Climber));
+        // CopilotStick.povRight().whileTrue(new ClimberRun(-1, s_Climber));
 
 
         // Joystick controls for arm motor
