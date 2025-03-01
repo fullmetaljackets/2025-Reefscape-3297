@@ -23,10 +23,10 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
 import frc.robot.commands.ArmExtendRun;
 import frc.robot.commands.ArmRotRun;
-import frc.robot.commands.AutoAlignToAprilTagLeft;
-import frc.robot.commands.AutoAlignToAprilTagLeftAuto;
-import frc.robot.commands.AutoAlignToAprilTagRight;
-import frc.robot.commands.AutoAlignToAprilTagRightAuto;
+import frc.robot.commands.AutoAlignToAprilTagLeftLV4;
+import frc.robot.commands.AutoAlignToAprilTagLeftLV3;
+import frc.robot.commands.AutoAlignToAprilTagRightLV4;
+import frc.robot.commands.AutoAlignToAprilTagRightLV3;
 import frc.robot.commands.ClimberRun;
 import frc.robot.commands.IntakeClose;
 import frc.robot.commands.IntakeToggle;
@@ -106,8 +106,8 @@ public class RobotContainer {
         NamedCommands.registerCommand("floor intake", new AutoBackFloorIntake(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
         NamedCommands.registerCommand("Close Intake", new IntakeClose(s_IntakeJaws));
         //limelight auto alignment 
-        NamedCommands.registerCommand("align left", new AutoAlignToAprilTagLeft(drivetrain, s_Limelight));
-        NamedCommands.registerCommand("align right", new AutoAlignToAprilTagRight(drivetrain, s_Limelight));
+        NamedCommands.registerCommand("align left", new AutoAlignToAprilTagLeftLV4(drivetrain, s_Limelight));
+        NamedCommands.registerCommand("align right", new AutoAlignToAprilTagRightLV4(drivetrain, s_Limelight));
 
         autoChooser = AutoBuilder.buildAutoChooser();
         SmartDashboard.putData("Auto Chooser", autoChooser);
@@ -167,11 +167,11 @@ public class RobotContainer {
 
 
         //Limelight AutoAlignReef
-        DriveStick.leftBumper().and(DriveStick.povLeft()).whileTrue(new AutoAlignToAprilTagLeft(drivetrain, s_Limelight).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
-        DriveStick.leftBumper().and(DriveStick.povRight()).whileTrue(new AutoAlignToAprilTagRight(drivetrain, s_Limelight).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
+        DriveStick.leftBumper().and(DriveStick.povLeft()).onTrue(new AutoAlignToAprilTagLeftLV4(drivetrain, s_Limelight).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
+        DriveStick.leftBumper().and(DriveStick.povRight()).onTrue(new AutoAlignToAprilTagRightLV4(drivetrain, s_Limelight).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
         
-        DriveStick.leftBumper().and(DriveStick.povDown()).whileTrue(new AutoAlignToAprilTagLeftAuto(drivetrain, s_Limelight).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
-        DriveStick.leftBumper().and(DriveStick.povUp()).whileTrue(new AutoAlignToAprilTagRightAuto(drivetrain, s_Limelight).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
+        DriveStick.leftBumper().and(DriveStick.povDown()).onTrue(new AutoAlignToAprilTagLeftLV3(drivetrain, s_Limelight).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
+        DriveStick.leftBumper().and(DriveStick.povUp()).onTrue(new AutoAlignToAprilTagRightLV3(drivetrain, s_Limelight).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
 
         
 
@@ -180,7 +180,11 @@ public class RobotContainer {
         // DriveStick.x().whileTrue(new intake(0.18, s_Intake));
         // DriveStick.y().whileTrue(new intake(-0.2, s_Intake));
         DriveStick.rightTrigger().whileTrue(new intake(0.18, s_Intake));
+        DriveStick.rightTrigger().whileFalse(new intake(-0.03, s_Intake));
+
         DriveStick.leftTrigger().whileTrue(new intake(-0.2, s_Intake));
+        DriveStick.leftTrigger().whileFalse(new intake(-0.03, s_Intake));
+
         DriveStick.rightBumper().onFalse(new IntakeToggle(s_IntakeJaws));
         
         DriveStick.a().whileTrue(drivetrain.applyRequest(() -> brake));
@@ -226,6 +230,7 @@ public class RobotContainer {
         CopilotStick.povUp().onTrue(new BackBallIntake(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
 
         CopilotStick.povRight().onTrue(new Barge(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
+        CopilotStick.start().onTrue(new Barge(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
         CopilotStick.povLeft().whileTrue(new intake(-0.5, s_Intake));
 
         // CopilotStick.povLeft().whileTrue(new ClimberRun(1, s_Climber));

@@ -16,13 +16,13 @@ import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.Limelight;
 import frc.robot.LimelightHelpers;
 
-public class AutoAlignToAprilTagRight extends Command {
+public class AutoAlignToAprilTagLeftLV4 extends Command {
     private final CommandSwerveDrivetrain m_drivetrain;
     private final SwerveRequest.RobotCentric m_alignRequest;
     private final Limelight m_limelight;
-    private final double kP_Distance = 0.035; // Proportional control constant
-    private final double DistanceOffset = 26.7;
-    private final double kp_Strafe = 1.34;
+    private final double kP_Distance = 0.03; // Proportional control constant
+    private final double DistanceOffset = 20;
+    private final double kp_Strafe = 1.7;
     private final double kp_Angle = 1.7;
 
     // private final CommandXboxController DriveStick = new CommandXboxController(0);
@@ -32,7 +32,7 @@ public class AutoAlignToAprilTagRight extends Command {
 
     private final SwerveRequest.RobotCentric drive = new SwerveRequest.RobotCentric();
 
-    public AutoAlignToAprilTagRight(CommandSwerveDrivetrain drivetrain, Limelight limelight) {
+    public AutoAlignToAprilTagLeftLV4(CommandSwerveDrivetrain drivetrain, Limelight limelight) {
         m_drivetrain = drivetrain;
         m_limelight = limelight;
         m_alignRequest = new SwerveRequest.RobotCentric()
@@ -43,7 +43,7 @@ public class AutoAlignToAprilTagRight extends Command {
     @Override
     public void initialize() {
         // Initialization code if needed
-        LimelightHelpers.setPipelineIndex("limelight", 1);
+        LimelightHelpers.setPipelineIndex("limelight", 0);
 
     }
 
@@ -72,15 +72,15 @@ public class AutoAlignToAprilTagRight extends Command {
 
 
         m_drivetrain.setControl(
-        m_alignRequest.withVelocityX(forwardSpeed) // Drive forward with negative Y (forward)
-            .withVelocityY(strafeSpeed) // Drive left with negative X (left)
+        m_alignRequest.withVelocityX(forwardSpeed ) // Drive forward with negative Y (forward)
+            .withVelocityY(strafeSpeed ) // Drive left with negative X (left)
             .withRotationalRate(0) // Drive counterclockwise with negative X (left)
         );
     }
 
     @Override
     public boolean isFinished() {
-        double distance = m_limelight.getDistanceToReef();
+        double distance = m_limelight.getDistanceToReef() - DistanceOffset;
         double angleError = -Units.degreesToRadians(LimelightHelpers.getTX("limelight")); // Assume you have a method to get the angle error
         double strafeError = Math.tan(angleError);
 
@@ -91,8 +91,8 @@ public class AutoAlignToAprilTagRight extends Command {
 
         // Define a condition to end the command, e.g., when the robot is close enough to the tag
         return Math.abs(forwardSpeed) < 0.1 
-        && Math.abs(turnSpeed) < 0.1;
-        // && Math.abs(strafeSpeed) < 0.1;
+        // && Math.abs(turnSpeed) < 0.1;
+        && Math.abs(strafeSpeed) < 0.1;
     }
 
     @Override
