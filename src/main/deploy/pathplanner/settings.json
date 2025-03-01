@@ -3,19 +3,21 @@
   "robotLength": 0.81,
   "holonomicMode": true,
   "pathFolders": [
-    "Floor Coral 1 to Reef",
-    "Floor Coral 2 to Reef",
-    "Floor Coral 3 to Reef",
-    "Move to Floor Coral 1",
-    "Move to Floor Coral 2",
-    "Move to Floor Coral 3",
-    "Start 1 to Reef ",
-    "Start 2 to Reef",
-    "Start 3 to Reef",
-    "Start 4 to Reef",
-    "Start 5 to Reef",
+    "Week 0.5",
     "Start 6 to Reef",
-    "Week 0.5"
+    "Start 5 to Reef",
+    "Start 4 to Reef",
+    "Start 3 to Reef",
+    "Start 2 to Reef",
+    "Start 1 to Reef ",
+    "Reef to Feed Station 2",
+    "Reef to Feed Station 1",
+    "Move to Floor Coral 3",
+    "Move to Floor Coral 2",
+    "Move to Floor Coral 1",
+    "Floor Coral 3 to Reef",
+    "Floor Coral 2 to Reef",
+    "Floor Coral 1 to Reef"
   ],
   "autoFolders": [
     "Week 0.5"
