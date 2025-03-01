@@ -11,17 +11,18 @@ import frc.robot.subsystems.ArmRot;
 import frc.robot.subsystems.IntakeJaws;
 import frc.robot.subsystems.WristRot;
 
-public class BackFloorIntake extends SequentialCommandGroup{
+public class FeedIntake extends SequentialCommandGroup{
     
-    public BackFloorIntake(ArmRot s_ArmRot, ArmExtend s_ArmExtend, WristRot s_WristRot, IntakeJaws s_IntakeJaws){
+    public FeedIntake(ArmRot s_ArmRot, ArmExtend s_ArmExtend, WristRot s_WristRot, IntakeJaws s_IntakeJaws){
 
         addCommands(
             new IntakeClose(s_IntakeJaws),
             new ArmExtendToSetpoint(-0.93,2, s_ArmExtend),
             new WristRotToSetpoint(0,0.1, s_WristRot),
-            new ArmRotToSetpoint(-0.09,0.01, s_ArmRot),
-            new ArmExtendToSetpoint(2.1,3, s_ArmExtend),
-            new WristRotToSetpoint(0.14,0.01, s_WristRot)
+            new ArmRotToSetpoint(-0.238,0.01, s_ArmRot),
+            new IntakeOpen(s_IntakeJaws)
+            // new ArmExtendToSetpoint(-0.93,3, s_ArmExtend),
+            // new WristRotToSetpoint(0,0.01, s_WristRot)
         );
     }
 }

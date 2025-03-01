@@ -61,7 +61,7 @@ public class ArmRot extends SubsystemBase{
         softLimit.ForwardSoftLimitEnable = true;
         softLimit.ForwardSoftLimitThreshold = .5;
         softLimit.ReverseSoftLimitEnable = true;
-        softLimit.ReverseSoftLimitThreshold = -.5;
+        softLimit.ReverseSoftLimitThreshold = -1;
 
         
         Slot0Configs slot0 = TalonFXConfig.Slot0;

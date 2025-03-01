@@ -16,13 +16,13 @@ import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.Limelight;
 import frc.robot.LimelightHelpers;
 
-public class AutoAlignToAprilTagLeft extends Command {
+public class AutoAlignToAprilTagLeftAuto extends Command {
     private final CommandSwerveDrivetrain m_drivetrain;
     private final SwerveRequest.RobotCentric m_alignRequest;
     private final Limelight m_limelight;
-    private final double kP_Distance = 0.035; // Proportional control constant
-    private final double DistanceOffset = 26.7;
-    private final double kp_Strafe = 1.3;
+    private final double kP_Distance = 0.025; // Proportional control constant
+    private final double DistanceOffset = 24.2;
+    private final double kp_Strafe = 1.1;
     private final double kp_Angle = 1.7;
 
     // private final CommandXboxController DriveStick = new CommandXboxController(0);
@@ -32,7 +32,7 @@ public class AutoAlignToAprilTagLeft extends Command {
 
     private final SwerveRequest.RobotCentric drive = new SwerveRequest.RobotCentric();
 
-    public AutoAlignToAprilTagLeft(CommandSwerveDrivetrain drivetrain, Limelight limelight) {
+    public AutoAlignToAprilTagLeftAuto(CommandSwerveDrivetrain drivetrain, Limelight limelight) {
         m_drivetrain = drivetrain;
         m_limelight = limelight;
         m_alignRequest = new SwerveRequest.RobotCentric()
@@ -72,8 +72,8 @@ public class AutoAlignToAprilTagLeft extends Command {
 
 
         m_drivetrain.setControl(
-        m_alignRequest.withVelocityX(forwardSpeed * 1) // Drive forward with negative Y (forward)
-            .withVelocityY(strafeSpeed * 1) // Drive left with negative X (left)
+        m_alignRequest.withVelocityX(forwardSpeed) // Drive forward with negative Y (forward)
+            .withVelocityY(strafeSpeed) // Drive left with negative X (left)
             .withRotationalRate(0) // Drive counterclockwise with negative X (left)
         );
     }

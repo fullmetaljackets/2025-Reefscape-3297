@@ -20,9 +20,9 @@ public class AutoAlignToAprilTagRight extends Command {
     private final CommandSwerveDrivetrain m_drivetrain;
     private final SwerveRequest.RobotCentric m_alignRequest;
     private final Limelight m_limelight;
-    private final double kP_Distance = 0.025; // Proportional control constant
+    private final double kP_Distance = 0.035; // Proportional control constant
     private final double DistanceOffset = 26.7;
-    private final double kp_Strafe = 1.1;
+    private final double kp_Strafe = 1.34;
     private final double kp_Angle = 1.7;
 
     // private final CommandXboxController DriveStick = new CommandXboxController(0);
