@@ -10,17 +10,17 @@ import frc.robot.subsystems.ArmRot;
 import frc.robot.subsystems.IntakeJaws;
 import frc.robot.subsystems.WristRot;
 
-public class ReefLV2 extends SequentialCommandGroup{
-    public ReefLV2(ArmRot s_ArmRot, ArmExtend s_ArmExtend, WristRot s_WristRot, IntakeJaws s_IntakeJaws){
+public class ReefLV3Over extends SequentialCommandGroup{
+
+    public ReefLV3Over(ArmRot s_ArmRot, ArmExtend s_ArmExtend, WristRot s_WristRot, IntakeJaws s_IntakeJaws){
 
         addCommands(
             new IntakeClose(s_IntakeJaws),
             new ArmExtendToSetpoint(-0.93,4.5, s_ArmExtend),
             new WristRotToSetpoint(0,0.01, s_WristRot),
-            new ArmRotToSetpoint(0.34,0.1,s_ArmRot),
+            new ArmRotToSetpoint(-0.59,0.1,s_ArmRot),
             new ArmExtendToSetpoint(-0.93,0.1, s_ArmExtend),
-            new WristRotToSetpoint(0.03,0.01, s_WristRot)
+            new WristRotToSetpoint(0.05,0.01, s_WristRot)
         );
     }
-
 }

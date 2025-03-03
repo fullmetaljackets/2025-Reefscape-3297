@@ -8,59 +8,53 @@ import static edu.wpi.first.units.Units.MetersPerSecond;
 import static edu.wpi.first.units.Units.RadiansPerSecond;
 import static edu.wpi.first.units.Units.RotationsPerSecond;
 
-import java.util.jar.Attributes.Name;
-
 import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
 import com.ctre.phoenix6.swerve.SwerveModule.SteerRequestType;
-import com.ctre.phoenix6.swerve.jni.SwerveJNI.DriveState;
 import com.ctre.phoenix6.swerve.SwerveRequest;
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
 
-import edu.wpi.first.math.filter.SlewRateLimiter;
-import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Command.InterruptionBehavior;
-import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
-import frc.robot.commands.grouped.AutoBackFloorIntake;
-import frc.robot.commands.grouped.BackFloorIntake;
-import frc.robot.commands.grouped.AutoBackFloorIntake;
-import frc.robot.commands.grouped.BallIntake;
-import frc.robot.commands.grouped.Barge;
-import frc.robot.commands.grouped.LV3Algee;
-import frc.robot.commands.grouped.ReefLV4;
-import frc.robot.commands.grouped.Middle;
-import frc.robot.commands.grouped.ReefLV3;
-import frc.robot.commands.grouped.ReefLV2;
-import frc.robot.commands.grouped.ReefLV1;
 import frc.robot.commands.ArmExtendRun;
-import frc.robot.commands.ArmExtendToSetpoint;
 import frc.robot.commands.ArmRotRun;
-import frc.robot.commands.ArmRotToSetpoint;
-import frc.robot.commands.AutoAlignReef;
-import frc.robot.commands.AutoAlignToAprilTagLeft;
-import frc.robot.commands.AutoAlignToAprilTagRight;
+import frc.robot.commands.AutoAlignToAprilTagLeftLV4;
+import frc.robot.commands.AutoAlignToAprilTagLeftLV3;
+import frc.robot.commands.AutoAlignToAprilTagRightLV4;
+import frc.robot.commands.AutoAlignToAprilTagRightLV3;
 import frc.robot.commands.ClimberRun;
 import frc.robot.commands.IntakeClose;
 import frc.robot.commands.IntakeToggle;
 import frc.robot.commands.WristRotRun;
-import frc.robot.commands.WristRotToSetpoint;
 import frc.robot.commands.intake;
+import frc.robot.commands.grouped.AutoBackFloorIntake;
+import frc.robot.commands.grouped.AutoReefLV4Over;
+import frc.robot.commands.grouped.BackBallIntake;
+import frc.robot.commands.grouped.BackFloorIntake;
+import frc.robot.commands.grouped.Barge;
+import frc.robot.commands.grouped.FeedIntake;
+import frc.robot.commands.grouped.Middle;
+import frc.robot.commands.grouped.ReefLV1;
+import frc.robot.commands.grouped.ReefLV2;
+import frc.robot.commands.grouped.ReefLV2Over;
+import frc.robot.commands.grouped.ReefLV3Over;
+import frc.robot.commands.grouped.ReefLV4;
+import frc.robot.commands.grouped.ReefLV4Over;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.ArmExtend;
 import frc.robot.subsystems.ArmRot;
+import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.IntakeJaws;
 import frc.robot.subsystems.LEDSubsystem;
 import frc.robot.subsystems.Limelight;
 import frc.robot.subsystems.WristRot;
-import frc.robot.subsystems.Climber;
 
 
 
@@ -106,10 +100,14 @@ public class RobotContainer {
         configureBindings();
 
         NamedCommands.registerCommand("AutoL4", new ReefLV4(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
-        NamedCommands.registerCommand("AutoL2", new ReefLV2(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
+        // NamedCommands.registerCommand("AutoL2", new ReefLV2(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
+
         NamedCommands.registerCommand("place coral", new intake(.18, s_Intake).withTimeout(0.5));
         NamedCommands.registerCommand("floor intake", new AutoBackFloorIntake(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
         NamedCommands.registerCommand("Close Intake", new IntakeClose(s_IntakeJaws));
+        //limelight auto alignment 
+        NamedCommands.registerCommand("align left", new AutoAlignToAprilTagLeftLV4(drivetrain, s_Limelight));
+        NamedCommands.registerCommand("align right", new AutoAlignToAprilTagRightLV4(drivetrain, s_Limelight));
 
         autoChooser = AutoBuilder.buildAutoChooser();
         SmartDashboard.putData("Auto Chooser", autoChooser);
@@ -169,15 +167,24 @@ public class RobotContainer {
 
 
         //Limelight AutoAlignReef
-        DriveStick.leftBumper().and(DriveStick.povLeft()).whileTrue(new AutoAlignToAprilTagLeft(drivetrain, s_Limelight).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
-        DriveStick.leftBumper().and(DriveStick.povRight()).whileTrue(new AutoAlignToAprilTagRight(drivetrain, s_Limelight).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
+        DriveStick.leftBumper().and(DriveStick.povLeft()).onTrue(new AutoAlignToAprilTagLeftLV4(drivetrain, s_Limelight).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
+        DriveStick.leftBumper().and(DriveStick.povRight()).onTrue(new AutoAlignToAprilTagRightLV4(drivetrain, s_Limelight).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
+        
+        DriveStick.leftBumper().and(DriveStick.povDown()).onTrue(new AutoAlignToAprilTagLeftLV3(drivetrain, s_Limelight).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
+        DriveStick.leftBumper().and(DriveStick.povUp()).onTrue(new AutoAlignToAprilTagRightLV3(drivetrain, s_Limelight).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
+
         
 
+        DriveStick.start().onTrue(new FeedIntake(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
         //DriveStick controls
         // DriveStick.x().whileTrue(new intake(0.18, s_Intake));
         // DriveStick.y().whileTrue(new intake(-0.2, s_Intake));
         DriveStick.rightTrigger().whileTrue(new intake(0.18, s_Intake));
+        DriveStick.rightTrigger().whileFalse(new intake(-0.03, s_Intake));
+
         DriveStick.leftTrigger().whileTrue(new intake(-0.2, s_Intake));
+        DriveStick.leftTrigger().whileFalse(new intake(-0.03, s_Intake));
+
         DriveStick.rightBumper().onFalse(new IntakeToggle(s_IntakeJaws));
         
         DriveStick.a().whileTrue(drivetrain.applyRequest(() -> brake));
@@ -189,6 +196,10 @@ public class RobotContainer {
         DriveStick.y().and(DriveStick.povDown()).whileTrue(new ArmExtendRun(-0.2, s_ArmExtend));
         // DriveStick.x().whileTrue(new ArmExtendRun(-0.2, s_ArmExtend));
         // DriveStick.y().whileTrue(new ArmExtendRun(0.2, s_ArmExtend));
+
+        //Climber
+        DriveStick.y().and(DriveStick.povRight()).whileTrue(new ClimberRun(-0.8, s_Climber));
+        DriveStick.y().and(DriveStick.povLeft()).whileTrue(new ClimberRun(0.8, s_Climber));
 
         // //manualy adjust arm rot
         DriveStick.x().and(DriveStick.povUp()).whileTrue(new ArmRotRun(0.4, s_ArmRot));
@@ -204,21 +215,26 @@ public class RobotContainer {
 
 
         //CopilotStick controls
-        CopilotStick.a().onTrue(new ReefLV1(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws).alongWith(new PrintCommand("Hello World 1")));
-        CopilotStick.b().onTrue(new ReefLV2(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws).alongWith(new PrintCommand("Hello World 2")));
-        CopilotStick.x().onTrue(new ReefLV3(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws).alongWith(new PrintCommand("Hello World 3")));
-        CopilotStick.y().onTrue(new ReefLV4(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws).alongWith(new PrintCommand("Hello World 4")));
+        CopilotStick.b().onTrue(new ReefLV1(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws).alongWith(new PrintCommand("Hello World 1")));
+        CopilotStick.a().onTrue(new ReefLV2(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws).alongWith(new PrintCommand("Hello World 2")));
+        CopilotStick.x().onTrue(new ReefLV3Over(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws).alongWith(new PrintCommand("Hello World 3")));
+        CopilotStick.y().onTrue(new ReefLV4Over(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws).alongWith(new PrintCommand("Hello World 4")));
         //CopilotStick.y().onTrue(new PrintCommand("Y Pressed"));
         
         CopilotStick.rightTrigger().onTrue(new BackFloorIntake(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
-        CopilotStick.leftTrigger().onTrue(new BallIntake(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
+        CopilotStick.leftTrigger().onTrue(new Middle(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
 
-        CopilotStick.rightBumper().onTrue(new Middle(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
-        CopilotStick.leftBumper().whileTrue(new intake(-0.5, s_Intake));
+        CopilotStick.rightBumper().and(CopilotStick.y()).onTrue(new AutoReefLV4Over(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
+        // CopilotStick.leftBumper().whileTrue(new intake(-0.5, s_Intake));
 
-        CopilotStick.povUp().onTrue(new Barge(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
-        CopilotStick.povLeft().whileTrue(new ClimberRun(1, s_Climber));
-        CopilotStick.povRight().whileTrue(new ClimberRun(-1, s_Climber));
+        CopilotStick.povUp().onTrue(new BackBallIntake(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
+
+        CopilotStick.povRight().onTrue(new Barge(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
+        CopilotStick.start().onTrue(new Barge(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
+        CopilotStick.povLeft().whileTrue(new intake(-0.5, s_Intake));
+
+        // CopilotStick.povLeft().whileTrue(new ClimberRun(1, s_Climber));
+        // CopilotStick.povRight().whileTrue(new ClimberRun(-1, s_Climber));
 
 
         // Joystick controls for arm motor

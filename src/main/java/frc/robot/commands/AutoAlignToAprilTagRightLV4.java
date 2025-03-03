@@ -16,13 +16,13 @@ import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.Limelight;
 import frc.robot.LimelightHelpers;
 
-public class AutoAlignToAprilTagLeft extends Command {
+public class AutoAlignToAprilTagRightLV4 extends Command {
     private final CommandSwerveDrivetrain m_drivetrain;
     private final SwerveRequest.RobotCentric m_alignRequest;
     private final Limelight m_limelight;
-    private final double kP_Distance = 0.025; // Proportional control constant
-    private final double DistanceOffset = 26.7;
-    private final double kp_Strafe = 1.1;
+    private final double kP_Distance = 0.03; // Proportional control constant
+    private final double DistanceOffset = 20;
+    private final double kp_Strafe = 1.7;
     private final double kp_Angle = 1.7;
 
     // private final CommandXboxController DriveStick = new CommandXboxController(0);
@@ -32,7 +32,7 @@ public class AutoAlignToAprilTagLeft extends Command {
 
     private final SwerveRequest.RobotCentric drive = new SwerveRequest.RobotCentric();
 
-    public AutoAlignToAprilTagLeft(CommandSwerveDrivetrain drivetrain, Limelight limelight) {
+    public AutoAlignToAprilTagRightLV4(CommandSwerveDrivetrain drivetrain, Limelight limelight) {
         m_drivetrain = drivetrain;
         m_limelight = limelight;
         m_alignRequest = new SwerveRequest.RobotCentric()
@@ -43,7 +43,7 @@ public class AutoAlignToAprilTagLeft extends Command {
     @Override
     public void initialize() {
         // Initialization code if needed
-        LimelightHelpers.setPipelineIndex("limelight", 0);
+        LimelightHelpers.setPipelineIndex("limelight", 1);
 
     }
 
@@ -80,7 +80,7 @@ public class AutoAlignToAprilTagLeft extends Command {
 
     @Override
     public boolean isFinished() {
-        double distance = m_limelight.getDistanceToReef();
+        double distance = m_limelight.getDistanceToReef() - DistanceOffset;
         double angleError = -Units.degreesToRadians(LimelightHelpers.getTX("limelight")); // Assume you have a method to get the angle error
         double strafeError = Math.tan(angleError);
 
@@ -91,8 +91,8 @@ public class AutoAlignToAprilTagLeft extends Command {
 
         // Define a condition to end the command, e.g., when the robot is close enough to the tag
         return Math.abs(forwardSpeed) < 0.1 
-        && Math.abs(turnSpeed) < 0.1;
-        // && Math.abs(strafeSpeed) < 0.1;
+        // && Math.abs(turnSpeed) < 0.1;
+        && Math.abs(strafeSpeed) < 0.1;
     }
 
     @Override
