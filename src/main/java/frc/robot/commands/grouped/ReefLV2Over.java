@@ -10,17 +10,18 @@ import frc.robot.subsystems.ArmRot;
 import frc.robot.subsystems.IntakeJaws;
 import frc.robot.subsystems.WristRot;
 
-public class BallIntake extends SequentialCommandGroup{
-    
-    public BallIntake(ArmRot s_ArmRot, ArmExtend s_ArmExtend, WristRot s_WristRot, IntakeJaws s_IntakeJaws){
+public class ReefLV2Over extends SequentialCommandGroup{
+    public ReefLV2Over(ArmRot s_ArmRot, ArmExtend s_ArmExtend, WristRot s_WristRot, IntakeJaws s_IntakeJaws){
 
         addCommands(
             new IntakeClose(s_IntakeJaws),
+            new ArmExtendToSetpoint(-0.93,4.5, s_ArmExtend),
             new WristRotToSetpoint(0,0.01, s_WristRot),
-            new ArmExtendToSetpoint(-0.93,0.1, s_ArmExtend),
-            new ArmRotToSetpoint(-0.09,0.01, s_ArmRot),
-            new ArmExtendToSetpoint(0,0.1, s_ArmExtend),
-            new WristRotToSetpoint(0.12,0.01, s_WristRot)
+            new ArmRotToSetpoint(-0.5,0.1,s_ArmRot),
+            new WristRotToSetpoint(0.62, 0.01, s_WristRot),
+            new ArmRotToSetpoint(-0.83, 0.01, s_ArmRot),
+            new ArmExtendToSetpoint(-0.93,0.1, s_ArmExtend)
         );
     }
+
 }

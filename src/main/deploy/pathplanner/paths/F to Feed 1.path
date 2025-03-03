@@ -3,41 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 7.272431506849315,
-        "y": 1.8537885273972596
+        "x": 5.354744318181819,
+        "y": 2.87328125
       },
       "prevControl": null,
       "nextControl": {
-        "x": 5.980222602739726,
-        "y": 2.3346104452054792
+        "x": 3.2507386363636357,
+        "y": 0.6296732954545452
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 3.0652397260273974,
-        "y": 4.197795376712328
+        "x": 1.31625,
+        "y": 6.94169034090909
       },
       "prevControl": {
-        "x": 3.0952910958904107,
-        "y": 1.56830051369863
-      },
-      "nextControl": {
-        "x": 3.035188356164384,
-        "y": 6.827290239726027
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
-        "x": 3.0413352272727274,
-        "y": 4.149644886363635
-      },
-      "prevControl": {
-        "x": 3.038261791718556,
-        "y": 5.488467563044831
+        "x": 1.529354757087041,
+        "y": 6.810975527261695
       },
       "nextControl": null,
       "isLocked": false,
@@ -58,13 +42,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": 135.0
   },
   "reversed": false,
-  "folder": "Start 2 to Reef",
+  "folder": "Reef to Feed Station 1",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": 119.99999999999999
   },
   "useDefaultConstraints": true
 }

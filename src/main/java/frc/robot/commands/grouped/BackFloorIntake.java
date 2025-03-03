@@ -19,9 +19,9 @@ public class BackFloorIntake extends SequentialCommandGroup{
             new IntakeClose(s_IntakeJaws),
             new ArmExtendToSetpoint(-0.93,2, s_ArmExtend),
             new WristRotToSetpoint(0,0.1, s_WristRot),
-            new ArmRotToSetpoint(-0.095,0.01, s_ArmRot),
-            new ArmExtendToSetpoint(2.8,3, s_ArmExtend),
-            new WristRotToSetpoint(0.12,0.01, s_WristRot)
+            new ArmRotToSetpoint(-0.09,0.01, s_ArmRot),
+            new ArmExtendToSetpoint(2.1,3, s_ArmExtend),
+            new WristRotToSetpoint(0.14,0.01, s_WristRot)
         );
     }
 }
