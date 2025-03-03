@@ -4,28 +4,28 @@
     {
       "anchor": {
         "x": 5.319092465753425,
-        "y": 5.174464897260274
+        "y": 5.144413527397259
       },
       "prevControl": null,
       "nextControl": {
         "x": 4.312371575342466,
-        "y": 6.19621147260274
+        "y": 6.166160102739726
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Reef Point I"
     },
     {
       "anchor": {
-        "x": 2.0,
-        "y": 5.820569349315068
+        "x": 1.8932363013698632,
+        "y": 5.805543664383562
       },
       "prevControl": {
-        "x": 2.4642123287671236,
-        "y": 5.610209760273973
+        "x": 2.357448630136987,
+        "y": 5.595184075342466
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Floor 1 Coral"
     }
   ],
   "rotationTargets": [],
@@ -42,7 +42,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": 0.0
   },
   "reversed": false,
   "folder": "Move to Floor Coral 1",

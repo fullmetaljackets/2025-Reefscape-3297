@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.125342465753425,
-        "y": 4.182769691780822
+        "x": 3.0502140410958902,
+        "y": 4.212821061643836
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.878210616438356,
-        "y": 4.092615582191781
+        "x": 1.8030821917808213,
+        "y": 4.122666952054795
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Reef Point A"
     },
     {
       "anchor": {
-        "x": 2.0,
-        "y": 3.9874357876712327
+        "x": 1.90826198630137,
+        "y": 4.077589897260274
       },
       "prevControl": {
-        "x": 2.240242947439379,
-        "y": 4.0565973825461334
+        "x": 2.1485049337407487,
+        "y": 4.1467514921351745
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Floor 2 Coral"
     }
   ],
   "rotationTargets": [],
@@ -42,7 +42,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": 0.0
   },
   "reversed": false,
   "folder": "Move to Floor Coral 2",
