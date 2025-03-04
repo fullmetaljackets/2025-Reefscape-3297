@@ -7,7 +7,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Start 6 to A"
+            "pathName": "Start 1 to A"
           }
         },
         {
@@ -15,11 +15,17 @@
           "data": {
             "pathName": "A to Floor 1"
           }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Floor 1 to B"
+          }
         }
       ]
     }
   },
   "resetOdom": true,
-  "folder": "¯_(ツ)_¯",
+  "folder": "I have no idea what to call this folder",
   "choreoAuto": false
 }
