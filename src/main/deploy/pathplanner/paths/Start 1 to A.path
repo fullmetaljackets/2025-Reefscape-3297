@@ -9,23 +9,23 @@
       "prevControl": null,
       "nextControl": {
         "x": 5.3341181506849304,
-        "y": 0.9372217465753422
+        "y": 0.9372217465753421
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Starting poistion 1"
     },
     {
       "anchor": {
-        "x": 2.914982876712329,
-        "y": 4.152718321917808
+        "x": 3.0502140410958902,
+        "y": 4.212821061643836
       },
       "prevControl": {
-        "x": 3.846575342465753,
-        "y": 0.8921446917808211
+        "x": 2.7196489726027395,
+        "y": 2.034096746575342
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Reef Point A"
     }
   ],
   "rotationTargets": [],
@@ -42,7 +42,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 1.7357045889283702
+    "rotation": 0.0
   },
   "reversed": false,
   "folder": "Start 1 to Reef ",

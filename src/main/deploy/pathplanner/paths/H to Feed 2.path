@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 5.853323863636364,
-        "y": 3.870440340909091
+        "x": 5.950171232876712,
+        "y": 4.197795376712328
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.359034090909091,
-        "y": 2.853338068181819
+        "x": 6.265710616438356,
+        "y": 1.2227097602739723
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Reef Point H"
     },
     {
       "anchor": {
-        "x": 1.0968749999999998,
-        "y": 1.1382244318181813
+        "x": 1.397388698630137,
+        "y": 0.937221746575342
       },
       "prevControl": {
-        "x": 0.8289526480020794,
-        "y": 1.0650758937501235
+        "x": 1.1294663466322166,
+        "y": 0.8640732085072841
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Feed Station 2"
     }
   ],
   "rotationTargets": [],

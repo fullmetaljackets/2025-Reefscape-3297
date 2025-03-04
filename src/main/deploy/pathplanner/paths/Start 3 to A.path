@@ -12,20 +12,20 @@
         "y": 2.1543022260273976
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Starting Posistion 3"
     },
     {
       "anchor": {
-        "x": 3.0351883561643835,
-        "y": 4.167744006849315
+        "x": 3.0502140410958902,
+        "y": 4.212821061643836
       },
       "prevControl": {
-        "x": 3.080265410958904,
-        "y": 2.3045590753424654
+        "x": 3.0952910958904107,
+        "y": 2.3496361301369864
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Reef Point A"
     }
   ],
   "rotationTargets": [],

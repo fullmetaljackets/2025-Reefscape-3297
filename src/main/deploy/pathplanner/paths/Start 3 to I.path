@@ -9,23 +9,23 @@
       "prevControl": null,
       "nextControl": {
         "x": 6.400941780821918,
-        "y": 4.423180650684931
+        "y": 4.423180650684932
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Starting Posistion 3"
     },
     {
       "anchor": {
-        "x": 5.334118150684932,
-        "y": 5.189490582191781
+        "x": 5.319092465753425,
+        "y": 5.144413527397259
       },
       "prevControl": {
-        "x": 5.920119863013699,
-        "y": 4.693642979452054
+        "x": 5.905094178082192,
+        "y": 4.648565924657532
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Reef Point I"
     }
   ],
   "rotationTargets": [],
@@ -42,7 +42,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -121.0
+    "rotation": -119.99999999999999
   },
   "reversed": false,
   "folder": "Start 3 to Reef",

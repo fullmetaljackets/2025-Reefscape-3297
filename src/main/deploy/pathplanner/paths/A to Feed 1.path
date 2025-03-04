@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.0812215909090908,
-        "y": 4.18953125
+        "x": 3.0502140410958902,
+        "y": 4.212821061643836
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.1534104509353504,
-        "y": 5.693279515757461
+        "x": 3.12240290112215,
+        "y": 5.716569327401297
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Reef Point A"
     },
     {
       "anchor": {
-        "x": 1.286335227272727,
-        "y": 7.001519886363636
+        "x": 1.5972039473684208,
+        "y": 7.180921052631579
       },
       "prevControl": {
-        "x": 1.3397101181325122,
-        "y": 6.757284096550378
+        "x": 1.6505788382282058,
+        "y": 6.936685262818321
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Feed Station 1"
     }
   ],
   "rotationTargets": [],
@@ -42,7 +42,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 135.0
+    "rotation": 127.17117236577351
   },
   "reversed": false,
   "folder": "Reef to Feed Station 1",

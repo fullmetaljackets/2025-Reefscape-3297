@@ -4,28 +4,28 @@
     {
       "anchor": {
         "x": 7.272431506849315,
-        "y": 1.9289169520547944
+        "y": 1.8537885273972596
       },
       "prevControl": null,
       "nextControl": {
         "x": 6.3258133561643834,
-        "y": 1.9890196917808216
+        "y": 1.9138912671232868
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Starting posistion 2"
     },
     {
       "anchor": {
         "x": 5.334118150684932,
-        "y": 2.95066352739726
+        "y": 2.8755351027397262
       },
       "prevControl": {
         "x": 5.649657534246575,
-        "y": 2.3796875
+        "y": 2.3045590753424663
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Reef Point F"
     }
   ],
   "rotationTargets": [],
@@ -42,7 +42,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 124.0
+    "rotation": 119.99999999999999
   },
   "reversed": false,
   "folder": "Start 2 to Reef",

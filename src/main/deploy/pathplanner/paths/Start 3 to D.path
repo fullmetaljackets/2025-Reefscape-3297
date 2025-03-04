@@ -12,20 +12,20 @@
         "y": 2.845483732876712
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Starting Posistion 3"
     },
     {
       "anchor": {
-        "x": 3.981806506849315,
-        "y": 2.6952268835616437
+        "x": 3.8766267123287674,
+        "y": 2.725278253424658
       },
       "prevControl": {
-        "x": 5.063655821917808,
-        "y": 2.244456335616438
+        "x": 4.958476027397261,
+        "y": 2.2745077054794525
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Reef Point D"
     }
   ],
   "rotationTargets": [],
@@ -42,7 +42,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 61.0
+    "rotation": 59.99999999999999
   },
   "reversed": false,
   "folder": "Start 3 to Reef",

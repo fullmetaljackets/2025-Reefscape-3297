@@ -12,36 +12,20 @@
         "y": 2.3346104452054792
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Starting posistion 2"
     },
     {
       "anchor": {
-        "x": 3.0652397260273974,
-        "y": 4.197795376712328
+        "x": 3.0502140410958902,
+        "y": 4.212821061643836
       },
       "prevControl": {
-        "x": 3.0952910958904107,
-        "y": 1.56830051369863
-      },
-      "nextControl": {
-        "x": 3.035188356164384,
-        "y": 6.827290239726027
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
-        "x": 3.0413352272727274,
-        "y": 4.149644886363635
-      },
-      "prevControl": {
-        "x": 3.038261791718556,
-        "y": 5.488467563044831
+        "x": 2.052371964508094,
+        "y": 1.6465023739103386
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Reef Point A"
     }
   ],
   "rotationTargets": [],

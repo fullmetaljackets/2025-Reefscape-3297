@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 7.257405821917809,
-        "y": 1.883839897260274
+        "x": 7.272431506849315,
+        "y": 1.8537885273972596
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.3258133561643834,
-        "y": 3.296254280821918
+        "x": 6.340839041095889,
+        "y": 3.2662029109589037
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Starting posistion 2"
     },
     {
       "anchor": {
-        "x": 5.860017123287671,
-        "y": 3.8371789383561645
+        "x": 5.950171232876712,
+        "y": 3.882255993150685
       },
       "prevControl": {
-        "x": 6.806635273972603,
-        "y": 2.9656892123287673
+        "x": 6.896789383561644,
+        "y": 3.0107662671232878
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Reef Point G"
     }
   ],
   "rotationTargets": [],
