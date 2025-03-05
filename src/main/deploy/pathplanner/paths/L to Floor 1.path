@@ -8,8 +8,8 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.704623287671233,
-        "y": 5.2195419520547945
+        "x": 3.0051369863013697,
+        "y": 5.610209760273973
       },
       "isLocked": false,
       "linkedName": "Reef Point L"
@@ -28,10 +28,22 @@
       "linkedName": "Floor 1 Coral"
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.3796791443850269,
+      "rotationDegrees": 0.0
+    }
+  ],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "floor intake",
+      "waypointRelativePos": 0.2,
+      "endWaypointRelativePos": null,
+      "command": null
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 1.0,
     "maxAcceleration": 1.0,

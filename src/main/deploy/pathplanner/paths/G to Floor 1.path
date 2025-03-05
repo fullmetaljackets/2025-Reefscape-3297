@@ -20,18 +20,30 @@
         "y": 5.805543664383562
       },
       "prevControl": {
-        "x": 2.357448630136987,
-        "y": 5.595184075342466
+        "x": 2.1486729452054796,
+        "y": 5.159439212328767
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": "Floor 1 Coral"
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.3155080213903737,
+      "rotationDegrees": 0.0
+    }
+  ],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "floor intake",
+      "waypointRelativePos": 0.4,
+      "endWaypointRelativePos": null,
+      "command": null
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 1.0,
     "maxAcceleration": 1.0,
