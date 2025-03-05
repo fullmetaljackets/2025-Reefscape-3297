@@ -20,8 +20,13 @@
     "Floor Coral 1 to Reef"
   ],
   "autoFolders": [
-    "I have no idea what to call this folder",
-    "Week 0.5"
+    "Week 0.5",
+    "Start-1-E-Floor1",
+    "Start-1-D-Floor1",
+    "Start-1-C-Floor1",
+    "Start-1-B-Floor1",
+    "Start-1-A-Floor1",
+    "Start-1-F-Floor1"
   ],
   "defaultMaxVel": 1.0,
   "defaultMaxAccel": 1.0,
