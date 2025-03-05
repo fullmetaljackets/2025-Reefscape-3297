@@ -1,0 +1,43 @@
+{
+  "version": "2025.0",
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Start 2 to A"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "place coral"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "A to Floor 1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Close Intake"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Floor 1 to B"
+          }
+        }
+      ]
+    }
+  },
+  "resetOdom": true,
+  "folder": null,
+  "choreoAuto": false
+}

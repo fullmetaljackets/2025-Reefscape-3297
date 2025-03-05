@@ -20,18 +20,30 @@
         "y": 5.144413527397259
       },
       "prevControl": {
-        "x": 4.417551369863013,
-        "y": 5.655286815068494
+        "x": 4.372474315068493,
+        "y": 6.091031678082191
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": "Reef Point I"
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.1844919786096257,
+      "rotationDegrees": -119.99999999999999
+    }
+  ],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "AutoL4",
+      "waypointRelativePos": 0.3,
+      "endWaypointRelativePos": null,
+      "command": null
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 1.0,
     "maxAcceleration": 1.0,
