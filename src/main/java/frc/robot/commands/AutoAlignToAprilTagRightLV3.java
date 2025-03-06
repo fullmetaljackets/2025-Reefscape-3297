@@ -21,7 +21,7 @@ public class AutoAlignToAprilTagRightLV3 extends Command {
     private final SwerveRequest.RobotCentric m_alignRequest;
     private final Limelight m_limelight;
     private final double kP_Distance = 0.03; // Proportional control constant
-    private final double DistanceOffset = 29;
+    private final double DistanceOffset = 35;
     private final double kp_Strafe = 1.7;
     private final double kp_Angle = 1.7;
 

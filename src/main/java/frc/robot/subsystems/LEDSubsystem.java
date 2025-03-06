@@ -9,10 +9,11 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class LEDSubsystem extends SubsystemBase {
   public static final int kPort = 9;
-  public static final int kLength = 300;
+  public static final int kLength = 77;
 
   public final AddressableLED m_led;
   public final AddressableLEDBuffer m_buffer;
+  public final Color yellow = new Color(200, 252, 0);
 
   public LEDSubsystem() {
     m_led = new AddressableLED(kPort);
@@ -24,7 +25,9 @@ public class LEDSubsystem extends SubsystemBase {
     // the last command to run will continue to be displayed.
     // Note: Other default patterns could be used instead!
 
-    setDefaultCommand(runPattern(LEDPattern.rainbow(255, 128)).withName("rainbow"));
+    // setDefaultCommand(runPattern(LEDPattern.gradient(GradientType.kContinuous,  Color.kRed, Color.kBlue)));
+    setDefaultCommand(runPattern(LEDPattern.solid(yellow)));
+    
     // runPattern(LEDPattern.rainbow(255, 128)).withName("rainbow");
   }
 

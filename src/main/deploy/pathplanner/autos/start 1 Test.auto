@@ -1,0 +1,73 @@
+{
+  "version": "2025.0",
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Start 1 to F"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "align right"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "place coral"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "F to Floor 3"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Close Intake"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.3
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "pipeline left"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Floor 3 to A"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "align left"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "open intake"
+          }
+        }
+      ]
+    }
+  },
+  "resetOdom": true,
+  "folder": "Week 0.5",
+  "choreoAuto": false
+}

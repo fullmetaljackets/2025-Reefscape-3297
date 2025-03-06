@@ -17,10 +17,9 @@ public class ReefLV2Over extends SequentialCommandGroup{
             new IntakeClose(s_IntakeJaws),
             new ArmExtendToSetpoint(-0.93,4.5, s_ArmExtend),
             new WristRotToSetpoint(0,0.01, s_WristRot),
-            new ArmRotToSetpoint(-0.5,0.1,s_ArmRot),
-            new WristRotToSetpoint(0.62, 0.01, s_WristRot),
-            new ArmRotToSetpoint(-0.83, 0.01, s_ArmRot),
-            new ArmExtendToSetpoint(-0.93,0.1, s_ArmExtend)
+            new ArmRotToSetpoint(-0.66,0.1,s_ArmRot),
+            new ArmExtendToSetpoint(-0.93,0.1, s_ArmExtend),
+            new WristRotToSetpoint(0.03,0.01, s_WristRot)
         );
     }
 

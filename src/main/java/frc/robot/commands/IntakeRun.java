@@ -8,17 +8,17 @@ import frc.robot.subsystems.Intake;
 /**
  *
  */
-public class intake extends Command {
+public class IntakeRun extends Command {
 
     private final Intake s_Intake;
     private double m_IntakeSpeed;
  
 
-    public intake(double IntakeSpeed, Intake subsystem) {
+    public IntakeRun(double IntakeSpeed, Intake subsystem) {
         m_IntakeSpeed = IntakeSpeed;
 
         s_Intake = subsystem;
-        addRequirements(subsystem);
+        addRequirements(s_Intake);
 
     }
 
