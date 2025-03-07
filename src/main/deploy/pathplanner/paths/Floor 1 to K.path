@@ -41,7 +41,12 @@
       "name": "AutoL4",
       "waypointRelativePos": 0.25,
       "endWaypointRelativePos": null,
-      "command": null
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "L4"
+        }
+      }
     }
   ],
   "globalConstraints": {

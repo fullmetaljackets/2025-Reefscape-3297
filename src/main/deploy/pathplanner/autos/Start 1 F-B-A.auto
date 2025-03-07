@@ -5,9 +5,15 @@
     "data": {
       "commands": [
         {
+          "type": "named",
+          "data": {
+            "name": "pipeline right"
+          }
+        },
+        {
           "type": "path",
           "data": {
-            "pathName": "Start 1 to B"
+            "pathName": "Start 1 to F"
           }
         },
         {
@@ -25,7 +31,43 @@
         {
           "type": "path",
           "data": {
-            "pathName": "B to Floor 3"
+            "pathName": "F to Floor 3"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Close Intake"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.3
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "pipeline right"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Floor 3 to B"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "place coral"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "B to Floor 2"
           }
         },
         {
@@ -49,25 +91,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Floor 3 to A"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "align left"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "open intake"
+            "pathName": "Floor 2 to A"
           }
         }
       ]
     }
   },
   "resetOdom": true,
-  "folder": "Week 0.5",
+  "folder": "Cody Testing ",
   "choreoAuto": false
 }

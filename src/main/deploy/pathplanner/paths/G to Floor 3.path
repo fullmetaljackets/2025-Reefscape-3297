@@ -34,9 +34,14 @@
   "eventMarkers": [
     {
       "name": "floor intake",
-      "waypointRelativePos": 0.3,
+      "waypointRelativePos": 0.03466286799619559,
       "endWaypointRelativePos": null,
-      "command": null
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "floor intake"
+        }
+      }
     }
   ],
   "globalConstraints": {

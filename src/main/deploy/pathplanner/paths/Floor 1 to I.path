@@ -30,7 +30,7 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.3128342245989303,
+      "waypointRelativePos": 0.5889644142343053,
       "rotationDegrees": -119.99999999999999
     }
   ],
@@ -41,7 +41,12 @@
       "name": "AutoL4",
       "waypointRelativePos": 0.25,
       "endWaypointRelativePos": null,
-      "command": null
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "L4"
+        }
+      }
     }
   ],
   "globalConstraints": {

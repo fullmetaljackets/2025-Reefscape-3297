@@ -1,0 +1,79 @@
+{
+  "version": "2025.0",
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "named",
+          "data": {
+            "name": "pipeline left"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Start 3 to G"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "align left"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "place coral"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "G to Floor 3"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Close Intake"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.3
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "pipeline right"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Floor 3 to B"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "align right"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "place coral"
+          }
+        }
+      ]
+    }
+  },
+  "resetOdom": true,
+  "folder": "Cody Testing ",
+  "choreoAuto": false
+}
