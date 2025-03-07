@@ -16,12 +16,12 @@
     },
     {
       "anchor": {
-        "x": 1.8932363013698632,
-        "y": 2.154302226027397
+        "x": 2.1098360655737705,
+        "y": 1.9691086065573769
       },
       "prevControl": {
-        "x": 2.462628424657534,
-        "y": 2.4698416095890408
+        "x": 2.6792281888614413,
+        "y": 2.28464799011902
       },
       "nextControl": null,
       "isLocked": false,
@@ -36,7 +36,12 @@
       "name": "floor intake",
       "waypointRelativePos": 0.2,
       "endWaypointRelativePos": null,
-      "command": null
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "floor intake"
+        }
+      }
     }
   ],
   "globalConstraints": {

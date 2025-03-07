@@ -7,7 +7,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Start 1 to F"
+            "pathName": "Start 1 to B"
           }
         },
         {
@@ -25,7 +25,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "F to Floor 3"
+            "pathName": "B to Floor 3"
           }
         },
         {

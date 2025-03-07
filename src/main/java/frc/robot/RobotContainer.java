@@ -207,8 +207,8 @@ public class RobotContainer {
         // DriveStick.y().whileTrue(new ArmExtendRun(0.2, s_ArmExtend));
 
         //Climber
-        DriveStick.y().and(DriveStick.povRight()).whileTrue(new ClimberRun(-0.27, s_Climber));
-        DriveStick.y().and(DriveStick.povLeft()).whileTrue(new ClimberRun(0.27, s_Climber));
+        DriveStick.y().and(DriveStick.povRight()).whileTrue(new ClimberRun(-1, s_Climber));
+        DriveStick.y().and(DriveStick.povLeft()).whileTrue(new ClimberRun(1, s_Climber));
 
         // //manualy adjust arm rot
         DriveStick.x().and(DriveStick.povUp()).whileTrue(new ArmRotRun(0.4, s_ArmRot));

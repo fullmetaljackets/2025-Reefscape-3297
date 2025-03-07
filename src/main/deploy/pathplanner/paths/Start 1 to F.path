@@ -9,7 +9,7 @@
       "prevControl": null,
       "nextControl": {
         "x": 5.860017123287672,
-        "y": 1.237735445205479
+        "y": 1.2377354452054792
       },
       "isLocked": false,
       "linkedName": "Starting poistion 1"
@@ -36,7 +36,12 @@
       "name": "AutoL4",
       "waypointRelativePos": 0,
       "endWaypointRelativePos": null,
-      "command": null
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "L4"
+        }
+      }
     }
   ],
   "globalConstraints": {

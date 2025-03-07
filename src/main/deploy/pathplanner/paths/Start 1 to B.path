@@ -8,8 +8,8 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 5.469349315068493,
-        "y": 0.6216823630136983
+        "x": 4.3972500000000005,
+        "y": 0.06649999999999923
       },
       "isLocked": false,
       "linkedName": "Starting poistion 1"
@@ -20,8 +20,8 @@
         "y": 3.882255993150685
       },
       "prevControl": {
-        "x": 2.6895976027397266,
-        "y": 2.469841609589041
+        "x": 0.9457499999999999,
+        "y": 2.7575000000000003
       },
       "nextControl": null,
       "isLocked": false,
@@ -34,9 +34,14 @@
   "eventMarkers": [
     {
       "name": "AutoL4",
-      "waypointRelativePos": 0,
+      "waypointRelativePos": 0.46438848920863635,
       "endWaypointRelativePos": null,
-      "command": null
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "L4"
+        }
+      }
     }
   ],
   "globalConstraints": {
