@@ -7,25 +7,25 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Start 1 to F"
+            "pathName": "Start 2 to D"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "F to Floor 1"
+            "pathName": "D to Floor 1"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Floor 1 to A"
+            "pathName": "Floor 1 to K"
           }
         }
       ]
     }
   },
   "resetOdom": true,
-  "folder": "Start-1-F-Floor1",
+  "folder": "Start2-D-Floor1",
   "choreoAuto": false
 }

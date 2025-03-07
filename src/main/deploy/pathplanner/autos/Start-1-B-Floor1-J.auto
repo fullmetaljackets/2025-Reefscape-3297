@@ -26,6 +26,6 @@
     }
   },
   "resetOdom": true,
-  "folder": "Start-1-B-Floor1",
+  "folder": "Start1-B-Floor1",
   "choreoAuto": false
 }

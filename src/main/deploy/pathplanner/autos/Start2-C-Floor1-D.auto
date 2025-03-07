@@ -7,37 +7,25 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Start 2 to A"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "place coral"
+            "pathName": "Start 2 to C"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "A to Floor 1"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Close Intake"
+            "pathName": "C to Floor 1"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Floor 1 to B"
+            "pathName": "Floor 1 to D"
           }
         }
       ]
     }
   },
   "resetOdom": true,
-  "folder": null,
+  "folder": "Start2-C-Floor1",
   "choreoAuto": false
 }
