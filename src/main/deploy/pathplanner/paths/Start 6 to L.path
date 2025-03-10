@@ -8,20 +8,20 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 5.875042808219178,
-        "y": 6.045954623287671
+        "x": 5.166700819672132,
+        "y": 7.483452868852458
       },
       "isLocked": false,
       "linkedName": "Starting posistion 6"
     },
     {
       "anchor": {
-        "x": 3.681292808219178,
-        "y": 5.159439212328767
+        "x": 3.6802254098360656,
+        "y": 5.1698258196721305
       },
       "prevControl": {
-        "x": 4.1470890410958905,
-        "y": 5.550107020547945
+        "x": 3.7390965360431174,
+        "y": 6.223142754884347
       },
       "nextControl": null,
       "isLocked": false,
@@ -36,12 +36,17 @@
       "name": "AutoL4",
       "waypointRelativePos": 0,
       "endWaypointRelativePos": null,
-      "command": null
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "L4"
+        }
+      }
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 1.0,
-    "maxAcceleration": 1.0,
+    "maxVelocity": 2.0,
+    "maxAcceleration": 2.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,
@@ -55,7 +60,7 @@
   "folder": "Start 6 to Reef",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": 0.4469734665984628
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

@@ -5,15 +5,21 @@
     "data": {
       "commands": [
         {
+          "type": "named",
+          "data": {
+            "name": "pipeline left"
+          }
+        },
+        {
           "type": "path",
           "data": {
-            "pathName": "Start 1 to B"
+            "pathName": "Start 1 to C"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "align right"
+            "name": "align left"
           }
         },
         {
@@ -25,7 +31,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "B to Floor 3"
+            "pathName": "C to Floor 3"
           }
         },
         {
@@ -37,25 +43,25 @@
         {
           "type": "wait",
           "data": {
-            "waitTime": 0.3
+            "waitTime": 0.5
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "pipeline left"
+            "name": "pipeline right"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Floor 3 to A"
+            "pathName": "Floor 3 to B"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "align left"
+            "name": "align right"
           }
         },
         {

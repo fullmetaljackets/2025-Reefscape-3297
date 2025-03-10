@@ -2,24 +2,25 @@ package frc.robot.subsystems;
 
 
 import com.ctre.phoenix6.StatusCode;
+import com.ctre.phoenix6.configs.CANdiConfigurator;
 import com.ctre.phoenix6.configs.FeedbackConfigs;
 import com.ctre.phoenix6.configs.MotionMagicConfigs;
 import com.ctre.phoenix6.configs.MotorOutputConfigs;
+import com.ctre.phoenix6.configs.PWM1Configs;
 import com.ctre.phoenix6.configs.Slot0Configs;
 import com.ctre.phoenix6.configs.SoftwareLimitSwitchConfigs;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
+import com.ctre.phoenix6.controls.MotionMagicExpoVoltage;
+import com.ctre.phoenix6.hardware.CANdi;
 import com.ctre.phoenix6.hardware.TalonFX;
+import com.ctre.phoenix6.signals.FeedbackSensorSourceValue;
 import com.ctre.phoenix6.signals.GravityTypeValue;
 import com.ctre.phoenix6.signals.InvertedValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 import com.ctre.phoenix6.signals.StaticFeedforwardSignValue;
 
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-
-import com.ctre.phoenix6.controls.MotionMagicExpoVoltage;
-import com.ctre.phoenix6.controls.MotionMagicVoltage;
 
 
 public class ArmRot extends SubsystemBase{
@@ -43,9 +44,17 @@ public class ArmRot extends SubsystemBase{
         ArmRotMotor = new TalonFX(1);
         ArmRotMotor.getConfigurator().apply(TalonFXConfig);
 
+        CANdi candi = new CANdi(0, "rio");
+        CANdiConfigurator caNdiConfigurator = candi.getConfigurator();
+
+        PWM1Configs pwm1Configs = new PWM1Configs().withAbsoluteSensorOffset(-0.349).withSensorDirection(false).withAbsoluteSensorDiscontinuityPoint(1);
+        caNdiConfigurator.apply(pwm1Configs);
 
             /* Configure gear ratio */
         FeedbackConfigs fdb = TalonFXConfig.Feedback;
+        // fdb.FeedbackSensorSource = FeedbackSensorSourceValue.RemoteCANdiPWM1;
+        // fdb.withRemoteCANdiPwm1(candi);
+        // fdb.SensorToMechanismRatio = 1; // 1 rotor rotations per mechanism rotation
         fdb.SensorToMechanismRatio = 116.6667; // 116.6667 (5x5x4.66667) rotor rotations per mechanism rotation
         
         /* Configure Motion Magic */

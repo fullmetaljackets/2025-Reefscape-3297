@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.8932363013698632,
-        "y": 5.805543664383562
+        "x": 1.7022540983606556,
+        "y": 5.8171618852459
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.893236301369863,
-        "y": 5.805543664383562
+        "x": 2.7022540983606556,
+        "y": 5.8171618852459
       },
       "isLocked": false,
       "linkedName": "Floor 1 Coral"
@@ -39,7 +39,7 @@
   "eventMarkers": [
     {
       "name": "AutoL4",
-      "waypointRelativePos": 0.25,
+      "waypointRelativePos": 0.0,
       "endWaypointRelativePos": null,
       "command": {
         "type": "named",

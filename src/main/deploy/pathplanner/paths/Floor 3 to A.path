@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.1098360655737705,
-        "y": 1.9691086065573769
+        "x": 1.7,
+        "y": 2.1609118852459015
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.10983606557377,
-        "y": 1.9691086065573769
+        "x": 2.6999999999999997,
+        "y": 2.1609118852459015
       },
       "isLocked": false,
       "linkedName": "Floor 3 Coral"
     },
     {
       "anchor": {
-        "x": 3.0502140410958902,
-        "y": 4.212821061643836
+        "x": 3.0448770491803274,
+        "y": 3.9590676229508195
       },
       "prevControl": {
-        "x": 2.419135273972602,
-        "y": 3.566716609589041
+        "x": 2.4137982820570394,
+        "y": 3.3129631708960248
       },
       "nextControl": null,
       "isLocked": false,
@@ -29,12 +29,26 @@
     }
   ],
   "rotationTargets": [],
-  "constraintZones": [],
+  "constraintZones": [
+    {
+      "name": "Constraints Zone",
+      "minWaypointRelativePos": 0.7440310938367505,
+      "maxWaypointRelativePos": 1.0,
+      "constraints": {
+        "maxVelocity": 1.0,
+        "maxAcceleration": 1.0,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 720.0,
+        "nominalVoltage": 12.0,
+        "unlimited": false
+      }
+    }
+  ],
   "pointTowardsZones": [],
   "eventMarkers": [
     {
       "name": "AutoL4",
-      "waypointRelativePos": 0.2,
+      "waypointRelativePos": 0.0,
       "endWaypointRelativePos": null,
       "command": {
         "type": "named",
@@ -45,8 +59,8 @@
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 1.0,
-    "maxAcceleration": 1.0,
+    "maxVelocity": 1.5,
+    "maxAcceleration": 1.5,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,
@@ -62,5 +76,5 @@
     "velocity": 0,
     "rotation": 0.0
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.1457991803278684,
-        "y": 3.87515368852459
+        "x": 1.726229508196721,
+        "y": 4.00701844262295
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.145799180327868,
-        "y": 3.87515368852459
+        "x": 2.7262295081967203,
+        "y": 4.00701844262295
       },
       "isLocked": false,
       "linkedName": "Floor 2 Coral"
@@ -30,7 +30,7 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.4304812834224599,
+      "waypointRelativePos": 0.6484517304189448,
       "rotationDegrees": 59.99999999999999
     }
   ],
@@ -39,12 +39,12 @@
   "eventMarkers": [
     {
       "name": "AutoL4",
-      "waypointRelativePos": 0.2,
+      "waypointRelativePos": 0.0,
       "endWaypointRelativePos": null,
       "command": {
         "type": "named",
         "data": {
-          "name": "L4"
+          "name": "AutoL4"
         }
       }
     }

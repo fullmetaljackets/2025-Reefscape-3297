@@ -1,0 +1,31 @@
+{
+  "NetworkTables": {
+    "Persistent Values": {
+      "open": false
+    },
+    "types": {
+      "/FMSInfo": "FMSInfo",
+      "/Pose": "Field2d",
+      "/SmartDashboard/Alerts": "Alerts",
+      "/SmartDashboard/ArmExtend": "Subsystem",
+      "/SmartDashboard/ArmRot": "Subsystem",
+      "/SmartDashboard/Auto Chooser": "String Chooser",
+      "/SmartDashboard/Intake": "Subsystem",
+      "/SmartDashboard/Module 0": "Mechanism2d",
+      "/SmartDashboard/Module 1": "Mechanism2d",
+      "/SmartDashboard/Module 2": "Mechanism2d",
+      "/SmartDashboard/Module 3": "Mechanism2d",
+      "/SmartDashboard/WristRot": "Subsystem"
+    }
+  },
+  "NetworkTables Info": {
+    "Connections": {
+      "open": true
+    },
+    "visible": true
+  },
+  "NetworkTables Settings": {
+    "mode": "Client (NT4)",
+    "serverTeam": "3297"
+  }
+}

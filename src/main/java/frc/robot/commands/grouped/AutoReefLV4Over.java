@@ -19,8 +19,8 @@ public class AutoReefLV4Over extends SequentialCommandGroup{
             new IntakeClose(s_IntakeJaws),
             new ArmExtendToSetpoint(-0.93,4.5,  s_ArmExtend),
             new WristRotToSetpoint(0,0.3, s_WristRot),
-            new ArmRotToSetpoint(-0.53,0.1, s_ArmRot),
-            new ArmExtendToSetpoint(3.6,5, s_ArmExtend),
+            new ArmRotToSetpoint(-0.54,0.1, s_ArmRot),
+            new ArmExtendToSetpoint(3.9,5, s_ArmExtend),
             new WristRotToSetpoint(0.17, 0.01, s_WristRot)
         );
     }

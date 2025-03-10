@@ -21,14 +21,15 @@ public class AutoAlignToAprilTagLeftLV3 extends Command {
     private final SwerveRequest.RobotCentric m_alignRequest;
     private final Limelight m_limelight;
     private final double kP_Distance = 0.03; // Proportional control constant
-    private final double DistanceOffset = 35;
+    private final double DistanceOffset = 32;
     private final double kp_Strafe = 1.7;
     private final double kp_Angle = 1.7;
+    
 
     // private final CommandXboxController DriveStick = new CommandXboxController(0);
 
-    private final Pose3d botPose = LimelightHelpers.getBotPose3d("limelight");
-    private final Pose3d targetPose = LimelightHelpers.getTargetPose3d_RobotSpace("limelight");
+    private final Pose3d botPose = LimelightHelpers.getBotPose3d("limelight-score");
+    private final Pose3d targetPose = LimelightHelpers.getTargetPose3d_RobotSpace("limelight-score");
 
     private final SwerveRequest.RobotCentric drive = new SwerveRequest.RobotCentric();
 
@@ -43,7 +44,7 @@ public class AutoAlignToAprilTagLeftLV3 extends Command {
     @Override
     public void initialize() {
         // Initialization code if needed
-        LimelightHelpers.setPipelineIndex("limelight", 0);
+        LimelightHelpers.setPipelineIndex("limelight-score", 1);
 
     }
 
@@ -52,7 +53,7 @@ public class AutoAlignToAprilTagLeftLV3 extends Command {
         // LimelightHelpers.getTargetPose3d_CameraSpace("limelight");
         
         double distance = m_limelight.getDistanceToReef() - DistanceOffset;
-        double angleError = -Units.degreesToRadians(LimelightHelpers.getTX("limelight")); // Assume you have a method to get the angle error
+        double angleError = -Units.degreesToRadians(LimelightHelpers.getTX("limelight-score")); // Assume you have a method to get the angle error
         double strafeError = Math.tan(angleError);
         
         // Proportional control for distance and angle
@@ -81,7 +82,7 @@ public class AutoAlignToAprilTagLeftLV3 extends Command {
     @Override
     public boolean isFinished() {
         double distance = m_limelight.getDistanceToReef() - DistanceOffset;
-        double angleError = -Units.degreesToRadians(LimelightHelpers.getTX("limelight")); // Assume you have a method to get the angle error
+        double angleError = -Units.degreesToRadians(LimelightHelpers.getTX("limelight-score")); // Assume you have a method to get the angle error
         double strafeError = Math.tan(angleError);
 
         double forwardSpeed = kP_Distance * distance;
@@ -92,7 +93,7 @@ public class AutoAlignToAprilTagLeftLV3 extends Command {
         // Define a condition to end the command, e.g., when the robot is close enough to the tag
         return Math.abs(forwardSpeed) < 0.1 
         // && Math.abs(turnSpeed) < 0.1;
-        && Math.abs(strafeSpeed) < 0.1;
+        && Math.abs(strafeSpeed) < 0.03;
     }
 
     @Override

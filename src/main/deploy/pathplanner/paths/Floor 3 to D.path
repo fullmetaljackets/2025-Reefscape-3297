@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.1098360655737705,
-        "y": 1.9691086065573769
+        "x": 1.7,
+        "y": 2.1609118852459015
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.10983606557377,
-        "y": 1.9691086065573769
+        "x": 2.6999999999999997,
+        "y": 2.1609118852459015
       },
       "isLocked": false,
       "linkedName": "Floor 3 Coral"
@@ -34,9 +34,14 @@
   "eventMarkers": [
     {
       "name": "AutoL4",
-      "waypointRelativePos": 0.2,
+      "waypointRelativePos": 0.0,
       "endWaypointRelativePos": null,
-      "command": null
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "AutoL4"
+        }
+      }
     }
   ],
   "globalConstraints": {

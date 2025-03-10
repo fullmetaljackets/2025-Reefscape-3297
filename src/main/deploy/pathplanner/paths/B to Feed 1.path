@@ -3,13 +3,18 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.110316780821918,
-        "y": 3.882255993150685
+        "x": 3.0568647540983607,
+        "y": 3.7432889344262295
       },
       "prevControl": null,
       "nextControl": {
+<<<<<<< Updated upstream
         "x": 3.3385351177075084,
         "y": 4.823885414434958
+=======
+        "x": 3.2850830909839512,
+        "y": 4.6849183557105025
+>>>>>>> Stashed changes
       },
       "isLocked": false,
       "linkedName": "Reef Point B"

@@ -16,12 +16,12 @@
     },
     {
       "anchor": {
-        "x": 3.0502140410958902,
-        "y": 4.212821061643836
+        "x": 3.0448770491803274,
+        "y": 3.9590676229508195
       },
       "prevControl": {
-        "x": 2.7196489726027395,
-        "y": 2.034096746575342
+        "x": 2.7143119806871767,
+        "y": 1.7803433078823256
       },
       "nextControl": null,
       "isLocked": false,
@@ -36,7 +36,12 @@
       "name": "AutoL4",
       "waypointRelativePos": 0,
       "endWaypointRelativePos": null,
-      "command": null
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "L4"
+        }
+      }
     }
   ],
   "globalConstraints": {
@@ -55,7 +60,7 @@
   "folder": "Start 1 to Reef ",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": -0.38892646309157825
   },
   "useDefaultConstraints": true
 }

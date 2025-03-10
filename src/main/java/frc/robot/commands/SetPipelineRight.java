@@ -9,6 +9,6 @@ private final LimelightHelpers m_LimelightHelpers;
         m_LimelightHelpers = limelightHelpers;
     }
     public void execute(){
-        LimelightHelpers.setPipelineIndex("limelight", 1);
+        LimelightHelpers.setPipelineIndex("limelight", 0);
     }
 }

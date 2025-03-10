@@ -16,12 +16,12 @@
     },
     {
       "anchor": {
-        "x": 3.6512414383561644,
-        "y": 2.8905607876712325
+        "x": 3.7401639344262296,
+        "y": 2.832223360655737
       },
       "prevControl": {
-        "x": 3.831549657534248,
-        "y": 1.7786601027397255
+        "x": 3.920472153604313,
+        "y": 1.7203226757242303
       },
       "nextControl": null,
       "isLocked": false,
@@ -55,7 +55,7 @@
   "folder": "Start 3 to Reef",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": -0.4694501102913711
   },
   "useDefaultConstraints": true
 }

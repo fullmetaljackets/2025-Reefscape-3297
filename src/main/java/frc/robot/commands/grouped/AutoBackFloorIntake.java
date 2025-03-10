@@ -21,8 +21,8 @@ public class AutoBackFloorIntake extends SequentialCommandGroup{
             new WristRotToSetpoint(0,0.1, s_WristRot),
             new ArmRotToSetpoint(-0.095,0.01, s_ArmRot),
             new IntakeOpen(s_IntakeJaws),
-            new ArmExtendToSetpoint(2.2,3, s_ArmExtend),
-            new WristRotToSetpoint(0.12,0.01, s_WristRot)
+            new ArmExtendToSetpoint(1.7,3, s_ArmExtend),
+            new WristRotToSetpoint(0.14,0.01, s_WristRot)
         );
     }
 }

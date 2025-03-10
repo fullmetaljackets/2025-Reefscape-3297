@@ -27,13 +27,17 @@ import frc.robot.commands.AutoAlignToAprilTagLeftLV3;
 import frc.robot.commands.AutoAlignToAprilTagLeftLV4;
 import frc.robot.commands.AutoAlignToAprilTagRightLV3;
 import frc.robot.commands.AutoAlignToAprilTagRightLV4;
+import frc.robot.commands.AutoDriveToCoral;
+import frc.robot.commands.AutoStrafeToCoral;
 import frc.robot.commands.ClimberRun;
 import frc.robot.commands.IntakeClose;
 import frc.robot.commands.IntakeOpen;
+import frc.robot.commands.IntakeRun;
 import frc.robot.commands.IntakeToggle;
 import frc.robot.commands.SetPipelineLeft;
+import frc.robot.commands.SetPipelineRight;
 import frc.robot.commands.WristRotRun;
-import frc.robot.commands.IntakeRun;
+import frc.robot.commands.grouped.AutoAlignToCoral;
 import frc.robot.commands.grouped.AutoBackFloorIntake;
 import frc.robot.commands.grouped.AutoReefLV4Over;
 import frc.robot.commands.grouped.BackBallIntake;
@@ -43,7 +47,6 @@ import frc.robot.commands.grouped.Barge;
 import frc.robot.commands.grouped.FeedIntake;
 import frc.robot.commands.grouped.Middle;
 import frc.robot.commands.grouped.ReefLV1;
-import frc.robot.commands.grouped.ReefLV2;
 import frc.robot.commands.grouped.ReefLV3Over;
 import frc.robot.commands.grouped.ReefLV4Over;
 import frc.robot.generated.TunerConstants;
@@ -115,8 +118,8 @@ public class RobotContainer {
         NamedCommands.registerCommand("align left", new AutoAlignToAprilTagLeftLV4(drivetrain, s_Limelight));
         NamedCommands.registerCommand("align right", new AutoAlignToAprilTagRightLV4(drivetrain, s_Limelight));
 
-        NamedCommands.registerCommand("pipeline right", new SetPipelineLeft(LimelightHelpers));
-        NamedCommands.registerCommand("pipeline left", new SetPipelineLeft(LimelightHelpers));
+        NamedCommands.registerCommand("pipeline right", new SetPipelineRight(LimelightHelpers).withTimeout(.2));
+        NamedCommands.registerCommand("pipeline left", new SetPipelineLeft(LimelightHelpers).withTimeout(.2));
 
         autoChooser = AutoBuilder.buildAutoChooser();
         SmartDashboard.putData("Auto Chooser", autoChooser);
@@ -181,6 +184,8 @@ public class RobotContainer {
         
         DriveStick.leftBumper().and(DriveStick.povDown()).whileTrue(new AutoAlignToAprilTagLeftLV3(drivetrain, s_Limelight).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
         DriveStick.leftBumper().and(DriveStick.povUp()).whileTrue(new AutoAlignToAprilTagRightLV3(drivetrain, s_Limelight).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
+
+        DriveStick.leftBumper().and(DriveStick.y()).whileTrue(new AutoAlignToCoral(s_Limelight, drivetrain));
 
         
 
