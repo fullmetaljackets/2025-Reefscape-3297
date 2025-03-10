@@ -28,7 +28,12 @@
       "linkedName": "Floor 3 Coral"
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.25392986698911724,
+      "rotationDegrees": 25.0
+    }
+  ],
   "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [

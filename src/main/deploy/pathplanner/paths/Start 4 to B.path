@@ -8,8 +8,8 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.0019691780821915,
-        "y": 2.3346104452054806
+        "x": 7.139309210526315,
+        "y": 6.199506578947369
       },
       "isLocked": false,
       "linkedName": "Start posistion 4"
@@ -20,15 +20,20 @@
         "y": 3.882255993150685
       },
       "prevControl": {
-        "x": 3.4408818493150686,
-        "y": 1.027375856164384
+        "x": 2.5305098684210523,
+        "y": 6.7671875
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": "Reef Point B"
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.40628778718258796,
+      "rotationDegrees": 0.0
+    }
+  ],
   "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [

@@ -1,0 +1,31 @@
+{
+  "version": "2025.0",
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Start 4 to B"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "B to Floor 2"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Floor 2 to K"
+          }
+        }
+      ]
+    }
+  },
+  "resetOdom": true,
+  "folder": "Start4-B-Floor2",
+  "choreoAuto": false
+}

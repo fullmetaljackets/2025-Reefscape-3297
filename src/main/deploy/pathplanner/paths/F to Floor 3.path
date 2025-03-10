@@ -8,8 +8,8 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 4.5978595890410965,
-        "y": 2.3496361301369872
+        "x": 4.656907894736841,
+        "y": 2.1872532894736842
       },
       "isLocked": false,
       "linkedName": "Reef Point F"
@@ -28,7 +28,12 @@
       "linkedName": "Floor 3 Coral"
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.5223700120918977,
+      "rotationDegrees": 0.0
+    }
+  ],
   "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [

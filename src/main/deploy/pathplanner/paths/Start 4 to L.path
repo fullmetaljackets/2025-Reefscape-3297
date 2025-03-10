@@ -20,15 +20,20 @@
         "y": 5.159439212328767
       },
       "prevControl": {
-        "x": 4.387499999999999,
-        "y": 5.565132705479451
+        "x": 4.300904605263158,
+        "y": 5.7953947368421055
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": "Reef Point L"
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.3240628778718258,
+      "rotationDegrees": -59.99999999999999
+    }
+  ],
   "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [
