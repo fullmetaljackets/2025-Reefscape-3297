@@ -8,8 +8,8 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.601331967213114,
-        "y": 7.843084016393442
+        "x": 2.169774590163935,
+        "y": 7.79513319672131
       },
       "isLocked": false,
       "linkedName": "Starting posistion 6"
@@ -20,13 +20,8 @@
         "y": 3.7432889344262295
       },
       "prevControl": {
-<<<<<<< Updated upstream
-        "x": 2.2839041095890416,
-        "y": 5.940774828767122
-=======
         "x": 2.0618852459016392,
         "y": 6.392571721311475
->>>>>>> Stashed changes
       },
       "nextControl": null,
       "isLocked": false,

@@ -20,13 +20,8 @@
         "y": 2.832223360655737
       },
       "prevControl": {
-<<<<<<< Updated upstream
-        "x": 4.9359375,
-        "y": 1.4175164473684205
-=======
-        "x": 5.2878094823714346,
-        "y": 1.7653997305187508
->>>>>>> Stashed changes
+        "x": 4.471413934426229,
+        "y": 0.95015368852459
       },
       "nextControl": null,
       "isLocked": false,
@@ -65,7 +60,7 @@
   "folder": "Start 4 to Reef",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": -1.4512780239735439
   },
   "useDefaultConstraints": true
 }
