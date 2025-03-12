@@ -7,19 +7,19 @@
         {
           "type": "named",
           "data": {
-            "name": "pipeline right"
+            "name": "pipeline left"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Start 4 to L"
+            "pathName": "Start 5 to K"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "align right"
+            "name": "align left"
           }
         },
         {
@@ -31,7 +31,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "L to Floor 2"
+            "pathName": "K to Floor 2"
           }
         },
         {
@@ -49,19 +49,19 @@
         {
           "type": "named",
           "data": {
-            "name": "pipeline left"
+            "name": "pipeline right"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Floor 2 to K"
+            "pathName": "Floor 2 to B"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "align left"
+            "name": "align right"
           }
         },
         {
@@ -74,6 +74,6 @@
     }
   },
   "resetOdom": true,
-  "folder": "Start4-L-Floor2",
+  "folder": "Start5",
   "choreoAuto": false
 }

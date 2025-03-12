@@ -13,7 +13,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Start 4 to L"
+            "pathName": "Start 5 to L"
           }
         },
         {
@@ -31,7 +31,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "L to Floor 2"
+            "pathName": "L to Floor 1"
           }
         },
         {
@@ -55,7 +55,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Floor 2 to K"
+            "pathName": "Floor 1 to K"
           }
         },
         {
@@ -74,6 +74,6 @@
     }
   },
   "resetOdom": true,
-  "folder": "Start4-L-Floor2",
+  "folder": "Start5",
   "choreoAuto": false
 }
