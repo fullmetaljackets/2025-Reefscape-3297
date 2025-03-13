@@ -20,9 +20,9 @@ public class BallIntake extends SequentialCommandGroup{
 
         addCommands(
             new IntakeOpen(s_IntakeJaws),
-            new IntakeRun(-0.2, s_Intake).withTimeout(1),
+            new IntakeRun(-0.2, s_Intake).withTimeout(1).withInterruptBehavior(InterruptionBehavior.kCancelSelf),
             // new WaitCommand(1),
-            new IntakeRun(-0.6, s_Intake),
+            new IntakeRun(-1, s_Intake),
             new IntakeClose(s_IntakeJaws)
         );
     }

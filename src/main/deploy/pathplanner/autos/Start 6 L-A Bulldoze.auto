@@ -7,13 +7,61 @@
         {
           "type": "named",
           "data": {
+            "name": "pipeline right"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Start 6 to L"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "align right"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "place coral"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "L to Floor 1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Close Intake"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "intake run"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.5
+          }
+        },
+        {
+          "type": "named",
+          "data": {
             "name": "pipeline left"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Start 1 to C"
+            "pathName": "Floor 1 to A"
           }
         },
         {
@@ -31,49 +79,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "C to Floor 3"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "align coral"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Close Intake"
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 0.5
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "pipeline right"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "Floor 3 to B"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "align right"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "open intake"
+            "pathName": "A to Floor 2"
           }
         }
       ]

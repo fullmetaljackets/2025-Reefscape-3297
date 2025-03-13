@@ -20,11 +20,11 @@ public class AutoDriveToCoral extends Command {
     private final CommandSwerveDrivetrain m_drivetrain;
     private final SwerveRequest.RobotCentric m_alignRequest;
     private final Limelight m_limelight;
-    private final double kP_Distance = 0.034; // Proportional control constant
-    private final double kp_Strafe = 1.2;
+    private final double kP_Distance = 0.04; // Proportional control constant
+    private final double kp_Strafe = 2.2;
+    private final double kp_Angle = 2.2;
     private final double DistanceOffset = 0;
     private final SwerveRequest.RobotCentric drive = new SwerveRequest.RobotCentric();
-    // double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0.0);
 
     public AutoDriveToCoral(CommandSwerveDrivetrain drivetrain, Limelight limelight) {
         m_drivetrain = drivetrain;
@@ -44,47 +44,45 @@ public class AutoDriveToCoral extends Command {
     public void execute() {
         
         double distance = LimelightHelpers.getTY("limelight-intake");
-        // double angleError = -Units.degreesToRadians(LimelightHelpers.getTX("limelight-intake")); // Assume you have a method to get the angle error
-        // double strafeError = Math.tan(angleError);
+        double angleError = -Units.degreesToRadians(LimelightHelpers.getTX("limelight-intake")); // Assume you have a method to get the angle error
 
 
         double forwardSpeed = kP_Distance * distance;
-        // double strafeSpeed = kp_Strafe * strafeError;
+        double turnSpeed = kp_Angle * angleError;
 
         SmartDashboard.putNumber("intake LL distance", distance);
         SmartDashboard.putNumber("intake LL forward speed", forwardSpeed);
 
-        // SmartDashboard.putNumber("intake LL strafe error", strafeError);
-        // SmartDashboard.putNumber("intake LL strafe speed", strafeSpeed);
+        SmartDashboard.putNumber("intake LL angle error", angleError);
+        SmartDashboard.putNumber("intake LL angle speed", angleError);
 
         m_drivetrain.setControl(
         m_alignRequest.withVelocityX(-forwardSpeed) // Drive forward with negative Y (forward)
-            .withVelocityY(0 ) // Drive left with negative X (left)
-            .withRotationalRate(0) // Drive counterclockwise with negative X (left)
+            .withVelocityY(0) // Drive left with negative X (left)
+            .withRotationalRate(turnSpeed) // Drive counterclockwise with negative X (left)
         );
     }
 
     @Override
     public boolean isFinished() {
         double distance = LimelightHelpers.getTY("limelight-intake");
-        // double angleError = -Units.degreesToRadians(LimelightHelpers.getTX("limelight-intake")); // Assume you have a method to get the angle error
-        // double strafeError = Math.tan(angleError);
+        double angleError = -Units.degreesToRadians(LimelightHelpers.getTX("limelight-intake")); // Assume you have a method to get the angle error
+        double strafeError = Math.tan(angleError);
 
-        // double strafeSpeed = kp_Strafe * strafeError;
+        double anglespeed = kp_Angle * angleError;
         double forwardSpeed = kP_Distance * distance;
 
-        return Math.abs(forwardSpeed) < 0.04;
-            // &&Math.abs(strafeSpeed) < 0.04; 
+        return Math.abs(forwardSpeed) < 0.04
+            &&Math.abs(anglespeed) < 0.04; 
         // return false;
     }
 
     @Override
     public void end(boolean interrupted) {
         // Stop the drivetrain when the command ends
-        // m_drivetrain.setControl(
-        // drive.withVelocityX(0) // Drive forward with negative Y (forward)
-        //     .withVelocityY(0) // Drive left with negative X (left)
-        //     .withRotationalRate(0)); // Drive counterclockwise with negative X (left)
-        // );
+        m_drivetrain.setControl(
+        drive.withVelocityX(0) // Drive forward with negative Y (forward)
+            .withVelocityY(0) // Drive left with negative X (left)
+            .withRotationalRate(0)); // Drive counterclockwise with negative X (left)
     }
 }

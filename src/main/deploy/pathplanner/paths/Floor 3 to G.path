@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.7,
-        "y": 2.1609118852459015
+        "x": 1.21875,
+        "y": 2.16275
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.5181078767123286,
-        "y": 2.8520933920952163
+        "x": 4.446000000001627,
+        "y": 1.2754999999980803
       },
       "isLocked": false,
       "linkedName": "Floor 3 Coral"
@@ -30,8 +30,8 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.3957219251336896,
-      "rotationDegrees": 180.0
+      "waypointRelativePos": 0.559210526315789,
+      "rotationDegrees": -177.76694758363539
     }
   ],
   "constraintZones": [],
@@ -41,7 +41,12 @@
       "name": "AutoL4",
       "waypointRelativePos": 0.3,
       "endWaypointRelativePos": null,
-      "command": null
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "L4"
+        }
+      }
     }
   ],
   "globalConstraints": {
@@ -63,4 +68,4 @@
     "rotation": 0.0
   },
   "useDefaultConstraints": true
-}
+}}

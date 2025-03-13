@@ -21,7 +21,7 @@ public class AutoAlignToAprilTagRightLV4 extends Command {
     private final SwerveRequest.RobotCentric m_alignRequest;
     private final Limelight m_limelight;
     private final double kP_Distance = 0.03; // Proportional control constant
-    private final double DistanceOffset = 20;
+    private final double DistanceOffset = 18;
     private final double kp_Strafe = 1.7;
     private final double kp_Angle = 1.7;
 
@@ -90,7 +90,7 @@ public class AutoAlignToAprilTagRightLV4 extends Command {
 
 
         // Define a condition to end the command, e.g., when the robot is close enough to the tag
-        return Math.abs(forwardSpeed) < 0.1 
+        return Math.abs(forwardSpeed) < 0.05 
         // && Math.abs(turnSpeed) < 0.1;
         && Math.abs(strafeSpeed) < 0.05;
     }

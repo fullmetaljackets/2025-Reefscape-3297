@@ -13,9 +13,8 @@ public class AutoAlignToCoral extends SequentialCommandGroup{
 
         addCommands(
             // new WaitCommand(5),
-            new AutoDriveToCoral(s_CommandSwerveDrivetrain, s_Limelight),
-            new AutoStrafeToCoral(s_CommandSwerveDrivetrain, s_Limelight)
-
+            // new AutoStrafeToCoral(s_CommandSwerveDrivetrain, s_Limelight),
+            new AutoDriveToCoral(s_CommandSwerveDrivetrain, s_Limelight)
         );
     }
 }

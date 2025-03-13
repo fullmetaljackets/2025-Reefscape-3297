@@ -13,7 +13,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Start 6 to L"
+            "pathName": "Start 2 to B"
           }
         },
         {
@@ -31,7 +31,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "L to Floor 1"
+            "pathName": "B to Floor 3"
           }
         },
         {
@@ -41,9 +41,9 @@
           }
         },
         {
-          "type": "wait",
+          "type": "named",
           "data": {
-            "waitTime": 0.5
+            "name": "intake run"
           }
         },
         {
@@ -55,7 +55,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Floor 1 to A"
+            "pathName": "Floor 3 to A"
           }
         },
         {
@@ -67,13 +67,19 @@
         {
           "type": "named",
           "data": {
-            "name": "open intake"
+            "name": "place coral"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "A to Floor 2"
           }
         }
       ]
     }
   },
   "resetOdom": true,
-  "folder": "Cody Testing ",
+  "folder": "Grand Forks",
   "choreoAuto": false
 }

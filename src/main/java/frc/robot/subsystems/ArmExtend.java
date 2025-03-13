@@ -14,6 +14,7 @@ import com.ctre.phoenix6.signals.InvertedValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 import com.ctre.phoenix6.signals.StaticFeedforwardSignValue;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -28,6 +29,7 @@ public class ArmExtend extends SubsystemBase{
     private MotorOutputConfigs MotorOutputConfig;
     final MotionMagicExpoVoltage m_mmReq = new MotionMagicExpoVoltage(0);
     private int m_printCount = 0;
+    private DigitalInput resetSwitch = new DigitalInput(0);
 
 
 
@@ -112,8 +114,15 @@ public class ArmExtend extends SubsystemBase{
         SmartDashboard.putNumber("tolerance", tolerance);
         return Math.abs(getArmExtendPosition() - setpoint) <= tolerance;
     }
-    public void RunMy_ArmExtend(double setpoint){
-        ArmExtendMotor.set(setpoint);
+    public void RunMy_ArmExtend(double velocity){
+        // ArmExtendMotor.set(setpoint);
+        if (resetSwitch.get()){
+            ArmExtendMotor.stopMotor();
+            ArmExtendMotor.setPosition(-0.93, 0);
+            SmartDashboard.putNumber("ArmExtendPosition", ArmExtendMotor.getPosition().getValueAsDouble());
+        } else {
+            ArmExtendMotor.set(velocity);
+        }
     }
 
     public void setMy_ArmExtend(double setpoint){

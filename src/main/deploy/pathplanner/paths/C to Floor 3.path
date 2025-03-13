@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.7401639344262296,
-        "y": 2.832223360655737
+        "x": 3.7439999999999998,
+        "y": 2.5819999999999994
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.1992392768919835,
-        "y": 2.0809391140803952
+        "x": 3.2030753424657536,
+        "y": 1.8307157534246574
       },
       "isLocked": false,
       "linkedName": "Reef Point C"
     },
     {
       "anchor": {
-        "x": 1.7,
-        "y": 2.1609118852459015
+        "x": 1.21875,
+        "y": 2.16275
       },
       "prevControl": {
-        "x": 2.3445205479452054,
-        "y": 2.326194419492477
+        "x": 1.863270547945206,
+        "y": 2.3280325342465753
       },
       "nextControl": null,
       "isLocked": false,
@@ -45,8 +45,8 @@
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 0.7,
-    "maxAcceleration": 0.7,
+    "maxVelocity": 1.0,
+    "maxAcceleration": 1.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,

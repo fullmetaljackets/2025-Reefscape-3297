@@ -13,7 +13,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Start 1 to C"
+            "pathName": "Start 5 to A"
           }
         },
         {
@@ -31,13 +31,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "C to Floor 3"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "align coral"
+            "pathName": "A to Floor 1"
           }
         },
         {
@@ -47,9 +41,9 @@
           }
         },
         {
-          "type": "wait",
+          "type": "named",
           "data": {
-            "waitTime": 0.5
+            "name": "intake run"
           }
         },
         {
@@ -61,7 +55,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Floor 3 to B"
+            "pathName": "Floor 1 to B"
           }
         },
         {
@@ -73,7 +67,13 @@
         {
           "type": "named",
           "data": {
-            "name": "open intake"
+            "name": "place coral"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "B to Floor 2"
           }
         }
       ]

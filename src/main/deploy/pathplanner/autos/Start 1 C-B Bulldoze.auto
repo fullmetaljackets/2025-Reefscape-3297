@@ -13,7 +13,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Start 3 to G"
+            "pathName": "Start 1 to C"
           }
         },
         {
@@ -31,7 +31,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "G to Floor 3"
+            "pathName": "C to Floor 3"
           }
         },
         {
@@ -41,9 +41,9 @@
           }
         },
         {
-          "type": "wait",
+          "type": "named",
           "data": {
-            "waitTime": 0.3
+            "name": "intake run"
           }
         },
         {
@@ -69,11 +69,17 @@
           "data": {
             "name": "place coral"
           }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "B to Floor 2"
+          }
         }
       ]
     }
   },
   "resetOdom": true,
-  "folder": "Cody Testing ",
+  "folder": "Grand Forks",
   "choreoAuto": false
 }

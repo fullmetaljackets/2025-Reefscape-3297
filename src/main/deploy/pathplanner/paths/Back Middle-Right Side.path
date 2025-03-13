@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 7.27,
-        "y": 4.0
+        "x": 6.074249999999999,
+        "y": 4.0249999999999995
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.92889344262295,
-        "y": 3.995030737704917
+        "x": 7.761,
+        "y": 2.962249999999999
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Back Middle"
     },
     {
       "anchor": {
-        "x": 5.945901639344262,
-        "y": 4.162858606557376
+        "x": 4.72875,
+        "y": 0.5929999999999995
       },
       "prevControl": {
-        "x": 6.245594262295082,
-        "y": 4.186834016393441
+        "x": 6.298500000000001,
+        "y": 0.8075
       },
       "nextControl": null,
       "isLocked": false,
@@ -33,13 +33,13 @@
   "pointTowardsZones": [],
   "eventMarkers": [
     {
-      "name": "AutoL4",
-      "waypointRelativePos": 0,
+      "name": "middle",
+      "waypointRelativePos": 0.09678638941398875,
       "endWaypointRelativePos": null,
       "command": {
         "type": "named",
         "data": {
-          "name": "L4"
+          "name": "Middle"
         }
       }
     }
@@ -54,7 +54,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -179.3538343939684
+    "rotation": -2.827124578161254
   },
   "reversed": false,
   "folder": null,

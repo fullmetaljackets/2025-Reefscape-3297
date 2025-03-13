@@ -3,37 +3,32 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.0568647540983607,
-        "y": 3.7432889344262295
+        "x": 2.9054999999999995,
+        "y": 3.7129999999999996
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.111302071637098,
-        "y": 2.7771702363575113
+        "x": 2.4960000000000004,
+        "y": 2.465
       },
       "isLocked": false,
       "linkedName": "Reef Point B"
     },
     {
       "anchor": {
-        "x": 1.7,
-        "y": 2.1609118852459015
+        "x": 1.21875,
+        "y": 2.16275
       },
       "prevControl": {
-        "x": 3.0066598360655736,
-        "y": 2.0410348360655735
+        "x": 2.97375,
+        "y": 2.143249999999999
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": "Floor 3 Coral"
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 0.25392986698911724,
-      "rotationDegrees": 25.0
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [
@@ -50,8 +45,8 @@
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 0.75,
-    "maxAcceleration": 0.75,
+    "maxVelocity": 1.0,
+    "maxAcceleration": 1.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,

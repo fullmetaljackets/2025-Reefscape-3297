@@ -41,14 +41,14 @@ public class Climber extends SubsystemBase{
 
             /* Configure gear ratio */
         FeedbackConfigs fdb = TalonFXConfig.Feedback;
-        fdb.SensorToMechanismRatio = 0; // 125 rotor rotations per mechanism rotation
+        fdb.SensorToMechanismRatio = 512; // 125 rotor rotations per mechanism rotation
         
         /* Configure Motion Magic */
         MotionMagicConfigs mm = TalonFXConfig.MotionMagic;
         mm.MotionMagicCruiseVelocity = 0; // 5 (mechanism) rotations per second cruise
         mm.MotionMagicAcceleration = 0; // Take approximately 0.5 seconds to reach max vel
-        mm.MotionMagicExpo_kV = 0;
-        mm.MotionMagicExpo_kA = 0;
+        mm.MotionMagicExpo_kV = 0.0010000000474974513;
+        mm.MotionMagicExpo_kA = 9.999999747378752E-06;
         // Take approximately 0.1 seconds to reach max accel 
         // mm.MotionMagicJerk = 1000;
 
@@ -69,7 +69,7 @@ public class Climber extends SubsystemBase{
         slot0.kV = 0; // A velocity target of 1 rps results in 0.12 V output
         slot0.kA = 0; // An acceleration of 1 rps/s requires 0.01 V output
         slot0.kG = 0; // voltage output to overcome gravity 
-        slot0.kP = 0; // A position error of 0.2 rotations results in 12 V output
+        slot0.kP = 100; // A position error of 0.2 rotations results in 12 V output
         slot0.kI = 0; // No output for integrated error
         slot0.kD = 0; // A velocity error of 1 rps results in 0.5 V output
         slot0.GravityType = GravityTypeValue.Arm_Cosine;

@@ -3,55 +3,50 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.6802254098360656,
-        "y": 5.1698258196721305
+        "x": 7.27,
+        "y": 4.0
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.673504519425107,
-        "y": 4.628901162137884
+        "x": 6.92889344262295,
+        "y": 3.995030737704917
       },
       "isLocked": false,
-      "linkedName": "Reef Point L"
+      "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.2772500000000002,
+        "x": 6.074249999999999,
         "y": 4.0249999999999995
       },
       "prevControl": {
-        "x": 2.3274640410958902,
-        "y": 4.26541095890411
+        "x": 6.373942622950819,
+        "y": 4.048975409836065
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Floor 2 Coral"
+      "linkedName": "Back Middle"
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 0.5,
-      "rotationDegrees": 0.0
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [
     {
-      "name": "floor intake",
-      "waypointRelativePos": 0.0,
+      "name": "AutoL4",
+      "waypointRelativePos": 0,
       "endWaypointRelativePos": null,
       "command": {
         "type": "named",
         "data": {
-          "name": "floor intake"
+          "name": "L4"
         }
       }
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 1.0,
-    "maxAcceleration": 1.0,
+    "maxVelocity": 0.8,
+    "maxAcceleration": 0.8,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,
@@ -59,13 +54,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": -179.67115375000654
   },
   "reversed": false,
-  "folder": "Move to Floor Coral 2",
+  "folder": null,
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -59.99999999999999
+    "rotation": -179.67115375000654
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

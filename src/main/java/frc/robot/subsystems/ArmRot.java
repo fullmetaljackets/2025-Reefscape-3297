@@ -47,7 +47,7 @@ public class ArmRot extends SubsystemBase{
         CANdi candi = new CANdi(0, "rio");
         CANdiConfigurator caNdiConfigurator = candi.getConfigurator();
 
-        PWM1Configs pwm1Configs = new PWM1Configs().withAbsoluteSensorOffset(-0.349).withSensorDirection(false).withAbsoluteSensorDiscontinuityPoint(1);
+        PWM1Configs pwm1Configs = new PWM1Configs().withAbsoluteSensorOffset(0.349).withSensorDirection(true).withAbsoluteSensorDiscontinuityPoint(0);
         caNdiConfigurator.apply(pwm1Configs);
 
             /* Configure gear ratio */
@@ -55,6 +55,7 @@ public class ArmRot extends SubsystemBase{
         // fdb.FeedbackSensorSource = FeedbackSensorSourceValue.RemoteCANdiPWM1;
         // fdb.withRemoteCANdiPwm1(candi);
         // fdb.SensorToMechanismRatio = 1; // 1 rotor rotations per mechanism rotation
+        // fdb.RotorToSensorRatio = 116.6667;
         fdb.SensorToMechanismRatio = 116.6667; // 116.6667 (5x5x4.66667) rotor rotations per mechanism rotation
         
         /* Configure Motion Magic */
@@ -68,9 +69,9 @@ public class ArmRot extends SubsystemBase{
          
         SoftwareLimitSwitchConfigs softLimit =TalonFXConfig.SoftwareLimitSwitch;
         softLimit.ForwardSoftLimitEnable = true;
-        softLimit.ForwardSoftLimitThreshold = .5;
+        softLimit.ForwardSoftLimitThreshold = 0;
         softLimit.ReverseSoftLimitEnable = true;
-        softLimit.ReverseSoftLimitThreshold = -1;
+        softLimit.ReverseSoftLimitThreshold = -0.7;
 
         
         Slot0Configs slot0 = TalonFXConfig.Slot0;

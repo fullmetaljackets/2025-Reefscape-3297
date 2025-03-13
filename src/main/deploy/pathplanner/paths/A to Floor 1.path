@@ -3,37 +3,32 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.0448770491803274,
-        "y": 3.9590676229508195
+        "x": 2.97375,
+        "y": 4.015249999999999
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.8044660902762177,
-        "y": 5.431584746238492
+        "x": 2.8177499999999998,
+        "y": 5.86775
       },
       "isLocked": false,
       "linkedName": "Reef Point A"
     },
     {
       "anchor": {
-        "x": 1.7022540983606556,
-        "y": 5.8171618852459
+        "x": 1.25775,
+        "y": 5.86775
       },
       "prevControl": {
-        "x": 2.166466427127779,
-        "y": 5.606802296204805
+        "x": 1.7219623287671235,
+        "y": 5.657390410958905
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": "Floor 1 Coral"
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 0.1487303506650532,
-      "rotationDegrees": -27.0
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [

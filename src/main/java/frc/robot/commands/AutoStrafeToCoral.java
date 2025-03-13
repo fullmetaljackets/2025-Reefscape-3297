@@ -20,7 +20,7 @@ public class AutoStrafeToCoral extends Command {
     private final CommandSwerveDrivetrain m_drivetrain;
     private final SwerveRequest.RobotCentric m_alignRequest;
     private final Limelight m_limelight;
-    private final double kp_Strafe = 1.2;
+    private final double kp_Strafe = 2.2;
 
     private final SwerveRequest.RobotCentric drive = new SwerveRequest.RobotCentric();
 
@@ -29,19 +29,18 @@ public class AutoStrafeToCoral extends Command {
         m_limelight = limelight;
         m_alignRequest = new SwerveRequest.RobotCentric()
             .withDriveRequestType(DriveRequestType.Velocity);
-        addRequirements(limelight);
     }
 
     @Override
     public void initialize() {
         // Initialization code if needed
-        LimelightHelpers.setPipelineIndex("intake limelight", 0);
+        LimelightHelpers.setPipelineIndex("limelight-intake", 0);
 
     }
 
     @Override
     public void execute() {
-        double angleError = -Units.degreesToRadians(LimelightHelpers.getTX("limelight")); // Assume you have a method to get the angle error
+        double angleError = -Units.degreesToRadians(LimelightHelpers.getTX("limelight-intake")); // Assume you have a method to get the angle error
         double strafeError = Math.tan(angleError);
         
         double strafeSpeed = kp_Strafe * strafeError;
@@ -60,7 +59,7 @@ public class AutoStrafeToCoral extends Command {
 
     @Override
     public boolean isFinished() {
-        double angleError = -Units.degreesToRadians(LimelightHelpers.getTX("limelight")); // Assume you have a method to get the angle error
+        double angleError = -Units.degreesToRadians(LimelightHelpers.getTX("limelight-intake")); // Assume you have a method to get the angle error
         double strafeError = Math.tan(angleError);
 
         double strafeSpeed = kp_Strafe * strafeError;

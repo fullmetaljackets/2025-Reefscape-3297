@@ -8,40 +8,61 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.572945205479451,
-        "y": 1.3879922945205476
+        "x": 3.880499999996068,
+        "y": 0.8660000000021105
       },
       "isLocked": false,
       "linkedName": "Starting posistion 2"
     },
     {
       "anchor": {
-        "x": 3.0568647540983607,
-        "y": 3.7432889344262295
+        "x": 2.8567500000005452,
+        "y": 1.1195000000025164
       },
       "prevControl": {
-        "x": 2.6661969458791823,
-        "y": 1.5345132494947227
+        "x": 3.1863249874705137,
+        "y": 0.7833335127831483
+      },
+      "nextControl": {
+        "x": 2.3692500000005463,
+        "y": 1.616750000002515
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.9054999999999995,
+        "y": 3.7129999999999996
+      },
+      "prevControl": {
+        "x": 2.27175,
+        "y": 3.6154999999999995
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": "Reef Point B"
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.4552631578947347,
+      "rotationDegrees": 0.0
+    }
+  ],
   "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [
     {
       "name": "AutoL4",
-      "waypointRelativePos": 0,
+      "waypointRelativePos": 0.37202268431001917,
       "endWaypointRelativePos": null,
       "command": null
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 1.0,
-    "maxAcceleration": 1.0,
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,
@@ -55,7 +76,7 @@
   "folder": "Start 2 to Reef",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": -0.23156366794403177
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

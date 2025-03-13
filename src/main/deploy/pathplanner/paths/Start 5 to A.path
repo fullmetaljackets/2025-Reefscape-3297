@@ -8,20 +8,36 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 5.799914383561644,
-        "y": 6.331442636986301
+        "x": 5.6160000000000005,
+        "y": 7.5447500000000005
       },
       "isLocked": false,
       "linkedName": "Starting posistion 5"
     },
     {
       "anchor": {
-        "x": 3.0448770491803274,
-        "y": 3.9590676229508195
+        "x": 3.0127499999999996,
+        "y": 7.232749999999999
       },
       "prevControl": {
-        "x": 2.0982588984953963,
-        "y": 6.227946047608354
+        "x": 3.4027499999999997,
+        "y": 7.379
+      },
+      "nextControl": {
+        "x": 2.6363430503021723,
+        "y": 7.091597393863314
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.97375,
+        "y": 4.015249999999999
+      },
+      "prevControl": {
+        "x": 2.0271318493150683,
+        "y": 6.284128424657533
       },
       "nextControl": null,
       "isLocked": false,
@@ -34,14 +50,14 @@
   "eventMarkers": [
     {
       "name": "AutoL4",
-      "waypointRelativePos": 0,
+      "waypointRelativePos": 0.734971644612473,
       "endWaypointRelativePos": null,
       "command": null
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 1.0,
-    "maxAcceleration": 1.0,
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,
@@ -55,7 +71,7 @@
   "folder": "Start 5 to Reef",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": -2.2923498600993977
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

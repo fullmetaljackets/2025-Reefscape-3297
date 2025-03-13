@@ -1,0 +1,43 @@
+{
+  "version": "2025.0",
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "named",
+          "data": {
+            "name": "pipeline left"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Start Middle"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "align left"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "place coral"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Back Middle-Right Side"
+          }
+        }
+      ]
+    }
+  },
+  "resetOdom": true,
+  "folder": "Grand Forks",
+  "choreoAuto": false
+}
