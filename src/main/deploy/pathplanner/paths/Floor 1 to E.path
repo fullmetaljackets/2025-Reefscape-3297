@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.25775,
-        "y": 5.86775
+        "x": 2.073872950819672,
+        "y": 5.72
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.2644708904109585,
-        "y": 2.547073630136986
+        "x": 3.0805938412306304,
+        "y": 2.3993236301369856
       },
       "isLocked": false,
       "linkedName": "Floor 1 Coral"

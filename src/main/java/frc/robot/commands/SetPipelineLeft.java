@@ -14,6 +14,6 @@ private final LimelightHelpers m_LimelightHelpers;
     }
 
     public void execute(){
-        m_LimelightHelpers.setPipelineIndex("limelight-score", 1);
+        m_LimelightHelpers.setPipelineIndex("limelight-sone", 1);
     }
 }

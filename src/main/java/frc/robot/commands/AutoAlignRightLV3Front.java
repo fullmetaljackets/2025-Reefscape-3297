@@ -16,23 +16,23 @@ import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.Limelight;
 import frc.robot.LimelightHelpers;
 
-public class AutoAlignToAprilTagRightLV3 extends Command {
+public class AutoAlignRightLV3Front extends Command {
     private final CommandSwerveDrivetrain m_drivetrain;
     private final SwerveRequest.RobotCentric m_alignRequest;
     private final Limelight m_limelight;
     private final double kP_Distance = 0.03; // Proportional control constant
-    private final double DistanceOffset = 24;
+    private final double DistanceOffset = 25.5;
     private final double kp_Strafe = 1.7;
     private final double kp_Angle = 1.7;
 
     // private final CommandXboxController DriveStick = new CommandXboxController(0);
 
-    private final Pose3d botPose = LimelightHelpers.getBotPose3d("limelight-score");
-    private final Pose3d targetPose = LimelightHelpers.getTargetPose3d_RobotSpace("limelight-score");
+    private final Pose3d botPose = LimelightHelpers.getBotPose3d("limelight-sone");
+    private final Pose3d targetPose = LimelightHelpers.getTargetPose3d_RobotSpace("limelight-sone");
 
     private final SwerveRequest.RobotCentric drive = new SwerveRequest.RobotCentric();
 
-    public AutoAlignToAprilTagRightLV3(CommandSwerveDrivetrain drivetrain, Limelight limelight) {
+    public AutoAlignRightLV3Front(CommandSwerveDrivetrain drivetrain, Limelight limelight) {
         m_drivetrain = drivetrain;
         m_limelight = limelight;
         m_alignRequest = new SwerveRequest.RobotCentric()
@@ -43,7 +43,7 @@ public class AutoAlignToAprilTagRightLV3 extends Command {
     @Override
     public void initialize() {
         // Initialization code if needed
-        LimelightHelpers.setPipelineIndex("limelight-score", 0);
+        LimelightHelpers.setPipelineIndex("limelight-sone", 0);
 
     }
 
@@ -52,7 +52,7 @@ public class AutoAlignToAprilTagRightLV3 extends Command {
         // LimelightHelpers.getTargetPose3d_CameraSpace("limelight");
         
         double distance = m_limelight.getDistanceToReef() - DistanceOffset;
-        double angleError = -Units.degreesToRadians(LimelightHelpers.getTX("limelight-score")); // Assume you have a method to get the angle error
+        double angleError = -Units.degreesToRadians(LimelightHelpers.getTX("limelight-sone")); // Assume you have a method to get the angle error
         double strafeError = Math.tan(angleError);
         
         // Proportional control for distance and angle
@@ -81,7 +81,7 @@ public class AutoAlignToAprilTagRightLV3 extends Command {
     @Override
     public boolean isFinished() {
         double distance = m_limelight.getDistanceToReef() - DistanceOffset;
-        double angleError = -Units.degreesToRadians(LimelightHelpers.getTX("limelight-score")); // Assume you have a method to get the angle error
+        double angleError = -Units.degreesToRadians(LimelightHelpers.getTX("limelight-sone")); // Assume you have a method to get the angle error
         double strafeError = Math.tan(angleError);
 
         double forwardSpeed = kP_Distance * distance;

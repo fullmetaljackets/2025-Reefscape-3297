@@ -16,11 +16,11 @@ public class BackBallIntake extends SequentialCommandGroup{
 
         addCommands(
             new IntakeClose(s_IntakeJaws),
-            new ArmExtendToSetpoint(-0.93,2, s_ArmExtend),
+            new ArmExtendToSetpoint(-0.73,2, s_ArmExtend),
             new WristRotToSetpoint(0,0.01, s_WristRot),
-            new ArmRotToSetpoint(-0.09,0.01, s_ArmRot),
-            new ArmExtendToSetpoint(0,3, s_ArmExtend),
-            new WristRotToSetpoint(0.12,0.01, s_WristRot)
+            new ArmRotToSetpoint(-0.113,0.01, s_ArmRot),
+            new ArmExtendToSetpoint(-0.33,3, s_ArmExtend),
+            new WristRotToSetpoint(0.3,0.01, s_WristRot)
         );
     }
 }

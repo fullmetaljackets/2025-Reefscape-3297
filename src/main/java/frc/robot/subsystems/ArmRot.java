@@ -60,8 +60,8 @@ public class ArmRot extends SubsystemBase{
         
         /* Configure Motion Magic */
         MotionMagicConfigs mm = TalonFXConfig.MotionMagic;
-        mm.MotionMagicCruiseVelocity = 0.33; // 5 (mechanism) rotations per second cruise
-        mm.MotionMagicAcceleration = 0.66; // Take approximately 0.5 seconds to reach max vel
+        mm.MotionMagicCruiseVelocity = 0.4; // 5 (mechanism) rotations per second cruise
+        mm.MotionMagicAcceleration = 0.88; // Take approximately 0.5 seconds to reach max vel
         mm.MotionMagicExpo_kV = 0.0010000000474974513;
         mm.MotionMagicExpo_kA = 9.999999747378752E-06;
         // Take approximately 0.1 seconds to reach max accel 
@@ -78,9 +78,9 @@ public class ArmRot extends SubsystemBase{
         slot0.kS = 0; // Add 0.25 V output to overcome static friction
         slot0.kV = 0; // A velocity target of 1 rps results in 0.12 V output
         slot0.kA = 0; // An acceleration of 1 rps/s requires 0.01 V output
-        slot0.kP = 320; // A position error of 0.2 rotations results in 12 V output
+        slot0.kP = 90; // A position error of 0.2 rotations results in 12 V output
         slot0.kI = 0; // No output for integrated error
-        slot0.kD = 10; // A velocity error of 1 rps results in 0.5 V output
+        slot0.kD = 5; // A velocity error of 1 rps results in 0.5 V output
         slot0.kG = 0.27;
         slot0.GravityType = GravityTypeValue.Arm_Cosine;
         slot0.StaticFeedforwardSign = StaticFeedforwardSignValue.UseVelocitySign;

@@ -61,7 +61,7 @@ public class ArmExtend extends SubsystemBase{
 
         SoftwareLimitSwitchConfigs softLimit =TalonFXConfig.SoftwareLimitSwitch;
         softLimit.ForwardSoftLimitEnable = true;
-        softLimit.ForwardSoftLimitThreshold = 4.87;
+        softLimit.ForwardSoftLimitThreshold = 5.8;
         softLimit.ReverseSoftLimitEnable = true;
         softLimit.ReverseSoftLimitThreshold = -0.93;
         
@@ -118,7 +118,7 @@ public class ArmExtend extends SubsystemBase{
         // ArmExtendMotor.set(setpoint);
         if (resetSwitch.get()){
             ArmExtendMotor.stopMotor();
-            ArmExtendMotor.setPosition(-0.93, 0);
+            ArmExtendMotor.setPosition(-0.73, 0);
             SmartDashboard.putNumber("ArmExtendPosition", ArmExtendMotor.getPosition().getValueAsDouble());
         } else {
             ArmExtendMotor.set(velocity);

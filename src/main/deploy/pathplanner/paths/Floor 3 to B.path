@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.21875,
-        "y": 2.16275
+        "x": 2.1,
+        "y": 2.196875
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.1272336065573763,
-        "y": 2.4384672131147536
+        "x": 3.0084836065573763,
+        "y": 2.4725922131147535
       },
       "isLocked": false,
       "linkedName": "Floor 3 Coral"
     },
     {
       "anchor": {
-        "x": 2.9054999999999995,
-        "y": 3.7129999999999996
+        "x": 2.865061475409836,
+        "y": 3.9470799180327862
       },
       "prevControl": {
-        "x": 2.593819672131147,
-        "y": 3.1975286885245904
+        "x": 2.5533811475409833,
+        "y": 3.431608606557377
       },
       "nextControl": null,
       "isLocked": false,
@@ -39,14 +39,14 @@
       "command": {
         "type": "named",
         "data": {
-          "name": "L4"
+          "name": "AutoL4"
         }
       }
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 1.5,
-    "maxAcceleration": 1.5,
+    "maxVelocity": 1.1,
+    "maxAcceleration": 1.1,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,

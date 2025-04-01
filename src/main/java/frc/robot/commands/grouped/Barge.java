@@ -16,11 +16,11 @@ public class Barge extends SequentialCommandGroup{
 
         addCommands(
             new IntakeClose(s_IntakeJaws),
-            new ArmExtendToSetpoint(-0.93,4.5, s_ArmExtend),
-            new WristRotToSetpoint(0,0.01, s_WristRot),
+            new ArmExtendToSetpoint(-0.73,4.5, s_ArmExtend),
+            new WristRotToSetpoint(0,0.1, s_WristRot),
             new ArmRotToSetpoint(-0.46,0.1, s_ArmRot),
             new ArmExtendToSetpoint(4.87,0.1, s_ArmExtend),
-            new WristRotToSetpointSlow(0.30, s_WristRot)
+            new WristRotToSetpoint(0.45, 0, s_WristRot)
         );
     }
 

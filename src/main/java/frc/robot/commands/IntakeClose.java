@@ -24,4 +24,10 @@ public class IntakeClose extends InstantCommand {
     public boolean runsWhenDisabled() {
         return false;
     }
+
+    @Override
+    public boolean isFinished() {
+        return true;
+    }
+
 }

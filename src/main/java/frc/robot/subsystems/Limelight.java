@@ -14,27 +14,47 @@ import frc.robot.generated.TunerConstants;
 public class Limelight extends SubsystemBase{
 
   public double getDistanceToReef(){
-    if (LimelightHelpers.getFiducialID("limelight-score") == 6
-    || LimelightHelpers.getFiducialID("limelight-score") == 7
-    || LimelightHelpers.getFiducialID("limelight-score") == 8
-    || LimelightHelpers.getFiducialID("limelight-score") == 9
-    || LimelightHelpers.getFiducialID("limelight-score") == 10
-    || LimelightHelpers.getFiducialID("limelight-score") == 11
-    || LimelightHelpers.getFiducialID("limelight-score") == 17
-    || LimelightHelpers.getFiducialID("limelight-score") == 18
-    || LimelightHelpers.getFiducialID("limelight-score") == 19
-    || LimelightHelpers.getFiducialID("limelight-score") == 20
-    || LimelightHelpers.getFiducialID("limelight-score") == 21
-    || LimelightHelpers.getFiducialID("limelight-score") == 22){
+    if (LimelightHelpers.getFiducialID("limelight-sone") == 6
+    || LimelightHelpers.getFiducialID("limelight-sone") == 7
+    || LimelightHelpers.getFiducialID("limelight-sone") == 8
+    || LimelightHelpers.getFiducialID("limelight-sone") == 9
+    || LimelightHelpers.getFiducialID("limelight-sone") == 10
+    || LimelightHelpers.getFiducialID("limelight-sone") == 11
+    || LimelightHelpers.getFiducialID("limelight-sone") == 17
+    || LimelightHelpers.getFiducialID("limelight-sone") == 18
+    || LimelightHelpers.getFiducialID("limelight-sone") == 19
+    || LimelightHelpers.getFiducialID("limelight-sone") == 20
+    || LimelightHelpers.getFiducialID("limelight-sone") == 21
+    || LimelightHelpers.getFiducialID("limelight-sone") == 22){
       Rotation2d angleToGoal = Rotation2d.fromDegrees(TunerConstants.IntakeLLMountAngle)
-      .plus(Rotation2d.fromDegrees(LimelightHelpers.getTY("limelight-score")));
+      .plus(Rotation2d.fromDegrees(LimelightHelpers.getTY("limelight-sone")));
 
       double distance = (TunerConstants.ApriltagHeight - TunerConstants.IntakeLimelightHight) / angleToGoal.getTan();
 
       return distance;
     } else {
-      return 0;
-    }
+      if (LimelightHelpers.getFiducialID("limelight-stwo") == 6
+      || LimelightHelpers.getFiducialID("limelight-stwo") == 7
+      || LimelightHelpers.getFiducialID("limelight-stwo") == 8
+      || LimelightHelpers.getFiducialID("limelight-stwo") == 9
+      || LimelightHelpers.getFiducialID("limelight-stwo") == 10
+      || LimelightHelpers.getFiducialID("limelight-stwo") == 11
+      || LimelightHelpers.getFiducialID("limelight-stwo") == 17
+      || LimelightHelpers.getFiducialID("limelight-stwo") == 18
+      || LimelightHelpers.getFiducialID("limelight-stwo") == 19
+      || LimelightHelpers.getFiducialID("limelight-stwo") == 20
+      || LimelightHelpers.getFiducialID("limelight-stwo") == 21
+      || LimelightHelpers.getFiducialID("limelight-stwo") == 22){
+        Rotation2d angleToGoal = Rotation2d.fromDegrees(TunerConstants.IntakeLLMountAngle)
+        .plus(Rotation2d.fromDegrees(LimelightHelpers.getTY("limelight-stwo")));
+  
+        double distance = (TunerConstants.ApriltagHeight - TunerConstants.IntakeLimelightHight) / angleToGoal.getTan();
+  
+        return distance;
+      } else {
+        return 0;
+     }
+  }
   }
   public double getDistanceToCoral(){
     Rotation2d angleToGoal = Rotation2d.fromDegrees(TunerConstants.IntakeLLMountAngle)

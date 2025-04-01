@@ -20,7 +20,7 @@ public class AutoStrafeToCoral extends Command {
     private final CommandSwerveDrivetrain m_drivetrain;
     private final SwerveRequest.RobotCentric m_alignRequest;
     private final Limelight m_limelight;
-    private final double kp_Strafe = 2.2;
+    private final double kp_Strafe = 1.2;
 
     private final SwerveRequest.RobotCentric drive = new SwerveRequest.RobotCentric();
 
@@ -35,6 +35,7 @@ public class AutoStrafeToCoral extends Command {
     public void initialize() {
         // Initialization code if needed
         LimelightHelpers.setPipelineIndex("limelight-intake", 0);
+        LimelightHelpers.setLEDMode_ForceOn("limelight-intake");
 
     }
 
@@ -52,7 +53,7 @@ public class AutoStrafeToCoral extends Command {
 
         m_drivetrain.setControl(
         m_alignRequest.withVelocityX(0) // Drive forward with negative Y (forward)
-            .withVelocityY(-strafeSpeed ) // Drive left with negative X (left)
+            .withVelocityY(strafeSpeed ) // Drive left with negative X (left)
             .withRotationalRate(0) // Drive counterclockwise with negative X (left)
         );
     }
@@ -66,12 +67,14 @@ public class AutoStrafeToCoral extends Command {
 
 
         // Define a condition to end the command, e.g., when the robot is close enough to the tag
-        return Math.abs(strafeSpeed) < 0.04; 
+        return Math.abs(strafeSpeed) < 0.06; 
         // return false;
     }
 
     @Override
     public void end(boolean interrupted) {
+        LimelightHelpers.setLEDMode_ForceOff("limelight-intake");
+
         // Stop the drivetrain when the command ends
         m_drivetrain.setControl(
         drive.withVelocityX(0) // Drive forward with negative Y (forward)
