@@ -37,6 +37,6 @@ public class WristRotToSetpoint extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return m_Wrist.atTargetPosition(m_setpoint, 0.01);
+    return m_Wrist.atTargetPosition(m_setpoint, m_tolernace);
   }
 }

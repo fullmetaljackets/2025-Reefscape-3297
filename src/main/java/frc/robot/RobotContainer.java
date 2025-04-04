@@ -195,15 +195,15 @@ public class RobotContainer {
 
 
         //Limelight AutoAlignReef front 
-        DriveStick.leftBumper().and(DriveStick.povLeft()).whileTrue(new AutoAlignLeftLV4Front(drivetrain, s_Limelight).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
-        DriveStick.leftBumper().and(DriveStick.povRight()).whileTrue(new AutoAlignRightLV4Front(drivetrain, s_Limelight).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
+        DriveStick.leftBumper().and(DriveStick.povLeft()).whileTrue(new AutoAlignLeftLV4Back(drivetrain, s_Limelight).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
+        DriveStick.leftBumper().and(DriveStick.povRight()).whileTrue(new AutoAlignRightLV4Back(drivetrain, s_Limelight).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
         
         DriveStick.leftBumper().and(DriveStick.povDown()).whileTrue(new AutoAlignLeftLV3Front(drivetrain, s_Limelight).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
         DriveStick.leftBumper().and(DriveStick.povUp()).whileTrue(new AutoAlignRightLV3Front(drivetrain, s_Limelight).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
 
         //Limelight AutoAlignReef back
-        DriveStick.rightBumper().and(DriveStick.povLeft()).whileTrue(new AutoAlignLeftLV4Back(drivetrain, s_Limelight).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
-        DriveStick.rightBumper().and(DriveStick.povRight()).whileTrue(new AutoAlignRightLV4Back(drivetrain, s_Limelight).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
+        DriveStick.rightBumper().and(DriveStick.povLeft()).whileTrue(new AutoAlignLeftLV4Front(drivetrain, s_Limelight).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
+        DriveStick.rightBumper().and(DriveStick.povRight()).whileTrue(new AutoAlignRightLV4Front(drivetrain, s_Limelight).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
 
         DriveStick.rightBumper().and(DriveStick.povDown()).whileTrue(new AutoAlignLeftLV3Back(drivetrain, s_Limelight).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
         DriveStick.rightBumper().and(DriveStick.povUp()).whileTrue(new AutoAlignRightLV3Back(drivetrain, s_Limelight).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));

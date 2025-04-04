@@ -1,0 +1,79 @@
+{
+  "version": "2025.0",
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "named",
+          "data": {
+            "name": "pipeline right"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Start 6 to L"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "align right"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "place coral"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "L to Floor 1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "align coral pt1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "pipeline left"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Floor 1 to A"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "align left"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "place coral"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "A to Floor 2"
+          }
+        }
+      ]
+    }
+  },
+  "resetOdom": true,
+  "folder": "Grand Forks",
+  "choreoAuto": false
+}
