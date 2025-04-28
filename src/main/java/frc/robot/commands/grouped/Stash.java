@@ -15,10 +15,10 @@ public class Stash extends SequentialCommandGroup{
     public Stash(ArmRot s_ArmRot, ArmExtend s_ArmExtend, WristRot s_WristRot){
 
         addCommands(
-            new ArmExtendToSetpoint(-0.73,2, s_ArmExtend),
-            new WristRotToSetpoint(0,0.1, s_WristRot),
-            new ArmRotToSetpoint(-0.045,0.01,s_ArmRot),
-            new ArmExtendToSetpoint(-0.23, 0.1, s_ArmExtend)
+            new ArmExtendToSetpoint(-0.8,2, s_ArmExtend),
+            new WristRotToSetpoint(0,0.01, s_WristRot),
+            new ArmRotToSetpoint(0,0.01,s_ArmRot),
+            new ArmExtendToSetpoint(-0.19, 0.1, s_ArmExtend)
         );
     }
 }

@@ -22,7 +22,7 @@ public class BallIntake extends SequentialCommandGroup{
 
         addCommands(
             new IntakeOpen(s_IntakeJaws),
-            new IntakeRun(-0.2, -0.2, s_IntakeMotorOne, s_IntakeMotorTwo).withTimeout(1).withInterruptBehavior(InterruptionBehavior.kCancelSelf),
+            new IntakeRun(-0.3, -0.3, s_IntakeMotorOne, s_IntakeMotorTwo).withTimeout(1).withInterruptBehavior(InterruptionBehavior.kCancelSelf),
 
             new IntakeRun(-0.2, -0.2, s_IntakeMotorOne, s_IntakeMotorTwo)
         );

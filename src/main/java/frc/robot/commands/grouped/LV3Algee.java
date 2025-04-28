@@ -15,11 +15,11 @@ public class LV3Algee extends SequentialCommandGroup{
 
         addCommands(
             new IntakeClose(s_IntakeJaws),
-            new ArmExtendToSetpoint(-0.93,4.5, s_ArmExtend),
+            new ArmExtendToSetpoint(-0.8,4.5, s_ArmExtend),
             new WristRotToSetpoint(0,0.01, s_WristRot),
-            new ArmRotToSetpoint(-0.22,0.1, s_ArmRot),
-            new ArmExtendToSetpoint(-0.93,0.1, s_ArmExtend),
-            new WristRotToSetpoint(0,0.01, s_WristRot)
+            new ArmRotToSetpoint(-0.592,0.1, s_ArmRot),
+            new ArmExtendToSetpoint(-0.8,0.1, s_ArmExtend),
+            new WristRotToSetpoint(0.21,0.01, s_WristRot)
         );
     }
 

@@ -15,11 +15,11 @@ public class ReefLV3Front extends SequentialCommandGroup{
     public ReefLV3Front(ArmRot s_ArmRot, ArmExtend s_ArmExtend, WristRot s_WristRot){
 
         addCommands(
-            new ArmExtendToSetpoint(-0.73,4.5, s_ArmExtend),
+            new ArmExtendToSetpoint(-0.8,4.5, s_ArmExtend),
             new WristRotToSetpoint(0,0.01, s_WristRot),
             new ArmRotToSetpoint(-0.304,0.1,s_ArmRot),
-            new ArmExtendToSetpoint(-0.62,0.1, s_ArmExtend),
-            new WristRotToSetpoint(0,0.01, s_WristRot)
+            new ArmExtendToSetpoint(-0.60,0.1, s_ArmExtend),
+            new WristRotToSetpoint(0.07,0.01, s_WristRot)
         );
     }
 }

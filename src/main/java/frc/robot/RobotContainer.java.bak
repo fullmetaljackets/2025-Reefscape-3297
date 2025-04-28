@@ -22,25 +22,24 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
 import frc.robot.commands.ArmExtendRun;
 import frc.robot.commands.ArmRotRun;
-import frc.robot.commands.AutoAlignLV3Algee;
 import frc.robot.commands.AutoAlignLeftLV3Back;
+import frc.robot.commands.AutoAlignLeftLV3Front;
 import frc.robot.commands.AutoAlignLeftLV4Back;
 import frc.robot.commands.AutoAlignLeftLV4Front;
 import frc.robot.commands.AutoAlignRightLV3Back;
+import frc.robot.commands.AutoAlignRightLV3Front;
 import frc.robot.commands.AutoAlignRightLV4Back;
 import frc.robot.commands.AutoAlignRightLV4Front;
 import frc.robot.commands.ClimberRun;
+import frc.robot.commands.ClimberToSetpoint;
 import frc.robot.commands.IntakeClose;
 import frc.robot.commands.IntakeOpen;
 import frc.robot.commands.IntakeToggle;
 import frc.robot.commands.SetPipelineLeft;
-import frc.robot.commands.SetPipelineMiddle;
 import frc.robot.commands.SetPipelineRight;
 import frc.robot.commands.WristRotRun;
 import frc.robot.commands.grouped.AutoAlignToCoral;
-import frc.robot.commands.grouped.AutoBarge;
 import frc.robot.commands.grouped.AutoIntake;
-import frc.robot.commands.grouped.AutoLV3Algee;
 import frc.robot.commands.grouped.AutoReefLV4Over;
 import frc.robot.commands.grouped.BackBallIntake;
 import frc.robot.commands.grouped.BackFloorIntake;
@@ -49,12 +48,12 @@ import frc.robot.commands.grouped.Barge;
 import frc.robot.commands.grouped.ClimberSetpoint;
 import frc.robot.commands.grouped.FeedIntake;
 import frc.robot.commands.grouped.IntakeRun;
-import frc.robot.commands.grouped.LV3Algee;
 import frc.robot.commands.grouped.Middle;
 import frc.robot.commands.grouped.Processor;
 import frc.robot.commands.grouped.ReefLV1;
 import frc.robot.commands.grouped.ReefLV2;
 import frc.robot.commands.grouped.ReefLV3Front;
+import frc.robot.commands.grouped.ReefLV3Over;
 import frc.robot.commands.grouped.ReefLV4Front;
 import frc.robot.commands.grouped.ReefLV4Over;
 import frc.robot.commands.grouped.Score;
@@ -76,7 +75,7 @@ import frc.robot.subsystems.WristRot;
 
 public class RobotContainer {
     // private double MaxSpeed = TunerConstants.kSpeedAt12Volts.in(MetersPerSecond); // kSpeedAt12Volts desired top speed
-    public double MaxSpeed = 3.5;
+    public double MaxSpeed = 2;
     public double MaxAngularRate = RotationsPerSecond.of(0.75).in(RadiansPerSecond); // 1/4 of a rotation per second max angular velocity
 
     private final CommandXboxController DriveStick = new CommandXboxController(0);
@@ -119,29 +118,24 @@ public class RobotContainer {
 
         NamedCommands.registerCommand("L4", new ReefLV4Over(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
         NamedCommands.registerCommand("AutoL4", new AutoReefLV4Over(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws, s_IntakeMotorOne, s_IntakeMotorTwo));
-        NamedCommands.registerCommand("L3 Algee", new LV3Algee(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
-        NamedCommands.registerCommand("Barge", new AutoBarge(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws, s_IntakeMotorOne, s_IntakeMotorTwo));
 
         // NamedCommands.registerCommand("AutoL2", new ReefLV2(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
 
         NamedCommands.registerCommand("place coral", new IntakeRun(.18, .18, s_IntakeMotorOne, s_IntakeMotorTwo).withTimeout(0.5));
-        NamedCommands.registerCommand("place algee", new IntakeRun(.25, .25, s_IntakeMotorOne, s_IntakeMotorTwo).withTimeout(0.5));
         NamedCommands.registerCommand("floor intake", new BackFloorIntake(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
         NamedCommands.registerCommand("Middle", new Middle(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
         NamedCommands.registerCommand("Close Intake", new IntakeClose(s_IntakeJaws));
         NamedCommands.registerCommand("open intake", new IntakeOpen(s_IntakeJaws));
-        NamedCommands.registerCommand("intake run", new IntakeRun(-.5, -.6, s_IntakeMotorOne, s_IntakeMotorTwo));
+        NamedCommands.registerCommand("intake run", new IntakeRun(-.2, -.2, s_IntakeMotorOne, s_IntakeMotorTwo).withTimeout(.5));
 
         //limelight auto alignment 
         NamedCommands.registerCommand("align left", new AutoAlignLeftLV4Front(drivetrain, s_Limelight));
         NamedCommands.registerCommand("align right", new AutoAlignRightLV4Front(drivetrain, s_Limelight));
-        NamedCommands.registerCommand("align algee", new AutoLV3Algee(s_Limelight, drivetrain, s_IntakeJaws, s_IntakeMotorOne, s_IntakeMotorTwo));
         NamedCommands.registerCommand("align coral pt1", new AutoAlignToCoral(s_Limelight, drivetrain, s_IntakeJaws, s_IntakeMotorOne, s_IntakeMotorTwo));
         NamedCommands.registerCommand("align coral pt2", new AutoIntake(s_Limelight, drivetrain, s_IntakeJaws, s_IntakeMotorOne, s_IntakeMotorTwo).withTimeout(0.6));
 
         NamedCommands.registerCommand("pipeline right", new SetPipelineRight(LimelightHelpers).withTimeout(.2));
         NamedCommands.registerCommand("pipeline left", new SetPipelineLeft(LimelightHelpers).withTimeout(.2));
-        NamedCommands.registerCommand("pipeline middle", new SetPipelineMiddle(LimelightHelpers).withTimeout(.2));
 
         autoChooser = AutoBuilder.buildAutoChooser();
         SmartDashboard.putData("Auto Chooser", autoChooser);
@@ -204,8 +198,8 @@ public class RobotContainer {
         DriveStick.leftBumper().and(DriveStick.povLeft()).whileTrue(new AutoAlignLeftLV4Back(drivetrain, s_Limelight).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
         DriveStick.leftBumper().and(DriveStick.povRight()).whileTrue(new AutoAlignRightLV4Back(drivetrain, s_Limelight).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
         
-        // DriveStick.leftBumper().and(DriveStick.povDown()).whileTrue(new AutoAlignLeftLV3Front(drivetrain, s_Limelight).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
-        DriveStick.leftBumper().and(DriveStick.povUp()).whileTrue(new AutoAlignLV3Algee(drivetrain, s_Limelight).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
+        DriveStick.leftBumper().and(DriveStick.povDown()).whileTrue(new AutoAlignLeftLV3Front(drivetrain, s_Limelight).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
+        DriveStick.leftBumper().and(DriveStick.povUp()).whileTrue(new AutoAlignRightLV3Front(drivetrain, s_Limelight).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
 
         //Limelight AutoAlignReef back
         DriveStick.rightBumper().and(DriveStick.povLeft()).whileTrue(new AutoAlignLeftLV4Front(drivetrain, s_Limelight).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
@@ -225,8 +219,8 @@ public class RobotContainer {
         //DriveStick controls
         // DriveStick.x().whileTrue(new intake(0.18, s_Intake));
         // DriveStick.y().whileTrue(new intake(-0.2, s_Intake));
-        DriveStick.rightTrigger().whileTrue(new Score(0.25, 0.25, s_IntakeMotorOne, s_IntakeMotorTwo, s_ArmRot));
-        // DriveStick.rightTrigger().whileFalse(new IntakeRun(-0.03, -0.03, s_IntakeMotorOne,s_IntakeMotorTwo));
+        DriveStick.rightTrigger().whileTrue(new Score(0.3, 0.3, s_IntakeMotorOne, s_IntakeMotorTwo, s_ArmRot));
+        // DriveStick.rightTrigger().whileFalse(new IntakeRun(-0.03, -0.03, s_IntakeMotorOne, s_IntakeMotorTwo));
 
         DriveStick.leftTrigger().whileTrue(new IntakeRun(-0.6, -0.5, s_IntakeMotorOne, s_IntakeMotorTwo));
         // DriveStick.leftTrigger().whileFalse(new IntakeRun(-0.03, -0.03, s_IntakeMotorOne, s_IntakeMotorTwo));
@@ -235,7 +229,7 @@ public class RobotContainer {
         
         DriveStick.a().whileTrue(drivetrain.applyRequest(() -> brake));
         DriveStick.b().onTrue(drivetrain.runOnce(() -> drivetrain.seedFieldCentric()));
-        DriveStick.x().onTrue(new Stash(s_ArmRot, s_ArmExtend, s_WristRot));
+        // DriveStick.x().onTrue(new LV3Algee(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
 
         //manualy adjust arm extend
         DriveStick.y().and(DriveStick.povUp()).whileTrue(new ArmExtendRun(0.2, s_ArmExtend));
@@ -264,9 +258,9 @@ public class RobotContainer {
         CopilotStick.b().onTrue(new ReefLV1(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws).alongWith(new PrintCommand("Hello World 1")));
         CopilotStick.a().onTrue(new ReefLV2(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws).alongWith(new PrintCommand("Hello World 2")));
         CopilotStick.x().onTrue(new ReefLV3Front(s_ArmRot, s_ArmExtend, s_WristRot).alongWith(new PrintCommand("Hello World 3")));
-        CopilotStick.rightBumper().and(CopilotStick.x()).onTrue(new ReefLV4Front(s_ArmRot, s_ArmExtend, s_WristRot));
+        CopilotStick.rightBumper().and(CopilotStick.x()).onTrue(new ReefLV3Over(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
         CopilotStick.y().onTrue(new ReefLV4Over(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws).alongWith(new PrintCommand("Hello World 4")));
-        CopilotStick.rightBumper().and(CopilotStick.y()).onTrue(new LV3Algee(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
+        CopilotStick.rightBumper().and(CopilotStick.y()).onTrue(new ReefLV4Front(s_ArmRot, s_ArmExtend, s_WristRot));
 
         //CopilotStick.y().onTrue(new PrintCommand("Y Pressed"));
         

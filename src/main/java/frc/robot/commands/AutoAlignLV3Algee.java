@@ -16,15 +16,14 @@ import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.Limelight;
 import frc.robot.LimelightHelpers;
 
-public class AutoAlignRightLV3Front extends Command {
+public class AutoAlignLV3Algee extends Command {
     private final CommandSwerveDrivetrain m_drivetrain;
     private final SwerveRequest.RobotCentric m_alignRequest;
     private final Limelight m_limelight;
-    private final double kP_Distance = 0.03; // Proportional control constant
-    // private final double DistanceOffset = 25.5;
-    private final double DistanceOffset = 0;
-    private final double kp_Strafe = 1.7;
-    private final double kp_Angle = 1.7;
+    private final double kP_Distance = 0.04; // Proportional control constant
+    private final double DistanceOffset = 20.5;
+    private final double kp_Strafe = 1.8;
+    private final double kp_Angle = 1.8;
 
     // private final CommandXboxController DriveStick = new CommandXboxController(0);
 
@@ -33,7 +32,7 @@ public class AutoAlignRightLV3Front extends Command {
 
     private final SwerveRequest.RobotCentric drive = new SwerveRequest.RobotCentric();
 
-    public AutoAlignRightLV3Front(CommandSwerveDrivetrain drivetrain, Limelight limelight) {
+    public AutoAlignLV3Algee(CommandSwerveDrivetrain drivetrain, Limelight limelight) {
         m_drivetrain = drivetrain;
         m_limelight = limelight;
         m_alignRequest = new SwerveRequest.RobotCentric()
@@ -44,7 +43,7 @@ public class AutoAlignRightLV3Front extends Command {
     @Override
     public void initialize() {
         // Initialization code if needed
-        LimelightHelpers.setPipelineIndex("limelight-sone", 0);
+        LimelightHelpers.setPipelineIndex("limelight-sone", 2);
 
     }
 
@@ -73,8 +72,8 @@ public class AutoAlignRightLV3Front extends Command {
 
 
         m_drivetrain.setControl(
-        m_alignRequest.withVelocityX(forwardSpeed) // Drive forward with negative Y (forward)
-            .withVelocityY(strafeSpeed) // Drive left with negative X (left)
+        m_alignRequest.withVelocityX(forwardSpeed ) // Drive forward with negative Y (forward)
+            .withVelocityY(strafeSpeed ) // Drive left with negative X (left)
             .withRotationalRate(0) // Drive counterclockwise with negative X (left)
         );
     }
@@ -93,7 +92,7 @@ public class AutoAlignRightLV3Front extends Command {
         // Define a condition to end the command, e.g., when the robot is close enough to the tag
         return Math.abs(forwardSpeed) < 0.1 
         // && Math.abs(turnSpeed) < 0.1;
-        && Math.abs(strafeSpeed) < 0.03;
+        && Math.abs(strafeSpeed) < 0.1;
     }
 
     @Override

@@ -69,7 +69,7 @@ public class ArmExtend extends SubsystemBase{
         slot0.kS = 0; // Add 0.25 V output to overcome static friction
         slot0.kV = 0; // A velocity target of 1 rps results in 0.12 V output
         slot0.kA = 0; // An acceleration of 1 rps/s requires 0.01 V output
-        slot0.kP = 5; // A position error of 0.2 rotations results in 12 V output
+        slot0.kP = 8; // A position error of 0.2 rotations results in 12 V output
         slot0.kI = 0; // No output for integrated error
         slot0.kD = 0; // A velocity error of 1 rps results in 0.5 V output
         slot0.GravityType = GravityTypeValue.Elevator_Static;
@@ -118,7 +118,7 @@ public class ArmExtend extends SubsystemBase{
         // ArmExtendMotor.set(setpoint);
         if (resetSwitch.get()){
             ArmExtendMotor.stopMotor();
-            ArmExtendMotor.setPosition(-0.73, 0);
+            ArmExtendMotor.setPosition(-0.8, 0);
             SmartDashboard.putNumber("ArmExtendPosition", ArmExtendMotor.getPosition().getValueAsDouble());
         } else {
             ArmExtendMotor.set(velocity);

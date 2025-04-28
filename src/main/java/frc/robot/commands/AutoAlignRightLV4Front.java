@@ -90,9 +90,9 @@ public class AutoAlignRightLV4Front extends Command {
 
 
         // Define a condition to end the command, e.g., when the robot is close enough to the tag
-        return Math.abs(forwardSpeed) < 0.05 
+        return Math.abs(forwardSpeed) < 0.08
         // && Math.abs(turnSpeed) < 0.1;
-        && Math.abs(strafeSpeed) < 0.05;
+        && Math.abs(strafeSpeed) < 0.08;
     }
 
     @Override
