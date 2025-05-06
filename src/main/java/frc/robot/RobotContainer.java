@@ -126,7 +126,7 @@ public class RobotContainer {
 
         NamedCommands.registerCommand("place coral", new IntakeRun(.18, .18, s_IntakeMotorOne, s_IntakeMotorTwo).withTimeout(0.5));
         NamedCommands.registerCommand("place algee", new IntakeRun(.25, .25, s_IntakeMotorOne, s_IntakeMotorTwo).withTimeout(0.5));
-        NamedCommands.registerCommand("floor intake", new BackFloorIntake(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
+        NamedCommands.registerCommand("floor intake", new BackFloorIntake(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws, s_IntakeMotorOne, s_IntakeMotorTwo));
         NamedCommands.registerCommand("Middle", new Middle(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
         NamedCommands.registerCommand("Close Intake", new IntakeClose(s_IntakeJaws));
         NamedCommands.registerCommand("open intake", new IntakeOpen(s_IntakeJaws));
@@ -270,7 +270,7 @@ public class RobotContainer {
 
         //CopilotStick.y().onTrue(new PrintCommand("Y Pressed"));
         
-        CopilotStick.rightTrigger().onTrue(new BackFloorIntake(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
+        CopilotStick.rightTrigger().onTrue(new BackFloorIntake(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws, s_IntakeMotorOne, s_IntakeMotorTwo));
         CopilotStick.leftTrigger().onTrue(new Middle(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
 
         // CopilotStick.rightBumper().and(CopilotStick.y()).onTrue(new AutoReefLV4Over(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws, s_IntakeMotorOne , s_IntakeMotorTwo));

@@ -8,7 +8,7 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.241952054794519,
+        "x": 3.2419520547945186,
         "y": 6.148630136986301
       },
       "isLocked": false,
@@ -65,7 +65,7 @@
   "folder": "Floor Coral 3 to Reef",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": -1.3976609678134442
   },
   "useDefaultConstraints": true
 }

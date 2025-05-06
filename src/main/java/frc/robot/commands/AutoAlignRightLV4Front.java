@@ -20,9 +20,9 @@ public class AutoAlignRightLV4Front extends Command {
     private final CommandSwerveDrivetrain m_drivetrain;
     private final SwerveRequest.RobotCentric m_alignRequest;
     private final Limelight m_limelight;
-    private final double kP_Distance = 0.03; // Proportional control constant
-    private final double DistanceOffset = 19.5;
-    private final double kp_Strafe = 1.7;
+    private final double kP_Distance = 0.05; // Proportional control constant
+    private final double DistanceOffset = 22;
+    private final double kp_Strafe = 2;
     private final double kp_Angle = 1.7;
 
     // private final CommandXboxController DriveStick = new CommandXboxController(0);
@@ -90,7 +90,7 @@ public class AutoAlignRightLV4Front extends Command {
 
 
         // Define a condition to end the command, e.g., when the robot is close enough to the tag
-        return Math.abs(forwardSpeed) < 0.08
+        return Math.abs(forwardSpeed) < 0.05
         // && Math.abs(turnSpeed) < 0.1;
         && Math.abs(strafeSpeed) < 0.08;
     }

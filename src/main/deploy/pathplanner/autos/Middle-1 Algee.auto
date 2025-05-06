@@ -7,49 +7,13 @@
         {
           "type": "named",
           "data": {
-            "name": "pipeline left"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "Start 1 to C"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "align left"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "place coral"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "C to Floor 3"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "Floor 3 Pickup"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
             "name": "pipeline right"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Floor 3 to B"
+            "pathName": "Start Middle"
           }
         },
         {
@@ -65,9 +29,39 @@
           }
         },
         {
+          "type": "named",
+          "data": {
+            "name": "pipeline middle"
+          }
+        },
+        {
           "type": "path",
           "data": {
-            "pathName": "B to Floor 2"
+            "pathName": "Back Middle-Algee 2"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "align algee"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Algee 2-Barge 2"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "place algee"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Barge 2-Algee 2"
           }
         }
       ]

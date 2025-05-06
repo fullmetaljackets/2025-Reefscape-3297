@@ -9,11 +9,13 @@ import frc.robot.commands.WristRotToSetpoint;
 import frc.robot.subsystems.ArmExtend;
 import frc.robot.subsystems.ArmRot;
 import frc.robot.subsystems.IntakeJaws;
+import frc.robot.subsystems.IntakeMotorOne;
+import frc.robot.subsystems.IntakeMotorTwo;
 import frc.robot.subsystems.WristRot;
 
 public class BackFloorIntake extends SequentialCommandGroup{
     
-    public BackFloorIntake(ArmRot s_ArmRot, ArmExtend s_ArmExtend, WristRot s_WristRot, IntakeJaws s_IntakeJaws){
+    public BackFloorIntake(ArmRot s_ArmRot, ArmExtend s_ArmExtend, WristRot s_WristRot, IntakeJaws s_IntakeJaws, IntakeMotorOne s_IntakeMotorOne, IntakeMotorTwo s_IntakeMotorTwo){
 
         addCommands(
             new IntakeClose(s_IntakeJaws),
@@ -25,7 +27,8 @@ public class BackFloorIntake extends SequentialCommandGroup{
             // new ArmExtendToSetpoint(1.8,3, s_ArmExtend),
             new ArmExtendToSetpoint(0.9,3, s_ArmExtend),
             // new WristRotToSetpoint(0.15,0.01, s_WristRot)
-            new WristRotToSetpoint(0.3,0.01, s_WristRot)
+            new WristRotToSetpoint(0.28,0.01, s_WristRot)
+            // new IntakeRun(-0.6 ,-0.5, s_IntakeMotorOne, s_IntakeMotorTwo) // Adjust the speed as needed
 
         );
     }

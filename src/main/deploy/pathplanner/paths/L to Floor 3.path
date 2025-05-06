@@ -54,7 +54,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": -1.3976609678134442
   },
   "reversed": false,
   "folder": "Move to Floor Coral 3",

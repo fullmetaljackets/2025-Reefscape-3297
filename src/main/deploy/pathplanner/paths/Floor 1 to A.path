@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.073872950819672,
-        "y": 5.72
+        "x": 1.2,
+        "y": 5.86
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.421516393442624,
-        "y": 4.772971311475411
+        "x": 1.5476434426229517,
+        "y": 4.912971311475411
       },
       "isLocked": false,
-      "linkedName": "Floor 1 Coral"
+      "linkedName": "floor 1 Pickup end"
     },
     {
       "anchor": {
-        "x": 3.092827868852459,
-        "y": 3.9590676229508195
+        "x": 2.865061475409836,
+        "y": 3.9470799180327862
       },
       "prevControl": {
-        "x": 2.236363827756569,
-        "y": 3.933080577700426
+        "x": 2.0085974343139457,
+        "y": 3.921092872782393
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Reef Point A"
+      "linkedName": "Reef Point B"
     }
   ],
   "rotationTargets": [],
@@ -45,8 +45,8 @@
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 1.5,
-    "maxAcceleration": 1.5,
+    "maxVelocity": 1.2,
+    "maxAcceleration": 1.2,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,

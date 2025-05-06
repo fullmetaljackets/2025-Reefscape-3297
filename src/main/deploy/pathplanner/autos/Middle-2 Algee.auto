@@ -13,7 +13,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Start 1 to C"
+            "pathName": "Start Middle"
           }
         },
         {
@@ -29,45 +29,45 @@
           }
         },
         {
-          "type": "path",
+          "type": "named",
           "data": {
-            "pathName": "C to Floor 3"
+            "name": "pipeline middle"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Floor 3 Pickup"
+            "pathName": "Back Middle-Algee 2"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "pipeline right"
+            "name": "align algee"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Floor 3 to B"
+            "pathName": "Algee 2-Barge 2"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "align right"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "place coral"
+            "name": "place algee"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "B to Floor 2"
+            "pathName": "Barge 2-Algee 2"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "align algee"
           }
         }
       ]

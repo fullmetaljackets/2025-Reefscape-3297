@@ -3,16 +3,16 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.1,
-        "y": 2.196875
+        "x": 1.2,
+        "y": 2.2
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.0084836065573763,
-        "y": 2.4725922131147535
+        "x": 2.1084836065573764,
+        "y": 2.475717213114754
       },
       "isLocked": false,
-      "linkedName": "Floor 3 Coral"
+      "linkedName": "floor 3 pickup end"
     },
     {
       "anchor": {

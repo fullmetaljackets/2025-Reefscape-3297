@@ -60,7 +60,7 @@
   "folder": "Floor Coral 3 to Reef",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": -1.3976609678134442
   },
   "useDefaultConstraints": true
 }

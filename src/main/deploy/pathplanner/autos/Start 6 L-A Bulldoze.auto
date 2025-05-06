@@ -35,9 +35,9 @@
           }
         },
         {
-          "type": "named",
+          "type": "path",
           "data": {
-            "name": "align coral pt1"
+            "pathName": "Floor 1 Pickup"
           }
         },
         {

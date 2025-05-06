@@ -20,7 +20,7 @@ public class AutoAlignRightLV3Back extends Command {
     private final CommandSwerveDrivetrain m_drivetrain;
     private final SwerveRequest.RobotCentric m_alignRequest;
     private final Limelight m_limelight;
-    private final double kP_Distance = 0.03; // Proportional control constant
+    private final double kP_Distance = 0.05; // Proportional control constant
     private final double DistanceOffset = 23;
     private final double kp_Strafe = 1.7;
     private final double kp_Angle = 1.7;
@@ -90,7 +90,7 @@ public class AutoAlignRightLV3Back extends Command {
 
 
         // Define a condition to end the command, e.g., when the robot is close enough to the tag
-        return Math.abs(forwardSpeed) < 0.1 
+        return Math.abs(forwardSpeed) < 0.04 
         // && Math.abs(turnSpeed) < 0.1;
         && Math.abs(strafeSpeed) < 0.03;
     }

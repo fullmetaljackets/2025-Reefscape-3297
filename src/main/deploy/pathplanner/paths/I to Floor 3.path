@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 5.319092465753425,
-        "y": 5.144413527397259
+        "x": 5.4014999999999995,
+        "y": 5.49725
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.7497003424657533,
-        "y": 6.752161815068492
+        "x": 2.832107876712328,
+        "y": 7.104998287671233
       },
       "isLocked": false,
       "linkedName": "Reef Point I"
@@ -49,7 +49,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": -1.3976609678134442
   },
   "reversed": false,
   "folder": "Move to Floor Coral 3",

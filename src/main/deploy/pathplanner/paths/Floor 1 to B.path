@@ -4,12 +4,12 @@
     {
       "anchor": {
         "x": 2.073872950819672,
-        "y": 5.72
+        "y": 5.86
       },
       "prevControl": null,
       "nextControl": {
         "x": 3.000122950819672,
-        "y": 5.242249999999999
+        "y": 5.38225
       },
       "isLocked": false,
       "linkedName": "Floor 1 Coral"
