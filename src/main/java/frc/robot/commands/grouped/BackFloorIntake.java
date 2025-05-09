@@ -25,9 +25,9 @@ public class BackFloorIntake extends SequentialCommandGroup{
             // new ArmRotToSetpoint(-0.09,0.01, s_ArmRot),
             new ArmRotToSetpoint(-0.105,0.05, s_ArmRot),
             // new ArmExtendToSetpoint(1.8,3, s_ArmExtend),
-            new ArmExtendToSetpoint(0.9,3, s_ArmExtend),
+            new ArmExtendToSetpoint(0.7,3, s_ArmExtend),
             // new WristRotToSetpoint(0.15,0.01, s_WristRot)
-            new WristRotToSetpoint(0.28,0.01, s_WristRot)
+            new WristRotToSetpoint(0.31,0.01, s_WristRot)
             // new IntakeRun(-0.6 ,-0.5, s_IntakeMotorOne, s_IntakeMotorTwo) // Adjust the speed as needed
 
         );
