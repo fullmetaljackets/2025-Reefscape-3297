@@ -21,7 +21,7 @@ public class AutoAlignLV3Algee extends Command {
     private final SwerveRequest.RobotCentric m_alignRequest;
     private final Limelight m_limelight;
     private final double kP_Distance = 0.04; // Proportional control constant
-    private final double DistanceOffset = 20.5;
+    private final double DistanceOffset = 18.5;
     private final double kp_Strafe = 1.8;
     private final double kp_Angle = 1.8;
 

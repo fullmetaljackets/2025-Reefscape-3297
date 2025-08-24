@@ -21,7 +21,7 @@ public class AutoAlignRightLV4Front extends Command {
     private final SwerveRequest.RobotCentric m_alignRequest;
     private final Limelight m_limelight;
     private final double kP_Distance = 0.05; // Proportional control constant
-    private final double DistanceOffset = 18;
+    private final double DistanceOffset = 20.5;
     private final double kp_Strafe = 2;
     private final double kp_Angle = 1.7;
 
