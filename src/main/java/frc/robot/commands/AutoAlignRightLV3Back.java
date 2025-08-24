@@ -37,7 +37,7 @@ public class AutoAlignRightLV3Back extends Command {
         m_limelight = limelight;
         m_alignRequest = new SwerveRequest.RobotCentric()
             .withDriveRequestType(DriveRequestType.Velocity);
-        addRequirements( limelight);
+        addRequirements(limelight);
     }
 
     @Override
