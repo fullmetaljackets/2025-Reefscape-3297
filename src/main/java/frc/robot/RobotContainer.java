@@ -30,16 +30,13 @@ import frc.robot.commands.AutoAlignRightLV3Back;
 import frc.robot.commands.AutoAlignRightLV4Back;
 import frc.robot.commands.AutoAlignRightLV4Front;
 import frc.robot.commands.ClimberRun;
-import frc.robot.commands.IntakeClose;
-import frc.robot.commands.IntakeOpen;
-import frc.robot.commands.IntakeToggle;
 import frc.robot.commands.SetPipelineLeft;
 import frc.robot.commands.SetPipelineMiddle;
 import frc.robot.commands.SetPipelineRight;
 import frc.robot.commands.WristRotRun;
-import frc.robot.commands.grouped.AutoAlignToCoral;
-import frc.robot.commands.grouped.AutoBarge;
-import frc.robot.commands.grouped.AutoIntake;
+import frc.robot.commands.Achived.IntakeClose;
+import frc.robot.commands.Achived.IntakeOpen;
+import frc.robot.commands.Achived.IntakeToggle;
 import frc.robot.commands.grouped.AutoLV3Algee;
 import frc.robot.commands.grouped.AutoReefLV4Over;
 import frc.robot.commands.grouped.BackBallIntake;
@@ -47,7 +44,6 @@ import frc.robot.commands.grouped.BackFloorIntake;
 import frc.robot.commands.grouped.BallIntake;
 import frc.robot.commands.grouped.Barge;
 import frc.robot.commands.grouped.ClimberSetpoint;
-import frc.robot.commands.grouped.FeedIntake;
 import frc.robot.commands.grouped.IntakeRun;
 import frc.robot.commands.grouped.LV3Algee;
 import frc.robot.commands.grouped.Middle;
@@ -57,8 +53,12 @@ import frc.robot.commands.grouped.ReefLV2;
 import frc.robot.commands.grouped.ReefLV3Front;
 import frc.robot.commands.grouped.ReefLV4Front;
 import frc.robot.commands.grouped.ReefLV4Over;
-import frc.robot.commands.grouped.Score;
 import frc.robot.commands.grouped.Stash;
+import frc.robot.commands.grouped.Archive.AutoAlignToCoral;
+import frc.robot.commands.grouped.Archive.AutoBarge;
+import frc.robot.commands.grouped.Archive.AutoIntake;
+import frc.robot.commands.grouped.Archive.FeedIntake;
+import frc.robot.commands.grouped.Archive.Score;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.ArmExtend;
 import frc.robot.subsystems.ArmRot;
@@ -128,16 +128,14 @@ public class RobotContainer {
         NamedCommands.registerCommand("place algee", new IntakeRun(.25, .25, s_IntakeMotorOne, s_IntakeMotorTwo).withTimeout(0.5));
         NamedCommands.registerCommand("floor intake", new BackFloorIntake(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws, s_IntakeMotorOne, s_IntakeMotorTwo));
         NamedCommands.registerCommand("Middle", new Middle(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
-        NamedCommands.registerCommand("Close Intake", new IntakeClose(s_IntakeJaws));
-        NamedCommands.registerCommand("open intake", new IntakeOpen(s_IntakeJaws));
         NamedCommands.registerCommand("intake run", new IntakeRun(-.5, -.6, s_IntakeMotorOne, s_IntakeMotorTwo));
 
         //limelight auto alignment 
         NamedCommands.registerCommand("align left", new AutoAlignLeftLV4Front(drivetrain, s_Limelight));
         NamedCommands.registerCommand("align right", new AutoAlignRightLV4Front(drivetrain, s_Limelight));
         NamedCommands.registerCommand("align algee", new AutoLV3Algee(s_Limelight, drivetrain, s_IntakeJaws, s_IntakeMotorOne, s_IntakeMotorTwo));
-        NamedCommands.registerCommand("align coral pt1", new AutoAlignToCoral(s_Limelight, drivetrain, s_IntakeJaws, s_IntakeMotorOne, s_IntakeMotorTwo));
-        NamedCommands.registerCommand("align coral pt2", new AutoIntake(s_Limelight, drivetrain, s_IntakeJaws, s_IntakeMotorOne, s_IntakeMotorTwo).withTimeout(0.6));
+        // NamedCommands.registerCommand("align coral pt1", new AutoAlignToCoral(s_Limelight, drivetrain, s_IntakeJaws, s_IntakeMotorOne, s_IntakeMotorTwo));
+        // NamedCommands.registerCommand("align coral pt2", new AutoIntake(s_Limelight, drivetrain, s_IntakeJaws, s_IntakeMotorOne, s_IntakeMotorTwo).withTimeout(0.6));
 
         NamedCommands.registerCommand("pipeline right", new SetPipelineRight(LimelightHelpers).withTimeout(.2));
         NamedCommands.registerCommand("pipeline left", new SetPipelineLeft(LimelightHelpers).withTimeout(.2));
@@ -225,7 +223,7 @@ public class RobotContainer {
         //DriveStick controls
         // DriveStick.x().whileTrue(new intake(0.18, s_Intake));
         // DriveStick.y().whileTrue(new intake(-0.2, s_Intake));
-        DriveStick.rightTrigger().whileTrue(new Score(0.25, 0.25, s_IntakeMotorOne, s_IntakeMotorTwo, s_ArmRot));
+        DriveStick.rightTrigger().whileTrue(new IntakeRun(0.25, 0.25, s_IntakeMotorOne, s_IntakeMotorTwo));
         // DriveStick.rightTrigger().whileFalse(new IntakeRun(-0.03, -0.03, s_IntakeMotorOne,s_IntakeMotorTwo));
 
         DriveStick.leftTrigger().whileTrue(new IntakeRun(-0.6, -0.5, s_IntakeMotorOne, s_IntakeMotorTwo));

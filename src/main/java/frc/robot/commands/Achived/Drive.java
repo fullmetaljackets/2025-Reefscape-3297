@@ -1,4 +1,4 @@
-package frc.robot.commands;
+package frc.robot.commands.Achived;
 
 import com.ctre.phoenix6.mechanisms.swerve.LegacySwerveModule.SteerRequestType;
 import com.ctre.phoenix6.swerve.SwerveRequest;
@@ -16,19 +16,17 @@ import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.Limelight;
 import frc.robot.LimelightHelpers;
 
-public class AutoDriveToCoral extends Command {
+public class Drive extends Command {
     private final CommandSwerveDrivetrain m_drivetrain;
     private final SwerveRequest.RobotCentric m_alignRequest;
     private final Limelight m_limelight;
-    private final double kP_Distance = 0.04; // Proportional control constant
-    private final double kp_Strafe = 2.2;
-    private final double kp_Angle = 2.2;
-    private final double DistanceOffset = 0;
+    private final double kp_Strafe = 1.2;
+
     private final SwerveRequest.RobotCentric drive = new SwerveRequest.RobotCentric();
 
-    public AutoDriveToCoral(CommandSwerveDrivetrain drivetrain, Limelight limelight) {
+    public Drive(Limelight Limelight, CommandSwerveDrivetrain drivetrain) {
         m_drivetrain = drivetrain;
-        m_limelight = limelight;
+        m_limelight = Limelight;
         m_alignRequest = new SwerveRequest.RobotCentric()
             .withDriveRequestType(DriveRequestType.Velocity);
     }
@@ -37,44 +35,29 @@ public class AutoDriveToCoral extends Command {
     public void initialize() {
         // Initialization code if needed
         LimelightHelpers.setPipelineIndex("limelight-intake", 0);
-
     }
 
     @Override
     public void execute() {
-        
-        double distance = LimelightHelpers.getTY("limelight-intake");
+        // Drive the robot
         double angleError = -Units.degreesToRadians(LimelightHelpers.getTX("limelight-intake")); // Assume you have a method to get the angle error
+        double strafeError = Math.tan(angleError);
+        
+        double strafeSpeed = kp_Strafe * strafeError;
 
-
-        double forwardSpeed = kP_Distance * distance;
-        double turnSpeed = kp_Angle * angleError;
-
-        SmartDashboard.putNumber("intake LL distance", distance);
-        SmartDashboard.putNumber("intake LL forward speed", forwardSpeed);
-
-        SmartDashboard.putNumber("intake LL angle error", angleError);
-        SmartDashboard.putNumber("intake LL angle speed", angleError);
+        SmartDashboard.putNumber("strafe error", strafeError);
+        SmartDashboard.putNumber("strafe speed", strafeSpeed);
 
         m_drivetrain.setControl(
-        m_alignRequest.withVelocityX(-forwardSpeed) // Drive forward with negative Y (forward)
+        m_alignRequest.withVelocityX(-1) // Drive forward with negative Y (forward)
             .withVelocityY(0) // Drive left with negative X (left)
-            .withRotationalRate(turnSpeed) // Drive counterclockwise with negative X (left)
+            .withRotationalRate(0) // Drive counterclockwise with negative X (left)
         );
     }
 
     @Override
     public boolean isFinished() {
-        double distance = LimelightHelpers.getTY("limelight-intake");
-        double angleError = -Units.degreesToRadians(LimelightHelpers.getTX("limelight-intake")); // Assume you have a method to get the angle error
-        double strafeError = Math.tan(angleError);
-
-        double anglespeed = kp_Angle * angleError;
-        double forwardSpeed = kP_Distance * distance;
-
-        return Math.abs(forwardSpeed) < 0.04
-            &&Math.abs(anglespeed) < 0.04; 
-        // return false;
+        return false;
     }
 
     @Override
@@ -84,5 +67,6 @@ public class AutoDriveToCoral extends Command {
         drive.withVelocityX(0) // Drive forward with negative Y (forward)
             .withVelocityY(0) // Drive left with negative X (left)
             .withRotationalRate(0)); // Drive counterclockwise with negative X (left)
+        // );
     }
 }

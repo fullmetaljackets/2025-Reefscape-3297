@@ -1,4 +1,4 @@
-package frc.robot.commands;
+package frc.robot.commands.Achived;
 
 import com.ctre.phoenix6.mechanisms.swerve.LegacySwerveModule.SteerRequestType;
 import com.ctre.phoenix6.swerve.SwerveRequest;
@@ -16,64 +16,43 @@ import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.Limelight;
 import frc.robot.LimelightHelpers;
 
-public class AutoAlignLeftLV3Front extends Command {
+public class AutoStrafeToCoral extends Command {
     private final CommandSwerveDrivetrain m_drivetrain;
     private final SwerveRequest.RobotCentric m_alignRequest;
     private final Limelight m_limelight;
-    private final double kP_Distance = 0.03; // Proportional control constant
-    private final double DistanceOffset = 23;
-    private final double kp_Strafe = 2;
-    private final double kp_Angle = 1.7;
-    
-
-    // private final CommandXboxController DriveStick = new CommandXboxController(0);
-
-    private final Pose3d botPose = LimelightHelpers.getBotPose3d("limelight-sone");
-    private final Pose3d targetPose = LimelightHelpers.getTargetPose3d_RobotSpace("limelight-sone");
+    private final double kp_Strafe = 1.2;
 
     private final SwerveRequest.RobotCentric drive = new SwerveRequest.RobotCentric();
 
-    public AutoAlignLeftLV3Front(CommandSwerveDrivetrain drivetrain, Limelight limelight) {
+    public AutoStrafeToCoral(CommandSwerveDrivetrain drivetrain, Limelight limelight) {
         m_drivetrain = drivetrain;
         m_limelight = limelight;
         m_alignRequest = new SwerveRequest.RobotCentric()
             .withDriveRequestType(DriveRequestType.Velocity);
-        addRequirements( limelight);
     }
 
     @Override
     public void initialize() {
         // Initialization code if needed
-        LimelightHelpers.setPipelineIndex("limelight-sone", 1);
+        LimelightHelpers.setPipelineIndex("limelight-intake", 0);
+        LimelightHelpers.setLEDMode_ForceOn("limelight-intake");
 
     }
 
     @Override
     public void execute() {
-        // LimelightHelpers.getTargetPose3d_CameraSpace("limelight");
-        
-        double distance = m_limelight.getDistanceToReef() - DistanceOffset;
-        double angleError = -Units.degreesToRadians(LimelightHelpers.getTX("limelight-sone")); // Assume you have a method to get the angle error
+        double angleError = -Units.degreesToRadians(LimelightHelpers.getTX("limelight-intake")); // Assume you have a method to get the angle error
         double strafeError = Math.tan(angleError);
         
-        // Proportional control for distance and angle
-        double forwardSpeed = kP_Distance * distance;
-        double turnSpeed = kp_Angle * angleError;
         double strafeSpeed = kp_Strafe * strafeError;
 
         SmartDashboard.putNumber("strafe error", strafeError);
-        SmartDashboard.putNumber("distance", distance);
-
-        SmartDashboard.putNumber("forward speed", forwardSpeed);
-        SmartDashboard.putNumber("turn speed", turnSpeed);
         SmartDashboard.putNumber("strafe speed", strafeSpeed);
 
         // Drive the robot
-        // drivetrain.arcadeDrive(forwardSpeed, turnSpeed);
-
 
         m_drivetrain.setControl(
-        m_alignRequest.withVelocityX(forwardSpeed) // Drive forward with negative Y (forward)
+        m_alignRequest.withVelocityX(0) // Drive forward with negative Y (forward)
             .withVelocityY(strafeSpeed ) // Drive left with negative X (left)
             .withRotationalRate(0) // Drive counterclockwise with negative X (left)
         );
@@ -81,23 +60,21 @@ public class AutoAlignLeftLV3Front extends Command {
 
     @Override
     public boolean isFinished() {
-        double distance = m_limelight.getDistanceToReef() - DistanceOffset;
-        double angleError = -Units.degreesToRadians(LimelightHelpers.getTX("limelight-sone")); // Assume you have a method to get the angle error
+        double angleError = -Units.degreesToRadians(LimelightHelpers.getTX("limelight-intake")); // Assume you have a method to get the angle error
         double strafeError = Math.tan(angleError);
 
-        double forwardSpeed = kP_Distance * distance;
-        double turnSpeed = kp_Angle * angleError;
         double strafeSpeed = kp_Strafe * strafeError;
 
 
         // Define a condition to end the command, e.g., when the robot is close enough to the tag
-        return Math.abs(forwardSpeed) < 0.5 
-        // && Math.abs(turnSpeed) < 0.1;
-        && Math.abs(strafeSpeed) < 0.03;
+        return Math.abs(strafeSpeed) < 0.06; 
+        // return false;
     }
 
     @Override
     public void end(boolean interrupted) {
+        LimelightHelpers.setLEDMode_ForceOff("limelight-intake");
+
         // Stop the drivetrain when the command ends
         m_drivetrain.setControl(
         drive.withVelocityX(0) // Drive forward with negative Y (forward)

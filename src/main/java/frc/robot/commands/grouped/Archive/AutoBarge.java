@@ -1,11 +1,13 @@
-package frc.robot.commands.grouped;
+package frc.robot.commands.grouped.Archive;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.commands.ArmExtendToSetpoint;
 import frc.robot.commands.ArmRotToSetpoint;
-import frc.robot.commands.IntakeClose;
 import frc.robot.commands.WristRotToSetpoint;
 import frc.robot.commands.WristRotToSetpointSlow;
+import frc.robot.commands.Achived.IntakeClose;
+import frc.robot.commands.grouped.BargeIntake;
+import frc.robot.commands.grouped.IntakeRun;
 import frc.robot.subsystems.ArmExtend;
 import frc.robot.subsystems.ArmRot;
 import frc.robot.subsystems.IntakeJaws;
