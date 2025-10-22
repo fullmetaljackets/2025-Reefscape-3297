@@ -223,7 +223,8 @@ public class RobotContainer {
         //DriveStick controls
         // DriveStick.x().whileTrue(new intake(0.18, s_Intake));
         // DriveStick.y().whileTrue(new intake(-0.2, s_Intake));
-        DriveStick.rightTrigger().whileTrue(new IntakeRun(0.25, 0.25, s_IntakeMotorOne, s_IntakeMotorTwo));
+        // coral position DriveStick.rightTrigger().whileTrue(new IntakeRun(0.25, 0.25, s_IntakeMotorOne, s_IntakeMotorTwo));
+        DriveStick.rightTrigger().whileTrue(new IntakeRun(0.35, 0.35, s_IntakeMotorOne, s_IntakeMotorTwo));
         // DriveStick.rightTrigger().whileFalse(new IntakeRun(-0.03, -0.03, s_IntakeMotorOne,s_IntakeMotorTwo));
 
         DriveStick.leftTrigger().whileTrue(new IntakeRun(-0.6, -0.5, s_IntakeMotorOne, s_IntakeMotorTwo));
