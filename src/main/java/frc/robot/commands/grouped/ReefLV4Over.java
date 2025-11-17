@@ -17,11 +17,12 @@ public class ReefLV4Over extends SequentialCommandGroup{
 
         addCommands(
             new IntakeClose(s_IntakeJaws),
-            new ArmExtendToSetpoint(-0.7,2,  s_ArmExtend),
-            new WristRotToSetpoint(0,0.01, s_WristRot),
+            new ArmExtendToSetpoint(-0.5,2,  s_ArmExtend),
+            new WristRotToSetpoint(-0.05,0.01, s_WristRot),
             new ArmRotToSetpoint(-0.52,0.1, s_ArmRot),
-            new ArmExtendToSetpoint(5,1, s_ArmExtend),
-            new WristRotToSetpoint(0.1, 0.01, s_WristRot)
+            new ArmExtendToSetpoint(5,1, s_ArmExtend),  
+            new WristRotToSetpoint(-0.05, 0.01, s_WristRot)
+            // new WristRotToSetpoint(0.05, 0.01, s_WristRot)
         );
     }
 }

@@ -57,7 +57,7 @@ public class WristRot extends SubsystemBase {
         softLimit.ForwardSoftLimitEnable = true;
         softLimit.ForwardSoftLimitThreshold = 0.6;
         softLimit.ReverseSoftLimitEnable = true;
-        softLimit.ReverseSoftLimitThreshold = 0;
+        softLimit.ReverseSoftLimitThreshold = -0.05;
 
         
         Slot0Configs slot0 = TalonFXConfig.Slot0;
@@ -118,6 +118,10 @@ public class WristRot extends SubsystemBase {
         return Math.abs(getWristPosition() - setpoint) <= tolerance;
     }
 
+    public void resetWristRot(double position){
+        WristRotMotor.setPosition(position);
+    }
+    
     public void runMy_WristRot(double setpoint){
         WristRotMotor.set(setpoint);
     }

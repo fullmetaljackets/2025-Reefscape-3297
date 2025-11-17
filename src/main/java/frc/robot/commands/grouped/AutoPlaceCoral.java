@@ -1,5 +1,6 @@
 package frc.robot.commands.grouped;
 
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.commands.ArmExtendToSetpoint;
 import frc.robot.commands.ArmRotToSetpoint;
@@ -10,17 +11,16 @@ import frc.robot.subsystems.ArmExtend;
 import frc.robot.subsystems.ArmRot;
 import frc.robot.subsystems.IntakeJaws;
 import frc.robot.subsystems.WristRot;
+import frc.robot.subsystems.IntakeMotorOne;
+import frc.robot.subsystems.IntakeMotorTwo;
 
-public class ReefLV4Front extends SequentialCommandGroup{
+public class AutoPlaceCoral extends SequentialCommandGroup{
 
-    public ReefLV4Front(ArmRot s_ArmRot, ArmExtend s_ArmExtend, WristRot s_WristRot){
+    public AutoPlaceCoral( WristRot s_WristRot, IntakeMotorOne s_IntakeMotorOne, IntakeMotorTwo s_IntakeMotorTwo){
 
         addCommands(
-            new ArmExtendToSetpoint(-0.5,4.5,  s_ArmExtend),
-            new WristRotToSetpoint(-0.05,0.01, s_WristRot),
-            new ArmRotToSetpoint(-.46,0.1, s_ArmRot),
-            new ArmExtendToSetpoint(2.3,2, s_ArmExtend),
-            new WristRotToSetpoint(.34, 0.01, s_WristRot)
+            new WristRotToSetpoint(0.1, 0.01, s_WristRot),
+            new IntakeRun(.18, .18, s_IntakeMotorOne, s_IntakeMotorTwo).withTimeout(0.5)
         );
     }
 }

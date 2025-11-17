@@ -57,6 +57,12 @@
           "data": {
             "name": "align left"
           }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "place coral"
+          }
         }
       ]
     }

@@ -16,9 +16,9 @@ public class Stash extends SequentialCommandGroup{
 
         addCommands(
             new ArmExtendToSetpoint(-0.8,2, s_ArmExtend),
-            new WristRotToSetpoint(0,0.01, s_WristRot),
+            new WristRotToSetpoint(-0.05,0.01, s_WristRot),
             new ArmRotToSetpoint(0,0.01,s_ArmRot),
-            new ArmExtendToSetpoint(-0.19, 0.1, s_ArmExtend)
+            new ArmExtendToSetpoint(-0.14, 0.1, s_ArmExtend)
         );
     }
 }

@@ -16,8 +16,8 @@ public class Processor extends SequentialCommandGroup{
 
         addCommands(
             new IntakeClose(s_IntakeJaws),
-            new ArmExtendToSetpoint(-0.7,2, s_ArmExtend),
-            new WristRotToSetpoint(0,0.01, s_WristRot),
+            new ArmExtendToSetpoint(-0.6,2, s_ArmExtend),
+            new WristRotToSetpoint(-0.05,0.01, s_WristRot),
             new ArmRotToSetpoint(-0.113,0.01, s_ArmRot),
             new ArmExtendToSetpoint(-0.33,3, s_ArmExtend),
             new WristRotToSetpoint(0.19,0.01, s_WristRot)

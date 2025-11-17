@@ -18,7 +18,7 @@ public class AutoLV3Algee extends ParallelCommandGroup{
 
         addCommands(
             new IntakeRun(-0.3, -0.3, s_IntakeMotorOne, s_IntakeMotorTwo).withTimeout(1),
-            new AutoAlignLV3Algee(s_CommandSwerveDrivetrain, s_Limelight)
+            new AutoAlignLV3Algee(s_CommandSwerveDrivetrain, s_Limelight).withTimeout(1.2)
         );
     }
 }

@@ -16,8 +16,8 @@ public class Middle extends SequentialCommandGroup{
 
         addCommands(
             new IntakeClose(s_IntakeJaws),
-            new ArmExtendToSetpoint(-0.7,2, s_ArmExtend),
-            new WristRotToSetpoint(0,0.06, s_WristRot),
+            new ArmExtendToSetpoint(-0.5,2, s_ArmExtend),
+            new WristRotToSetpoint(-0.05,0.06, s_WristRot),
             new ArmRotToSetpoint(0,0.01,s_ArmRot)
         );
     }

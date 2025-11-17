@@ -30,6 +30,7 @@ import frc.robot.commands.AutoAlignRightLV3Back;
 import frc.robot.commands.AutoAlignRightLV4Back;
 import frc.robot.commands.AutoAlignRightLV4Front;
 import frc.robot.commands.ClimberRun;
+import frc.robot.commands.ResetWristRot;
 import frc.robot.commands.SetPipelineLeft;
 import frc.robot.commands.SetPipelineMiddle;
 import frc.robot.commands.SetPipelineRight;
@@ -38,6 +39,7 @@ import frc.robot.commands.Achived.IntakeClose;
 import frc.robot.commands.Achived.IntakeOpen;
 import frc.robot.commands.Achived.IntakeToggle;
 import frc.robot.commands.grouped.AutoLV3Algee;
+import frc.robot.commands.grouped.AutoPlaceCoral;
 import frc.robot.commands.grouped.AutoReefLV4Over;
 import frc.robot.commands.grouped.BackBallIntake;
 import frc.robot.commands.grouped.BackFloorIntake;
@@ -125,7 +127,8 @@ public class RobotContainer {
         // NamedCommands.registerCommand("AutoL2", new ReefLV2(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
 
         NamedCommands.registerCommand("place coral", new IntakeRun(.18, .18, s_IntakeMotorOne, s_IntakeMotorTwo).withTimeout(0.5));
-        NamedCommands.registerCommand("place algee", new IntakeRun(.25, .25, s_IntakeMotorOne, s_IntakeMotorTwo).withTimeout(0.5));
+        // NamedCommands.registerCommand("place coral",new AutoPlaceCoral(s_WristRot, s_IntakeMotorOne, s_IntakeMotorTwo));
+        NamedCommands.registerCommand("place algee", new IntakeRun(.35, .35, s_IntakeMotorOne, s_IntakeMotorTwo).withTimeout(0.5));
         NamedCommands.registerCommand("floor intake", new BackFloorIntake(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws, s_IntakeMotorOne, s_IntakeMotorTwo));
         NamedCommands.registerCommand("Middle", new Middle(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
         NamedCommands.registerCommand("intake run", new IntakeRun(-.5, -.6, s_IntakeMotorOne, s_IntakeMotorTwo));
@@ -137,9 +140,9 @@ public class RobotContainer {
         // NamedCommands.registerCommand("align coral pt1", new AutoAlignToCoral(s_Limelight, drivetrain, s_IntakeJaws, s_IntakeMotorOne, s_IntakeMotorTwo));
         // NamedCommands.registerCommand("align coral pt2", new AutoIntake(s_Limelight, drivetrain, s_IntakeJaws, s_IntakeMotorOne, s_IntakeMotorTwo).withTimeout(0.6));
 
-        NamedCommands.registerCommand("pipeline right", new SetPipelineRight(LimelightHelpers).withTimeout(.2));
-        NamedCommands.registerCommand("pipeline left", new SetPipelineLeft(LimelightHelpers).withTimeout(.2));
-        NamedCommands.registerCommand("pipeline middle", new SetPipelineMiddle(LimelightHelpers).withTimeout(.2));
+        NamedCommands.registerCommand("pipeline right", new SetPipelineRight(LimelightHelpers).withTimeout(.1));
+        NamedCommands.registerCommand("pipeline left", new SetPipelineLeft(LimelightHelpers).withTimeout(.1));
+        NamedCommands.registerCommand("pipeline middle", new SetPipelineMiddle(LimelightHelpers).withTimeout(.1));
 
         autoChooser = AutoBuilder.buildAutoChooser();
         SmartDashboard.putData("Auto Chooser", autoChooser);
@@ -204,6 +207,7 @@ public class RobotContainer {
         
         // DriveStick.leftBumper().and(DriveStick.povDown()).whileTrue(new AutoAlignLeftLV3Front(drivetrain, s_Limelight).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
         DriveStick.leftBumper().and(DriveStick.povUp()).whileTrue(new AutoAlignLV3Algee(drivetrain, s_Limelight).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
+        DriveStick.leftBumper().and(DriveStick.povDown()).whileTrue(new ResetWristRot(s_WristRot));
 
         //Limelight AutoAlignReef back
         DriveStick.rightBumper().and(DriveStick.povLeft()).whileTrue(new AutoAlignLeftLV4Front(drivetrain, s_Limelight).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
