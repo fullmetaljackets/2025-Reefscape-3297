@@ -221,8 +221,6 @@ public class RobotContainer {
         DriveStick.leftBumper().and(DriveStick.x()).whileTrue(new AutoAlignToCoral(s_Limelight, drivetrain, s_IntakeJaws, s_IntakeMotorOne, s_IntakeMotorTwo));
         // DriveStick.leftBumper().and(DriveStick.y()).whileTrue(new AutoAlignToCoral(s_Limelight, drivetrain).withTimeout(2));
 
-        
-
         DriveStick.start().onTrue(new FeedIntake(s_ArmRot, s_ArmExtend, s_WristRot, s_IntakeJaws));
         //DriveStick controls
         // DriveStick.x().whileTrue(new intake(0.18, s_Intake));
